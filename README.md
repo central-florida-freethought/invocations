@@ -22,3 +22,30 @@ The `Vagrantfile` provides a way to quickly set up a [Vagrant](http://vagrantup.
 After the virtual Machine is running, you can login to it with `vagrant ssh` and from the `/vagrant` directory, run `bundle install` to pull down the application dependencies.
 
 To configure the database settings, rename the `database.yml.example` file to `database.yml` and then run `bundle exec rake db:setup` to create the database, perform the migrations, and create the admin user account.
+
+## Developing the app
+
+If you seed the database, it will create a new admin user account with the email and password specified in the `config/secrets.yml` file. This should be fine for development but feel free to change them.
+
+### File locations
+
+| Directory | Description |
+| -------- | -------- |
+| `app/assets` | Images/Javascripts/Stylesheets for the app |
+| `app/controllers` | Controllers for the app |
+| `app/helpers` | Custom helper methods |
+| `app/mailers` | Define custom mailers here |
+| `app/models` | Models for the app that typically model the database |
+| `app/services` | Custom service utilities |
+| `app/views` | Customer-facing views |
+| `config` | Contains configuration files for the application |
+| `config/application.rb` | Settings common to all environments |
+| `config/environments` | Environment-specific app settings |
+| `config/initializers` | Settings that will be loaded during app startup |
+| `deploy` | Used for configuring the settings for deploying the app |
+| `db` | Database schema and migrations |
+| `lib` | Extra Ruby libraries and Rake tasks |
+| `log` | Applications logs |
+| `public` | Static assets and error files |
+| `spec` | RSpec files for testing |
+| `Gemfile` | Spec for application dependencies |
