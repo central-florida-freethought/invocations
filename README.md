@@ -17,7 +17,7 @@ To develop the application, you can either setup Rails according to the previous
 
 ### Development with Vagrant
 
-The `Vagrantfile` provides a way to quickly set up a [Vagrant](http://vagrantup.com) development box with everything needed for the application. To use it, first [install Vagrant](http://docs.vagrantup.com/v2/installation/index.html), and then from the project directory run the `vagrant up` command to start everything.
+The `Vagrantfile` provides a way to quickly set up a [Vagrant](http://vagrantup.com) development box with everything needed for the application. To use it, first [install Vagrant](http://docs.vagrantup.com/v2/installation/index.html), and then install the `librarian-chef` plugin for Vagrant: `vagrant plugin install vagrant-librarian-chef`. To pull down the Git submodules, you'll need to run `git submodule init` and `git submodule update` then from the project directory run the `vagrant up` command to start everything.
 
 After the virtual Machine is running, you can login to it with `vagrant ssh` and from the `/vagrant` directory, run `bundle install` to pull down the application dependencies.
 
