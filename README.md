@@ -24,7 +24,7 @@ After the virtual Machine is running, you can login to it with `vagrant ssh` and
 To configure the database settings, rename the `database.yml.example` file to `database.yml` and then run `bundle exec rake db:setup` to create the database, perform the migrations, and create the admin user account.
 
 #### Launch the server
-After all of the above, logout of the VM and run `vagrant reload`. Log back in after the reboot and run `cd /vagrant && rails server` to start the app. Point your browser to `http://localhost:3000`. 
+After all of the above, logout of the VM and run `vagrant reload`. Log back in after the reboot and run `cd /vagrant && rails server` to start the app. Point your browser to [http://localhost:3000](http://localhost:3000). 
 
 Profit!
 
