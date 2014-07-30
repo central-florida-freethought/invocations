@@ -1,20 +1,56 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Invocations" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Invocations" %>">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <div class='container' id='main'>
-       <%= render 'layouts/messages' %>
-       <%= yield %>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><%= content_for?(:title) ? yield(:title) : "Invocations" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Invocations" %>">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header>
+  <%= render 'layouts/navigation' %>
+</header>
+<div class='container-fluid' id='main'>
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <nav>
+        <ul class="nav nav-sidebar" role="navigation">
+
+          <li class="<%= yield(:about_class) %>"><%= link_to 'About', page_path('about') %></a></l>
+          <li class="<%= yield(:vol_class) %>"><%= link_to 'Volunteering', page_path('volunteering') %></li>
+          <li class="<%= yield(:help_class) %>"><%= link_to 'Help', page_path('help') %></li>
+          <li><%= link_to 'CFFC', 'http://cflfreethought.org/', :target => "_blank" %></a></li>
+          <li><%= link_to 'FFRF', 'http://ffrf.org', :target => "_blank" %></li>
+        </ul>
+        <form action="#">
+          <label for="location">Choose a Location</label>
+          <select name="locations" id="locations">
+            <option value="All">All</option>
+            <option value="Oceola">Oceola</option>
+            <option value="Orlando">Orlando</option>
+            <option value="Winter Park">Winter Park</option>
+            <option value="Winter Garden">Winter Garden</option>
+          </select>
+          <input type="submit" value="Go!" class="btn btn-xs btn-default"/>
+        </form>
+      </nav>
     </div>
-  </body>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </div>
+  </div>
+
+</div>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</body>
 </html>
