@@ -1,20 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><%= content_for?(:title) ? yield(:title) : "Invocations" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Invocations" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
     <%= csrf_meta_tags %>
   </head>
   <body>
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <div class='container' id='main'>
-       <%= render 'layouts/messages' %>
-       <%= yield %>
+    <div class='container-fluid' id='main'>
+       <div class="row">
+           <div class="col-sm-3 col-md-2 sidebar">
+               <nav>
+                   <ul class="nav nav-sidebar" role="navigation">
+                       <li><a href="#">About</a></li>
+                       <li><a href="#">Volunteering</a></li>
+                       <li><a href="#">Link to Awesome Resource</a></li>
+                       <li><a href="#">Link to Another Awesome Resource</a></li>
+                       <li><a href="#">Help</a></li>
+                   </ul>
+                   <form action="#">
+                       <label for="location">Choose a Location</label>
+                       <select name="locations" id="locations">
+                           <option value="All">All</option>
+                           <option value="Oceola">Oceola</option>
+                           <option value="Orlando">Orlando</option>
+                           <option value="Winter Park">Winter Park</option>
+                           <option value="Winter Garden">Winter Garden</option>
+                       </select>
+                       <input type="submit" value="Go!"/>
+                   </form>
+               </nav>
+           </div>
+           <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <%= render 'layouts/messages' %>
+                <%= yield %>
+           </div>
+       </div>
+
     </div>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </body>
 </html>
