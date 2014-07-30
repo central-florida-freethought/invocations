@@ -24,11 +24,12 @@
            <div class="col-sm-3 col-md-2 sidebar">
                <nav>
                    <ul class="nav nav-sidebar" role="navigation">
-                       <li><a href="#">About</a></li>
-                       <li><a href="#">Volunteering</a></li>
-                       <li><a href="#">Link to Awesome Resource</a></li>
-                       <li><a href="#">Link to Another Awesome Resource</a></li>
-                       <li><a href="#">Help</a></li>
+
+                       <li class="<%=yield(:about_class)%>"><%= link_to 'About', page_path('about')%></a></l>
+                       <li class="<%=yield(:vol_class)%>"><%= link_to 'Volunteering', page_path('volunteering') %></li>
+                       <li class="<%=yield(:help_class)%>"><%= link_to 'Help', page_path('help') %></li>
+                       <li><%= link_to 'CFFC', 'http://cflfreethought.org/', :target => "_blank" %></a></li>
+                       <li><%= link_to 'FFRF', 'http://ffrf.org', :target => "_blank"  %></li>
                    </ul>
                    <form action="#">
                        <label for="location">Choose a Location</label>
@@ -45,7 +46,7 @@
            </div>
            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <%= render 'layouts/messages' %>
-                <%= yield %>
+                <%= yield(:body) %>
            </div>
        </div>
 
