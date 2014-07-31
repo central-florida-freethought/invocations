@@ -1,5 +1,7 @@
 # Invocations
 
+[ ![Codeship Status for cffc/invocations_rails](https://codeship.io/projects/3d507700-fa9a-0131-1e8f-52190bbde1aa/status)](https://codeship.io/projects/29068)
+
 This is the "Invocations" application for the [Central Florida Freethought Community](http://cflfreethought.org/)
 
 ## Ruby on Rails
@@ -24,7 +26,7 @@ After the virtual Machine is running, you can login to it with `vagrant ssh` and
 To configure the database settings, rename the `database.yml.example` file to `database.yml` and then run `bundle exec rake db:setup` to create the database, perform the migrations, and create the admin user account.
 
 #### Launch the server
-After all of the above, logout of the VM and run `vagrant reload`. Log back in after the reboot and run `cd /vagrant && rails server` to start the app. Point your browser to [http://localhost:3000](http://localhost:3000). 
+After all of the above, logout of the VM and run `vagrant reload`. Log back in after the reboot and run `cd /vagrant && rails server` to start the app. Point your browser to [http://localhost:3000](http://localhost:3000).
 
 Profit!
 
