@@ -1,0 +1,89 @@
+<% content_for :title do %>Invocations - Survey [City Name]
+<% end %>
+
+<h1 class="page-header">CFFC Invocation Tracker Survey for <span class="city-name">[ City Name ]</span></h1>
+
+<div class="row">
+  <label for="meetingType">*Meeting Type</label>
+  <select name="meetingType" id="meetingType">
+    <option value="Regular">Regular</option>
+    <option value="Special">Special</option>
+    <option value="Workshow">Workshop</option>
+    <option value="Other">Other/Explain</option>
+  </select>
+
+  <label for="meetingTypeExplaination"></label>
+  <input type="text" placeholder="Other meeting type/Explain" id="meetingTypeExplaination" name="meetingTypeExplaination" maxlength="20"/>
+</div>
+
+
+
+<div class="row">
+  <p>*Required but not indicated until complete</p>
+
+  <p>!Displayed on abbreviated display pages</p>
+</div>
+<div class="row">
+  <!-- todo (no access to future, and warning if not within 30 days +/-)-->
+  <label for="eventDate">*!Date</label>
+  <input type="text" id="eventDate" name="eventDate" value="<%= Date.today %>"/>
+</div>
+<div class="row">
+  Start Time – WIDGET
+  (With warning if not between 7 AM and 9 PM – local time any thought to time zones)
+  *!Invocation conducted? – RADIO BUTTONS (Default to yes. If no or MOS then close questions 5 thru 7)
+  Yes
+  No
+  Moment of Silence
+  *Was the invocation immediately before or immediately after the Pledge of Allegiance? – RADIO BUTTONS
+  Immediately before
+  Immediately after
+  Neither
+  Unknown
+  *Were members of the public asked/invited to stand? – RADIO BUTTONS
+  Yes, by official/employee
+  Yes, by speaker
+  Both
+  Neither
+  Unknown
+  *Did the speaker denigrate anyone, threaten damnation, or preach conversion? – RADIO BUTTONS AND TEXT BOX OF 400
+  CHARACTERS
+  Yes, explain
+  No
+  Unknown
+  Honorific – TEXT BOX OF 20 CHARACTERS
+  `(They can type in Rev., Dr., Pr./Ps. since there are far too many of these to worry about. Thoughts?)
+  *Name of Speaker –TEXT BOX OF 50 CHARACTERS
+  (Should we offer a title list? Will this be needed if we are asking the denomination? I suspect it might if we need to
+  ensure we can search online for the person later.)
+  (Is there a way to ‘remember’ these for next time or cross-reference other meeting appearances?)
+  *Organization or House of Worship –TEXT BOX OF 100 CHARACTERS
+  (Is there a way to ‘remember’ these for next time or cross-reference other meeting appearances?)
+  *!Major Religion – PULL DOWN MENU OR RADIO BUTTONS WITH OTHER AND TEXT BOX OF 20 CHARACTERS
+  (Could/should match PEW or ARIS survey data)
+  *Denomination/Sect (if known) – PULL DOWN MENU WITH OTHER AND TEXT BOX OF 30 CHARACTERS
+  *Was the speaker and/or organization promoted or praised in any way other than announcing the speaker’s name and
+  affiliation? - PULL DOWN MENU WITH TEXT BOX OF 200 CHARACTERS WHICH APPEARS
+  Yes, explain
+  No
+  Unsure
+  Notes / Specific points of concern during invocation or on agenda or comments from above questions - TEXT BOX OF 400
+  CHARACTERS
+  Link to meeting page (if available)
+  Link to minutes (if available)
+  Link to agenda (if available)
+  Link to audio or video (if available)
+  Attachments
+  (Let’s have a good reason to do this since most of these are available in public record.)
+
+  Before submitting, the user must read/click an affidavit and terms of use agreement including acknowledging it may be
+  used in litigation
+
+  Other information on data entry page:
+  TOP or MARGIN:
+  Address of meeting & link to gov. website (Specific board pages might change.) Link to public-facing website for the
+  government body (before and/or after they enter?)
+  BOTTOM or MARGIN:
+  Contact info for: a. Site admin & bug reports b. Legal questions & clarification of duties of volunteer c. Report
+  additional alleged state/church violation
+</div>
