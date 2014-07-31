@@ -3,87 +3,206 @@
 
 <h1 class="page-header">CFFC Invocation Tracker Survey for <span class="city-name">[ City Name ]</span></h1>
 
-<div class="row">
-  <label for="meetingType">*Meeting Type</label>
-  <select name="meetingType" id="meetingType">
-    <option value="Regular">Regular</option>
-    <option value="Special">Special</option>
-    <option value="Workshow">Workshop</option>
-    <option value="Other">Other/Explain</option>
-  </select>
-
-  <label for="meetingTypeExplaination"></label>
-  <input type="text" placeholder="Other meeting type/Explain" id="meetingTypeExplaination" name="meetingTypeExplaination" maxlength="20"/>
-</div>
-
-
-
-<div class="row">
+<div class="row text-center">
   <p>*Required but not indicated until complete</p>
 
   <p>!Displayed on abbreviated display pages</p>
 </div>
-<div class="row">
-  <!-- todo (no access to future, and warning if not within 30 days +/-)-->
-  <label for="eventDate">*!Date</label>
-  <input type="text" id="eventDate" name="eventDate" value="<%= Date.today %>"/>
-</div>
-<div class="row">
-  Start Time – WIDGET
-  (With warning if not between 7 AM and 9 PM – local time any thought to time zones)
-  *!Invocation conducted? – RADIO BUTTONS (Default to yes. If no or MOS then close questions 5 thru 7)
-  Yes
-  No
-  Moment of Silence
-  *Was the invocation immediately before or immediately after the Pledge of Allegiance? – RADIO BUTTONS
-  Immediately before
-  Immediately after
-  Neither
-  Unknown
-  *Were members of the public asked/invited to stand? – RADIO BUTTONS
-  Yes, by official/employee
-  Yes, by speaker
-  Both
-  Neither
-  Unknown
-  *Did the speaker denigrate anyone, threaten damnation, or preach conversion? – RADIO BUTTONS AND TEXT BOX OF 400
-  CHARACTERS
-  Yes, explain
-  No
-  Unknown
-  Honorific – TEXT BOX OF 20 CHARACTERS
-  `(They can type in Rev., Dr., Pr./Ps. since there are far too many of these to worry about. Thoughts?)
-  *Name of Speaker –TEXT BOX OF 50 CHARACTERS
-  (Should we offer a title list? Will this be needed if we are asking the denomination? I suspect it might if we need to
-  ensure we can search online for the person later.)
-  (Is there a way to ‘remember’ these for next time or cross-reference other meeting appearances?)
-  *Organization or House of Worship –TEXT BOX OF 100 CHARACTERS
-  (Is there a way to ‘remember’ these for next time or cross-reference other meeting appearances?)
-  *!Major Religion – PULL DOWN MENU OR RADIO BUTTONS WITH OTHER AND TEXT BOX OF 20 CHARACTERS
-  (Could/should match PEW or ARIS survey data)
-  *Denomination/Sect (if known) – PULL DOWN MENU WITH OTHER AND TEXT BOX OF 30 CHARACTERS
-  *Was the speaker and/or organization promoted or praised in any way other than announcing the speaker’s name and
-  affiliation? - PULL DOWN MENU WITH TEXT BOX OF 200 CHARACTERS WHICH APPEARS
-  Yes, explain
-  No
-  Unsure
-  Notes / Specific points of concern during invocation or on agenda or comments from above questions - TEXT BOX OF 400
-  CHARACTERS
-  Link to meeting page (if available)
-  Link to minutes (if available)
-  Link to agenda (if available)
-  Link to audio or video (if available)
-  Attachments
-  (Let’s have a good reason to do this since most of these are available in public record.)
 
-  Before submitting, the user must read/click an affidavit and terms of use agreement including acknowledging it may be
-  used in litigation
+<form id="survey_form" action="#">
+  <div class="row">
+    <div class="col-md-3 text-right">
+      <label for="meeting_type">*Meeting Type:</label>
+    </div>
+    <div>
+      <select name="meeting_type" id="meeting_type">
+        <option value="Regular">Regular</option>
+        <option value="Special">Special</option>
+        <option value="Workshow">Workshop</option>
+        <option value="Other">Other/Explain</option>
+      </select>
+    </div>
+  </div>
 
-  Other information on data entry page:
-  TOP or MARGIN:
-  Address of meeting & link to gov. website (Specific board pages might change.) Link to public-facing website for the
-  government body (before and/or after they enter?)
-  BOTTOM or MARGIN:
-  Contact info for: a. Site admin & bug reports b. Legal questions & clarification of duties of volunteer c. Report
-  additional alleged state/church violation
-</div>
+  <div class="row hide">
+    <div class="col-md-3 text-right">
+      <label for="meeting_type_explaination">Please explain:</label>
+    </div>
+
+    <div>
+      <input type="text" placeholder="Other meeting type explaination" id="meeting_type_explaination"
+             name="meeting_type_explaination" size="55" maxlength="55"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- todo (no access to future, and warning if not within 30 days +/-)-->
+    <!-- todo (With warning if not between 7 AM and 9 PM – local time any thought to time zones)-->
+    <div class="col-md-3 text-right">
+      <label for="eventDate">*!Date:</label>
+    </div>
+
+    <div>
+      <input type="text" id="eventDate" name="eventDate" placeholder="<%= Time.now.to_s(:event_date_time) %>" size="22"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 text-right">
+      <label for="invocation_conducted"> *!Invocation conducted? </label>
+    </div>
+
+    <div>
+      <!--todo If no or MOS then close questions 5 thru 13-->
+      <select name="invocation_conducted" id="invocation_conducted">
+        <option value="Yes">Regular</option>
+        <option value="No">Special</option>
+        <option value="Moment of Silence">Workshop</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <label for="pledge_before">*Was the invocation immediately before or immediately after the Pledge of
+      Allegiance?</label>
+    <select name="pledge_before" id="pledge_before">
+      <option value="">Select</option>
+      <option value="Before">Immediately before</option>
+      <option value="After">Immediately after</option>
+      <option value="Neither">Neither</option>
+      <option value="Unknown">Unknown</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <label for="asked_to_stand">*Were members of the public asked/invited to stand?</label>
+    <select name="asked_to_stand" id="asked_to_stand">
+      <option value="Yes, by official/employee">Yes, by official/employee</option>
+      <option value="Yes, by speaker">Yes, by speaker</option>
+      <option value="Both">Both</option>
+      <option value="Neither">Neither</option>
+      <option value="Unknown">Unknown</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <label for="speaker_preached">*Did the speaker denigrate anyone, threaten damnation, or preach conversion?</label>
+    <select name="speaker_preached" id="speaker_preached">
+      <option value="">Select</option>
+      <option value="Yes, explain">Yes, explain</option>
+      <option value="No">No</option>
+      <option value="Unknown">Unknown</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <label for="preached_explain">Please explain:</label><br/>
+    <textarea name="preached_explain" id="preached_explain" cols="50" rows="4"></textarea>
+  </div>
+
+  <div class="row">
+    <label for="honorific">Honorific (E.g. Rev., Dr., Pr./Ps.)</label>
+    <input type="text" name="honorific" id="honorific" maxlength="20"/>
+  </div>
+
+  <div class="row">
+    <label for="speaker_name">*Name of Speaker</label>
+    <!--todo: add ajax search filter-->
+    <input type="text" name="speaker_name" id="speaker_name" placeholder="Name of the speaker"/>
+  </div>
+
+  <div class="row">
+    <label for="affiliation">*Organization or House of Worship</label>
+    <!--todo: add ajax search filter-->
+    <input type="text" name="affiliation" id="affiliation" placeholder="Affiliation"/>
+  </div>
+
+  <div class="row">
+    <label for="religion">*!Major Religion</label>
+    <!--todo (Could/should match PEW or ARIS survey data)-->
+    <select name="religion" id="religion">
+      <option value="">Select</option>
+      <option value="None">None</option>
+      <option value="Awesomeness">Awesomeness</option>
+      <option value="DBAD">DBAD</option>
+      <option value="other">Other</option>
+    </select>
+
+    <input type="text" name="other_religion" placeholder="Enter the not listed religion"/>
+
+  </div>
+
+  <div class="row">
+    <label for="denomination">*Denomination/Sect (if known)</label>
+    <select name="denomination" id="denomination">
+      <option value="">Select</option>
+      <option value="None">None</option>
+      <option value="Awesomeness">Awesomeness</option>
+      <option value="DBAD">DBAD</option>
+      <option value="other">Other</option>
+    </select>
+
+    <input type="text" name="other_denomination" placeholder="Enter the not listed denomination"/>
+  </div>
+
+  <div class="row">
+    <label for="speaker_praised">*Was the speaker and/or organization promoted or praised in any way other than
+      announcing
+      the speaker’s name and affiliation?</label>
+    <select name="speaker_praised" id="speaker_praised">
+      <option value="Select">Select</option>
+      <option value="Yes, explain">Yes, explain</option>
+      <option value="No">No</option>
+      <option value="Unsure">Unsure</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <label for="praised_explain">Please explain:</label><br/>
+    <textarea name="praised_explain" id="praised_explain" cols="50" rows="4"></textarea>
+  </div>
+
+  <div class="row">
+    <label for="notes">Notes or any specific points of concern during invocation or on agenda or comments from above
+      questions</label>
+    <textarea name="notes" id="notes" cols="50" rows="4"></textarea>
+  </div>
+
+  <div class="row">
+    <label for="meeting_url">Link to meeting page (if available)</label>
+    <input type="url" name="meetint_url" id="meeting_url"/>
+  </div>
+
+  <div class="row">
+    <label for="minutes_url">Link to minutes (if available)</label>
+    <input type="url" name="minutes_url" id="minutes_url"/>
+  </div>
+
+  <div class="row">
+    <label for="agenda_url">Link to agenda (if available)</label>
+    <input type="url" name="agenda_url" id="agenda_url"/>
+  </div>
+
+  <div class="row">
+    <label for="media_url">Link to audio or video (if available)</label>
+    <input type="url" name="media_url" id="medial_url"/>
+  </div>
+
+  <div class="row">
+    <label for="attachments">Attachments</label>
+    <input type="file" name="attachments" id="attachments"/>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <p>Before submitting, the user must read/click an affidavit and terms of use agreement including
+        acknowledging it may be used in litigation.</p>
+    </div>
+
+    <div class="col-md-4">
+      <input type="checkbox" name="policy" id="policy"/>
+      <label for="policy">I Agree.</label>
+    </div>
+  </div>
+
+</form>
