@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731192412) do
+ActiveRecord::Schema.define(version: 20140801121241) do
+
+  create_table "localities", force: true do |t|
+    t.string   "name",                   null: false
+    t.string   "city",                   null: false
+    t.string   "country_code", limit: 2, null: false
+    t.string   "state_code",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_meetings", force: true do |t|
     t.datetime "meeting_time",         null: false
