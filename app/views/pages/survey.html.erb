@@ -1,7 +1,7 @@
-<% content_for :title do %>Invocations - Survey [City Name]
+<% content_for :title do %>Invocations - Survey: <%= params[:locations] %>
 <% end %>
 
-<h1 class="page-header">CFFC Invocation Tracker Survey for <span class="city-name">[ City Name ]</span></h1>
+<h1 class="page-header">CFFC Invocation Tracker Survey for <span class="city-name"><%= params[:locations] %></span></h1>
 
 <div class="row ">
   <div class="col-md-5 text-right">
@@ -13,6 +13,7 @@
 </div>
 
 <form id="survey_form" action="#" method="post" enctype="multipart/form-data">
+<input name="location" type="hidden" value="<%= params[:locations] %>"/>
 <div class="row">
   <div class="col-md-5 text-right">
     <label for="meeting_type">*Meeting Type:</label>
@@ -293,7 +294,7 @@
 
 <br/>
 <br/>
-
+<!--todo compare with new version of word doc-->
 <div class="row">
   <div class="col-md-5 text-right ">
     <p>Before submitting, the user must read/click an affidavit and terms of use agreement including
