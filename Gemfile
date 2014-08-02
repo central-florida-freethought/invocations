@@ -40,6 +40,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
+  gem 'shoulda-matchers', require: false
+  gem 'spring-commands-rspec'
 end
 group :test do
   gem 'capybara'

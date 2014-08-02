@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728222029) do
+ActiveRecord::Schema.define(version: 20140731192412) do
+
+  create_table "user_meetings", force: true do |t|
+    t.datetime "meeting_time",         null: false
+    t.string   "invocation_conducted", null: false
+    t.string   "pledge_before",        null: false
+    t.string   "asked_to_stand",       null: false
+    t.text     "speaker_preached",     null: false
+    t.text     "speaker_praised",      null: false
+    t.text     "concerns"
+    t.binary   "attachment"
+    t.boolean  "pending"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -26,12 +41,13 @@ ActiveRecord::Schema.define(version: 20140728222029) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.integer  "role"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

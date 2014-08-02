@@ -1,5 +1,7 @@
 describe User do
 
+  it { should have_many(:user_meetings) }
+
   before(:each) { @user = User.new(email: 'user@example.com') }
 
   subject { @user }
