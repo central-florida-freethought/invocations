@@ -1,5 +1,7 @@
 class UserMeeting < ActiveRecord::Base
   belongs_to :user
+  belongs_to :locality
+  belongs_to :speaker
 
   validates :meeting_time,
             :invocation_conducted,
@@ -9,4 +11,6 @@ class UserMeeting < ActiveRecord::Base
             :speaker_praised,
             :user_id,
             presence: true
+
+  accepts_nested_attributes_for :speaker
 end
