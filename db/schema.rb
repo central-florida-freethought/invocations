@@ -11,7 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731192412) do
+ActiveRecord::Schema.define(version: 20140806041740) do
+
+  create_table "denominations", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "localities", force: true do |t|
+    t.string   "name",                   null: false
+    t.string   "city",                   null: false
+    t.string   "country_code", limit: 2, null: false
+    t.string   "state_code",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "organizations", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "religions", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "speakers", force: true do |t|
+    t.string   "name"
+    t.string   "honorific"
+    t.integer  "organization_id"
+    t.integer  "religion_id"
+    t.integer  "denomination_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_meetings", force: true do |t|
     t.datetime "meeting_time",         null: false
@@ -26,6 +63,14 @@ ActiveRecord::Schema.define(version: 20140731192412) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "locality_id"
+    t.string   "meeting_type",         null: false
+    t.string   "meeting_url"
+    t.string   "street_address"
+    t.integer  "speaker_id"
+    t.string   "minutes_url"
+    t.string   "agenda_url"
+    t.string   "media_url"
   end
 
   create_table "users", force: true do |t|
