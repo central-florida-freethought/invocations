@@ -46,6 +46,7 @@ feature 'create user meeting' do
       fill_in 'Concerns', with: 'Bacon ipsum dolor sit amet cillum beef ribs biltong cow, chuck tongue prosciutto turkey aliqua tri-tip. Short loin aute frankfurter laboris qui tail. Ham hock voluptate t-bone shankle, rump minim chuck dolore.'
       click_button 'Create User meeting'
       expect(page).to have_content 'Your meeting was successfully created and will be reviewed.'
+      expect(UserMeeting.last.speaker_id).to eq(Speaker.last.id)
     end
   end
 
