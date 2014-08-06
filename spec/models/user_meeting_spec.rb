@@ -19,6 +19,11 @@ RSpec.describe UserMeeting, :type => :model do
   end
 
   describe 'Failure' do
+    it "doesn't create a UserMeeting without a locality" do
+      user_meeting = FactoryGirl.build :user_meeting, locality_id: ''
+      expect(user_meeting).not_to be_valid
+    end
+
     it "doesn't create a UserMeeting without a meeting_type" do
       user_meeting = FactoryGirl.build :user_meeting, meeting_type: ''
       expect(user_meeting).not_to be_valid
@@ -56,6 +61,30 @@ RSpec.describe UserMeeting, :type => :model do
 
     it "doesn't create a UserMeeting without a User association" do
       user_meeting = FactoryGirl.build :user_meeting, user_id: ''
+      expect(user_meeting).not_to be_valid
+    end
+
+    it "doesn't create a UserMeeting without speaker name" do
+      user_meeting = FactoryGirl.build :user_meeting
+      user_meeting.speaker.name = ''
+      expect(user_meeting).not_to be_valid
+    end
+
+    it "doesn't create a UserMeeting without an organization" do
+      user_meeting = FactoryGirl.build :user_meeting
+      user_meeting.speaker.organization.name = ''
+      expect(user_meeting).not_to be_valid
+    end
+
+    it "doesn't create a UserMeeting without a religion" do
+      user_meeting = FactoryGirl.build :user_meeting
+      user_meeting.speaker.religion.name = ''
+      expect(user_meeting).not_to be_valid
+    end
+
+    it "doesn't create a UserMeeting without a denomination" do
+      user_meeting = FactoryGirl.build :user_meeting
+      user_meeting.speaker.denomination.name = ''
       expect(user_meeting).not_to be_valid
     end
   end

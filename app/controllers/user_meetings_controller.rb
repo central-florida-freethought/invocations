@@ -38,6 +38,7 @@ class UserMeetingsController < ApplicationController
                    :agenda_url,
                    :media_url,
                    :user_id,
+                   :locality_id,
                    speaker_attributes: [:id,
                                         :name,
                                         :honorific,

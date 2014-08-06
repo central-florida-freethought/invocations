@@ -5,5 +5,7 @@ FactoryGirl.define do
     name "MyString"
     honorific "MyString"
     association :organization, strategy: :build
+    association :religion
+    association :denomination
   end
 end
