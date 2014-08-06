@@ -4,5 +4,6 @@ FactoryGirl.define do
   factory :speaker do
     name "MyString"
     honorific "MyString"
+    association :organization, strategy: :build
   end
 end

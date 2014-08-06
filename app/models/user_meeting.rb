@@ -3,7 +3,8 @@ class UserMeeting < ActiveRecord::Base
   belongs_to :locality
   belongs_to :speaker
 
-  validates :meeting_time,
+  validates :meeting_type,
+            :meeting_time,
             :invocation_conducted,
             :pledge_before,
             :asked_to_stand,
