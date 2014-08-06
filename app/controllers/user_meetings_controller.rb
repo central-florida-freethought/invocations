@@ -1,16 +1,16 @@
 class UserMeetingsController < ApplicationController
+  before_filter :authenticate_user!
   def index
 
   end
 
   def new
-    @user_meeting = UserMeeting.new params[:user_meeting]
+    @user_meeting = current_user.user_meetings.build params[:user_meeting]
     @user_meeting.build_speaker
   end
 
   def create
-    @user_meeting = UserMeeting.new user_meeting_params
-    @user_meeting.user_id = current_user.id
+    @user_meeting = current_user.user_meetings.build user_meeting_params
     if @user_meeting.save
       redirect_to user_meetings_path, notice: t("user_meeting.created_successfully")
     else
@@ -21,6 +21,29 @@ class UserMeetingsController < ApplicationController
   private
 
   def user_meeting_params
-    params.require(:user_meeting).permit!
+    params.require(:user_meeting).
+            permit :id,
+                   :meeting_type,
+                   :meeting_time,
+                   :invocation_conducted,
+                   :pledge_before,
+                   :asked_to_stand,
+                   :speaker_preached,
+                   :speaker_praised,
+                   :concerns,
+                   :attachment,
+                   :pending,
+                   :street_address,
+                   :minutes_url,
+                   :agenda_url,
+                   :media_url,
+                   :user_id,
+                   :locality_id,
+                   speaker_attributes: [:id,
+                                        :name,
+                                        :honorific,
+                                        :organization_id,
+                                        :religion_id,
+                                        :denomination_id]
   end
 end

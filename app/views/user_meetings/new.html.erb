@@ -4,69 +4,43 @@
       <h3>New User Meeting</h3>
       <%= f.association :locality, wrapper_html: { class: 'form-group' } %>
       <%= f.input :meeting_type, wrapper_html: { class: 'form-group' } do %>
-        <% meeting_types.each do |opt| %>
-          <label class='radio-inline'>
-            <%= f.radio_button :meeting_type, opt %>
-            <%= opt.capitalize %>
-          </label>
-        <% end %>
+        <%= render partial: 'radio_buttons',
+                   locals: { f: f,
+                             radio_options: meeting_types,
+                             field: :meeting_type } %>
       <% end %>
       <%= f.input :meeting_time, label: 'Start time', order: [:month, :year, :day],
                   end_year: Date.today.year, ampm: true, minute_step: 5,
                   wrapper_html: { class: 'form-group' } %>
       <%= f.input :invocation_conducted, wrapper_html: { class: 'form-group' } do %>
-        <label class='radio-inline'>
-          <%= f.radio_button :invocation_conducted, 'yes' %>
-          Yes
-        </label>
-        <label class='radio-inline'>
-          <%= f.radio_button :invocation_conducted, 'no' %>
-          No
-        </label>
-        <label class='radio-inline'>
-          <%= f.radio_button :invocation_conducted, 'mos' %>
-          Moment of Silence
-        </label>
+        <%= render partial: 'radio_buttons',
+                   locals: { f: f,
+                             radio_options: invocation_options,
+                             field: :invocation_conducted } %>
       <% end %>
       <%= f.input :pledge_before, wrapper_html: { class: 'form-group' } do %>
-        <% pledge_options.each do |opt| %>
-          <div class='radio'>
-            <label>
-              <%= f.radio_button :pledge_before, opt %>
-              <%= opt.capitalize %>
-            </label>
-          </div>
-        <% end %>
+        <%= render partial: 'radio_buttons',
+                   locals: { f: f,
+                             radio_options: pledge_options,
+                             field: :pledge_before } %>
       <% end %>
       <%= f.input :asked_to_stand, wrapper_html: { class: 'form-group' } do %>
-        <% stand_options.each do |opt| %>
-          <div class='radio'>
-            <label>
-              <%= f.radio_button :asked_to_stand, opt %>
-              <%= opt.capitalize %>
-            </label>
-          </div>
-        <% end %>
+        <%= render partial: 'radio_buttons',
+                   locals: { f: f,
+                             radio_options: stand_options,
+                             field: :asked_to_stand } %>
       <% end %>
       <%= f.input :speaker_preached, wrapper_html: { class: 'form-group' } do %>
-        <% speaker_options.each do |opt| %>
-          <div class='radio'>
-            <label>
-              <%= f.radio_button :speaker_preached, opt %>
-              <%= opt.capitalize %>
-            </label>
-          </div>
-        <% end %>
+        <%= render partial: 'radio_buttons',
+                   locals: { f: f,
+                             radio_options: speaker_options,
+                             field: :speaker_preached } %>
       <% end %>
       <%= f.input :speaker_praised, wrapper_html: { class: 'form-group' } do %>
-        <% speaker_options.each do |opt| %>
-          <div class='radio'>
-            <label>
-              <%= f.radio_button :speaker_praised, opt %>
-              <%= opt.capitalize %>
-            </label>
-          </div>
-        <% end %>
+        <%= render partial: 'radio_buttons',
+                   locals: { f: f,
+                             radio_options: speaker_options,
+                             field: :speaker_praised } %>
       <% end %>
       <%= f.simple_fields_for :speaker do |speaker| %>
         <%= speaker.input :honorific %>

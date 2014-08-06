@@ -1,0 +1,8 @@
+<% radio_options.each do |opt| %>
+  <div class='radio'>
+    <label>
+      <%= f.radio_button field, opt %>
+      <%= opt.capitalize %>
+    </label>
+  </div>
+<% end %>
