@@ -8,5 +8,12 @@ class CreateLocalities < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    change_table :user_meetings do |t|
+      t.belongs_to :locality
+      t.string     :meeting_type, null: false
+      t.string     :meeting_url
+      t.string     :street_address
+    end
   end
 end
