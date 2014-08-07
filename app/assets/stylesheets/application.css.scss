@@ -18,6 +18,12 @@
  *= require_self
  */
 /*
+ * Variables
+ */
+$base_blue: #428bca;
+$sidebar_bg: #f5f5f5;
+
+/*
  * Base structure
  */
 
@@ -63,7 +69,7 @@ body {
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #f5f5f5;
+    background-color: $sidebar_bg;
     border-right: 1px solid #eee;
   }
 }
@@ -82,7 +88,7 @@ body {
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
   color: #fff;
-  background-color: #428bca;
+  background-color: $base_blue;
 }
 
 
