@@ -108,11 +108,11 @@ body {
 }
 .main .page-header {
   margin-top: 0;
-  .city-name {
-    color: $base_blue;
-  }
 }
 
+.locality {
+  color: $base_blue;
+}
 
 /*
  * Placeholder dashboard ideas
@@ -135,4 +135,9 @@ body {
 
 .radio {
   margin-top: 0;
+}
+
+//Fixes issue with datepicker showing under fixed header
+#ui-datepicker-div {
+  z-index: 2000 !important;
 }
