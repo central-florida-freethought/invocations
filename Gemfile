@@ -15,6 +15,8 @@ gem 'devise'
 gem 'mysql2'
 gem 'puma'
 gem 'pundit', github: 'elabs/pundit'
+gem 'carmen-rails'
+gem 'country_select'
 gem 'simple_form'
 gem 'high_voltage', '~> 2.2.1'
 group :development do
@@ -34,6 +36,7 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
+  gem 'launchy'
 end
 group :development, :test do
   gem 'factory_girl_rails'

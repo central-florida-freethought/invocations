@@ -1,0 +1,60 @@
+<div class='row'>
+  <div class='col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 authform'>
+    <%= simple_form_for @user_meeting, html: { class: 'form-vertical' } do |f| %>
+      <h3>New User Meeting</h3>
+      <%= f.association :locality, wrapper_html: { class: 'form-group' } %>
+      <%= f.input :meeting_type, wrapper_html: { class: 'form-group' } do %>
+        <%= render partial: 'radio_buttons',
+                   locals: { f: f,
+                             radio_options: meeting_types,
+                             field: :meeting_type } %>
+      <% end %>
+      <%= f.input :meeting_time, label: 'Start time', order: [:month, :year, :day],
+                  end_year: Date.today.year, ampm: true, minute_step: 5,
+                  wrapper_html: { class: 'form-group' } %>
+      <%= f.input :invocation_conducted, wrapper_html: { class: 'form-group' } do %>
+        <%= render partial: 'radio_buttons',
+                   locals: { f: f,
+                             radio_options: invocation_options,
+                             field: :invocation_conducted } %>
+      <% end %>
+      <%= f.input :pledge_before, wrapper_html: { class: 'form-group' } do %>
+        <%= render partial: 'radio_buttons',
+                   locals: { f: f,
+                             radio_options: pledge_options,
+                             field: :pledge_before } %>
+      <% end %>
+      <%= f.input :asked_to_stand, wrapper_html: { class: 'form-group' } do %>
+        <%= render partial: 'radio_buttons',
+                   locals: { f: f,
+                             radio_options: stand_options,
+                             field: :asked_to_stand } %>
+      <% end %>
+      <%= f.input :speaker_preached, wrapper_html: { class: 'form-group' } do %>
+        <%= render partial: 'radio_buttons',
+                   locals: { f: f,
+                             radio_options: speaker_options,
+                             field: :speaker_preached } %>
+      <% end %>
+      <%= f.input :speaker_praised, wrapper_html: { class: 'form-group' } do %>
+        <%= render partial: 'radio_buttons',
+                   locals: { f: f,
+                             radio_options: speaker_options,
+                             field: :speaker_praised } %>
+      <% end %>
+      <%= f.simple_fields_for :speaker do |speaker| %>
+        <%= speaker.input :honorific %>
+        <%= speaker.input :name, label: 'Name of Speaker' %>
+        <%= speaker.simple_fields_for :organization, speaker.object.build_organization do |org| %>
+          <%= org.input :name, label: 'Organization or House of Worship' %>
+        <% end %>
+        <%= speaker.association :religion, label_method: :name %>
+        <%= speaker.association :denomination, label_method: :name %>
+      <% end %>
+      <%= f.input :concerns,
+                  input_html: { class: 'form-control' },
+                  wrapper_html: { class: 'form-group' } %>
+      <%= f.button :submit, class: 'btn btn-default btn-lg pull-right' %>
+    <% end %>
+  </div>
+</div>

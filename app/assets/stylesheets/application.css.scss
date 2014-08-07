@@ -17,8 +17,6 @@
  *= require_tree .
  *= require_self
  */
-
-
 /*
  * Variables
  */
@@ -137,10 +135,6 @@ body {
   }
 }
 
-/*
- * Survey Form
- */
-
-#survey_form .row {
-
+.radio {
+  margin-top: 0;
 }

@@ -10,6 +10,17 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
+    labels:
+      user_meeting:
+        new:
+          locality: "Locality"
+          meeting_type: "Meeting type"
+          start_time: "Start time"
+          invocation_conducted: "Invocation conducted?"
+          pledge_before: "Was the invocation immediately before or immediately after the Pledge of Allegiance?"
+          asked_to_stand: "Were members of the public asked/invited to stand?"
+          speaker_preached: "Did the speaker denigrate anyone, threaten damnation, or preach conversion?"
+          speaker_praised: "Was the speaker and/or organization promoted or praised in any way other than announcing the speaker’s name and affiliation?"
     # Labels and hints examples
     # labels:
     #   defaults:
@@ -23,4 +34,3 @@ en:
     #   defaults:
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'
-
