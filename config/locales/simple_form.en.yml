@@ -21,6 +21,9 @@ en:
           asked_to_stand: "Were members of the public asked/invited to stand?"
           speaker_preached: "Did the speaker denigrate anyone, threaten damnation, or preach conversion?"
           speaker_praised: "Was the speaker and/or organization promoted or praised in any way other than announcing the speaker’s name and affiliation?"
+      locality:
+        contact:
+          new:
     # Labels and hints examples
     # labels:
     #   defaults:
