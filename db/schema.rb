@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806041740) do
+ActiveRecord::Schema.define(version: 20140806230647) do
+
+  create_table "contacts", force: true do |t|
+    t.string   "name",           null: false
+    t.string   "title"
+    t.string   "phone",          null: false
+    t.string   "email",          null: false
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state_code"
+    t.string   "country_code"
+    t.string   "zip"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "denominations", force: true do |t|
     t.string   "name"
@@ -20,12 +35,21 @@ ActiveRecord::Schema.define(version: 20140806041740) do
   end
 
   create_table "localities", force: true do |t|
-    t.string   "name",                   null: false
-    t.string   "city",                   null: false
-    t.string   "country_code", limit: 2, null: false
-    t.string   "state_code",             null: false
+    t.string   "name",                            null: false
+    t.string   "city",                            null: false
+    t.string   "country_code",          limit: 2, null: false
+    t.string   "state_code",                      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "street_address",                  null: false
+    t.string   "zip",                             null: false
+    t.text     "location_notes"
+    t.string   "website_url"
+    t.boolean  "volunteer_needed",                null: false
+    t.string   "meeting_data_url"
+    t.string   "meeting_schedule"
+    t.boolean  "invocations_conducted",           null: false
+    t.integer  "contact_id"
   end
 
   create_table "organizations", force: true do |t|

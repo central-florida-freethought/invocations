@@ -1,18 +1,65 @@
 <div class='row'>
-  <div class='col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2 authform'>
+  <div class='col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 authform'>
     <%= simple_form_for @locality, html: { class: 'form-vertical' } do |f| %>
       <h3>New Locality</h3>
+      <%= f.input :name, label: 'Locality name',
+                         wrapper_html: { class: 'form-group' } %>
+      <%= f.input :street_address %>
+      <%= f.input :city, wrapper_html: { class: 'form-group' } %>
       <%= f.input :country_code, as: :hidden, input_html: { value: 'US' } %>
       <%= f.input :state_code, label: 'State',
-                               input_html: { class: 'form-control' },
                                wrapper_html: { class: 'form-group' } do %>
         <%= f.subregion_select :state_code, 'US', {}, class: 'form-control' %>
       <% end %>
-      <%= f.input :city, input_html: { class: 'form-control' },
-                         wrapper_html: { class: 'form-group' }%>
-      <%= f.input :name, label: 'Locality name',
-                         input_html: { class: 'form-control' },
-                         wrapper_html: { class: 'form-group' } %>
+      <%= f.input :zip %>
+      <%= f.input :location_notes %>
+      <%= f.input :website_url %>
+      <%= f.input :volunteer_needed, wrapper_html: { class: 'form-group' } do %>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :volunteer_needed, 'true' %>
+            Yes
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :volunteer_needed, 'false' %>
+            No
+          </label>
+        </div>
+      <% end %>
+      <%= f.input :meeting_data_url %>
+      <%= f.input :meeting_schedule %>
+      <%= f.input :invocations_conducted, wrapper_html: { class: 'form-group' } do %>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :invocations_conducted, 'true'  %>
+            Yes
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :invocations_conducted, 'false' %>
+            No
+          </label>
+        </div>
+      <% end %>
+      <h4>Locality Contact:</h4>
+      <%= f.simple_fields_for :contact do |contact| %>
+        <%= contact.input :name %>
+        <%= contact.input :title %>
+        <%= contact.input :phone %>
+        <%= contact.input :email %>
+        <%= contact.input :street_address %>
+        <%= contact.input :city %>
+        <%= contact.input :country_code, as: :hidden, input_html: { value: 'US' } %>
+        <%= contact.input :state_code, label: 'State',
+                                       wrapper_html: { class: 'form-group' } do %>
+          <%= contact.subregion_select :state_code, 'US', {}, class: 'form-control' %>
+        <% end %>
+        <%= contact.input :zip %>
+        <%= contact.input :notes %>
+      <% end %>
       <%= f.button :submit, class: 'btn btn-default btn-lg pull-right'  %>
     <% end %>
   </div>
