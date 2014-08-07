@@ -104,9 +104,13 @@ body {
     padding-right: 40px;
     padding-left: 40px;
   }
+
 }
 .main .page-header {
   margin-top: 0;
+  .city-name {
+    color: $base_blue;
+  }
 }
 
 
