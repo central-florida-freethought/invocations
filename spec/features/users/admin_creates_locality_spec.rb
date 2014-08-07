@@ -5,7 +5,7 @@ feature 'admin creates locality' do
     admin.confirm!
     signin(admin.email, admin.password)
     visit new_locality_path
-    fill_in 'Locality name', with: Faker::Name.name
+    fill_in 'locality[name]', with: Faker::Name.name
     fill_in 'locality[street_address]', with: Faker::Address.street_address
     fill_in 'locality[city]', with: Faker::Address.city
     select 'Florida', from: 'locality[state_code]'
@@ -25,7 +25,7 @@ feature 'admin creates locality' do
     select 'Florida', from: 'locality[contact_attributes][state_code]'
     fill_in 'locality[contact_attributes][zip]', with: Faker::Address.zip
     fill_in 'locality[contact_attributes][notes]', with: Faker::Lorem.sentence
-    click_button 'Create Locality'
+    click_on 'Create locality'
     expect(page.text).to match /locality successfully created/
     expect(Locality.last.contact).not_to be_nil
   end
