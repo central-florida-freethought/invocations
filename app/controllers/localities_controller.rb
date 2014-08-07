@@ -1,4 +1,5 @@
 class LocalitiesController < ApplicationController
+  load_and_authorize_resource
   def new
     @locality = Locality.new params[:locality]
   end

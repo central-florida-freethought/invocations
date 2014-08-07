@@ -14,7 +14,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'mysql2'
 gem 'puma'
-gem 'pundit', github: 'elabs/pundit'
+gem 'cancancan'
 gem 'carmen-rails'
 gem 'country_select'
 gem 'simple_form'
@@ -31,6 +31,7 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
+  gem 'terminal-notifier-guard'
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'rb-fchange', :require=>false
@@ -45,11 +46,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers', require: false
   gem 'spring-commands-rspec'
+  gem 'faker'
 end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'faker'
-  gem 'launchy'
   gem 'selenium-webdriver'
 end
