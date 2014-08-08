@@ -162,7 +162,7 @@
           <%= speaker.text_field :honorific, size: 5, class: 'form-control' %>
         </div>
         <div class='form-group'>
-          <%= speaker.label :name, '* Name' %>
+          <%= speaker.label :name, '* Name of Speaker' %>
           <%= speaker.text_field :name, class: 'form-control', required: true %>
         </div>
         <%= speaker.fields_for :organization, speaker.object.build_organization do |org| %>
@@ -180,7 +180,7 @@
         <%= f.label :concerns %>
         <%= f.text_area :concerns, rows: 10, class: 'form-control' %>
       </div>
-      <%= f.button :submit, class: 'btn btn-default btn-lg pull-right' %>
+      <%= f.submit 'Create meeting', class: 'btn btn-default btn-lg pull-right' %>
     <% end %>
   </div>
 </div>
