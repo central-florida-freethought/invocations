@@ -9,6 +9,8 @@ class UserMeetingsController < ApplicationController
   def new
     @user_meeting = current_user.user_meetings.build params[:user_meeting]
     @user_meeting.build_speaker
+    @localities = Locality.order :name
+    @religions  = Religion.order :name
   end
 
   def create

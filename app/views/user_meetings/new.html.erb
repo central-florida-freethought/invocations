@@ -1,59 +1,185 @@
 <div class='row'>
   <div class='col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 authform'>
-    <%= simple_form_for @user_meeting, html: { class: 'form-vertical' } do |f| %>
+    <%= form_for @user_meeting, html: { class: 'form-vertical' } do |f| %>
       <h3>New User Meeting</h3>
-      <%= f.association :locality, wrapper_html: { class: 'form-group' } %>
-      <%= f.input :meeting_type, wrapper_html: { class: 'form-group' } do %>
-        <%= render partial: 'radio_buttons',
-                   locals: { f: f,
-                             radio_options: meeting_types,
-                             field: :meeting_type } %>
-      <% end %>
-      <%= f.input :meeting_time, label: 'Start time', order: [:month, :year, :day],
-                  end_year: Date.today.year, ampm: true, minute_step: 5,
-                  wrapper_html: { class: 'form-group' } %>
-      <%= f.input :invocation_conducted, wrapper_html: { class: 'form-group' } do %>
-        <%= render partial: 'radio_buttons',
-                   locals: { f: f,
-                             radio_options: invocation_options,
-                             field: :invocation_conducted } %>
-      <% end %>
-      <%= f.input :pledge_before, wrapper_html: { class: 'form-group' } do %>
-        <%= render partial: 'radio_buttons',
-                   locals: { f: f,
-                             radio_options: pledge_options,
-                             field: :pledge_before } %>
-      <% end %>
-      <%= f.input :asked_to_stand, wrapper_html: { class: 'form-group' } do %>
-        <%= render partial: 'radio_buttons',
-                   locals: { f: f,
-                             radio_options: stand_options,
-                             field: :asked_to_stand } %>
-      <% end %>
-      <%= f.input :speaker_preached, wrapper_html: { class: 'form-group' } do %>
-        <%= render partial: 'radio_buttons',
-                   locals: { f: f,
-                             radio_options: speaker_options,
-                             field: :speaker_preached } %>
-      <% end %>
-      <%= f.input :speaker_praised, wrapper_html: { class: 'form-group' } do %>
-        <%= render partial: 'radio_buttons',
-                   locals: { f: f,
-                             radio_options: speaker_options,
-                             field: :speaker_praised } %>
-      <% end %>
-      <%= f.simple_fields_for :speaker do |speaker| %>
-        <%= speaker.input :honorific %>
-        <%= speaker.input :name, label: 'Name of Speaker' %>
-        <%= speaker.simple_fields_for :organization, speaker.object.build_organization do |org| %>
-          <%= org.input :name, label: 'Organization or House of Worship' %>
+      <div class='form-group'>
+        <%= f.collection_select :locality_id, @localities, :id, :name, { prompt: 'Please select a locality' }, { class: 'form-control', required: true } %>
+      </div>
+      <div class='form-group'>
+        <%= f.label :meeting_type, '* Meeting type' %>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :meeting_type, 'regular' %>
+            Regular
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :meeting_type, 'special' %>
+            Special
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :meeting_type, 'workshop' %>
+            Workshop
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :meeting_type, 'other' %>
+            Other
+          </label>
+        </div>
+      </div>
+      <div class='form-group'>
+        <%= f.label :meeting_time, '* Meeting time' %>
+        <br />
+        <%= f.datetime_select :meeting_time, order: [:month, :year, :day],
+                  end_year: Date.today.year, ampm: true, minute_step: 5 %>
+      </div>
+      <div class='form-group'>
+        <%= f.label :invocation_conducted, '* Invocation conducted?' %>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :invocation_conducted, 'yes' %>
+            Yes
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :invocation_conducted, 'no' %>
+            No
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :invocation_conducted, 'moment of silence' %>
+            Moment of silence
+          </label>
+        </div>
+      </div>
+      <div class='form-group'>
+        <%= f.label :pledge_before, '* Was the invocation immediately before or immediately after the Pledge of Allegiance?' %>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :pledge_before, 'immediately before' %>
+            Immediately before
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :pledge_before, 'immediately after' %>
+            Immediately after
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :pledge_before, 'neither' %>
+            Neither
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :pledge_before, 'unknown' %>
+            Unknown
+          </label>
+        </div>
+      </div>
+      <div class='form-group'>
+        <%= f.label :asked_to_stand, '* Were members of the public asked/invited to stand?' %>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :asked_to_stand, 'yes, by official/employee' %>
+            Yes, by official/employee
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :asked_to_stand, 'yes, by speaker' %>
+            Yes, by speaker
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :asked_to_stand, 'both' %>
+            Both
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :asked_to_stand, 'neither' %>
+            Neither
+          </label>
+        </div>
+      </div>
+      <div class='form-group'>
+        <%= f.label :speaker_preached, '* Did the speaker denigrate anyone, threaten damnation, or preach conversion?' %>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :speaker_preached, 'yes, explain' %>
+            Yes, explain
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :speaker_preached, 'no' %>
+            No
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :speaker_preached, 'unknown' %>
+            Unknown
+          </label>
+        </div>
+      </div>
+      <div class='form-group'>
+        <%= f.label :speaker_praised, '* Was the speaker and/or organization promoted or praised in any way other than announcing the speaker’s name and affiliation?' %>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :speaker_praised, 'yes, explain' %>
+            Yes, explain
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :speaker_praised, 'no' %>
+            No
+          </label>
+        </div>
+        <div class='radio'>
+          <label>
+            <%= f.radio_button :speaker_praised, 'unknown' %>
+            Unknown
+          </label>
+        </div>
+      </div>
+      <%= f.fields_for :speaker do |speaker| %>
+        <h4>Speaker</h4>
+        <div class='form-group'>
+          <%= speaker.label :honorific %>
+          <%= speaker.text_field :honorific, size: 5, class: 'form-control' %>
+        </div>
+        <div class='form-group'>
+          <%= speaker.label :name, '* Name' %>
+          <%= speaker.text_field :name, class: 'form-control', required: true %>
+        </div>
+        <%= speaker.fields_for :organization, speaker.object.build_organization do |org| %>
+          <div class='form-group'>
+            <%= org.label :name, 'Organization or House of Worship' %>
+            <%= org.text_field :name, class: 'form-control' %>
+          </div>
         <% end %>
-        <%= speaker.association :religion, label_method: :name %>
-        <%= speaker.association :denomination, label_method: :name %>
+        <div class='form-group'>
+          <%= speaker.label :religion_id, '* Religion' %>
+          <%= speaker.collection_select :religion_id, @religions, :id, :name, { prompt: 'Please select a religion' }, { class: 'form-control', required: true } %>
+        </div>
       <% end %>
-      <%= f.input :concerns,
-                  input_html: { class: 'form-control' },
-                  wrapper_html: { class: 'form-group' } %>
+      <div class='form-group'>
+        <%= f.label :concerns %>
+        <%= f.text_area :concerns, rows: 10, class: 'form-control' %>
+      </div>
       <%= f.button :submit, class: 'btn btn-default btn-lg pull-right' %>
     <% end %>
   </div>
