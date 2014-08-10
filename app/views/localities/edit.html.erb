@@ -1,12 +1,12 @@
-<% content_for :title do %>Invocations - New Locality
+<% content_for :title do %>Invocations - Edit <%=@locality.name%>
 <% end %>
 <% content_for :locality_class do %>active
 <% end %>
 
 <% content_for :locality_heading do %>
-  New Locality
+  Editing <span class="locality"><%= @locality.name %></span>
 <% end %>
 <% content_for :locality_button do %>
-  Create
+  Update
 <% end %>
 <%= render 'form' %>
