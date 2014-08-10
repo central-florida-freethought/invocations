@@ -23,28 +23,17 @@ feature 'create user meeting' do
       select Date.today.day
       select '06 PM'
       select '00'
-      within '.user_meeting_invocation_conducted' do
-        choose 'Yes'
-      end
-      within '.user_meeting_pledge_before' do
-        choose 'Immediately before'
-      end
-      within '.user_meeting_asked_to_stand' do
-        choose 'Yes, by speaker'
-      end
-      within '.user_meeting_speaker_preached' do
-        choose 'No'
-      end
-      within '.user_meeting_speaker_praised' do
-        choose 'No'
-      end
+      choose 'user_meeting_invocation_conducted_yes'
+      choose 'user_meeting_pledge_before_immediately_before'
+      choose 'user_meeting_asked_to_stand_yes_by_speaker'
+      choose 'user_meeting_speaker_preached_no'
+      choose 'user_meeting_speaker_praised_no'
       fill_in 'Honorific', with: 'Mr.'
       fill_in 'Name of Speaker', with: 'Chunky Bacon'
       fill_in 'Organization or House of Worship', with: 'Hell House'
       find('#user_meeting_speaker_attributes_religion_id').select 'Crazyness'
-      find('#user_meeting_speaker_attributes_denomination_id').select 'Non-denominational'
       fill_in 'Concerns', with: 'Bacon ipsum dolor sit amet cillum beef ribs biltong cow, chuck tongue prosciutto turkey aliqua tri-tip. Short loin aute frankfurter laboris qui tail. Ham hock voluptate t-bone shankle, rump minim chuck dolore.'
-      click_button 'Create User meeting'
+      click_button 'Create meeting'
       expect(page).to have_content 'Your meeting was successfully created and will be reviewed.'
       expect(UserMeeting.last.speaker_id).to eq(Speaker.last.id)
     end

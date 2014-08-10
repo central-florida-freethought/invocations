@@ -6,7 +6,6 @@ class Speaker < ActiveRecord::Base
 
   validates :name,
             :religion_id,
-            :denomination_id,
             presence: true
   validates_associated :organization, :religion, :denomination
 
