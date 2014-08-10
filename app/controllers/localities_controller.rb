@@ -2,6 +2,9 @@ class LocalitiesController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
 
+  def index
+    @localities = Locality.all
+  end
   def new
     @locality = Locality.new params[:locality]
     @locality.build_contact
