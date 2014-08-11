@@ -18,11 +18,7 @@ feature 'create user meeting' do
       visit new_user_meeting_path
       select 'Bacontown'
       choose 'Regular'
-      select Date.today.month
-      select Date.today.year
-      select Date.today.day
-      select '06 PM'
-      select '00'
+      fill_in 'Meeting time', with: Date.to_s
       choose 'user_meeting_invocation_conducted_yes'
       choose 'user_meeting_pledge_before_immediately_before'
       choose 'user_meeting_asked_to_stand_yes_by_speaker'
