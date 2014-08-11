@@ -22,5 +22,7 @@ class User::ParameterSanitizer < Devise::ParameterSanitizer
                           :password,
                           :password_confirmation,
                           :current_password)
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, alert: exception.message
   end
 end
