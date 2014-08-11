@@ -16,6 +16,7 @@ feature 'Sign Up', :devise do
                    Faker::Internet.email,
                    Faker::PhoneNumber.phone_number,
                    'please123', 'please123'
+      expect(User.last.approved?).to be(false)
       expect(page).to have_content 'A message with a confirmation'
     end
   end
