@@ -11,6 +11,7 @@ class Ability
       can :read, UserMeeting, pending: false
       can :create, UserMeeting
       can :update, UserMeeting, user_id: user.id
+      can :read, Locality
     end
     #
     # The first argument to `can` is the action you are giving the user

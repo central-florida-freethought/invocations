@@ -22,3 +22,7 @@
 en:
   user_meeting:
     created_successfully: 'Your meeting was successfully created and will be reviewed.'
+  unauthorized:
+    manage:
+      all: "You are not authorized to %{action} %{subject}."
+      user: "You are not allowed to manage other user accounts."
