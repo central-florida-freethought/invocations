@@ -47,6 +47,7 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'spring-commands-rspec'
   gem 'faker'
+  gem 'fuubar'
 end
 group :test do
   gem 'capybara'
