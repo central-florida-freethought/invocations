@@ -35,8 +35,7 @@
       <div class='form-group'>
         <%= f.label :meeting_time, '* Meeting time' %>
         <br />
-        <%= f.datetime_select :meeting_time, order: [:month, :year, :day],
-                  end_year: Date.today.year, ampm: true, minute_step: 5 %>
+        <%= f.text_field :meeting_time, size: 5, class: 'form-control' %>
       </div>
       <div class='form-group'>
         <%= f.label :invocation_conducted, '* Invocation conducted?' %>
