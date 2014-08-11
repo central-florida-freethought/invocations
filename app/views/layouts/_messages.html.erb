@@ -1,4 +1,9 @@
 <%# Rails flash messages styled for Bootstrap 3.0 %>
+<% if user_signed_in? %>
+  <% unless current_user.approved? %>
+    <% flash[:unapproved] = t('devise.registrations.signed_up_but_not_approved') %>
+  <% end %>
+<% end %>
 <% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
     <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">

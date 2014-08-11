@@ -14,7 +14,9 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'mysql2'
 gem 'puma'
-gem 'pundit', github: 'elabs/pundit'
+gem 'cancancan'
+gem 'carmen-rails'
+gem 'country_select'
 gem 'simple_form'
 gem 'high_voltage', '~> 2.2.1'
 group :development do
@@ -29,22 +31,26 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
+  gem 'terminal-notifier-guard'
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
+  gem 'launchy'
 end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
+  gem 'shoulda-matchers', require: false
+  gem 'spring-commands-rspec'
+  gem 'faker'
+  gem 'fuubar'
 end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'faker'
-  gem 'launchy'
   gem 'selenium-webdriver'
 end
