@@ -3,25 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  protected
-
-  def devise_parameter_sanitizer
-    if resource_class == User
-      User::ParameterSanitizer.new(User, :user, params)
-    else
-      super
-    end
-  end
-end
-
-class User::ParameterSanitizer < Devise::ParameterSanitizer
-  def account_update
-    default_params.permit(:first_name,
-                          :last_name,
-                          :email,
-                          :password,
-                          :password_confirmation,
-                          :current_password)
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, alert: exception.message
   end
