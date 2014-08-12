@@ -1,0 +1,110 @@
+<%= form_for @locality, html: { class: 'form-vertical' } do |f| %>
+  <h3>New Locality</h3>
+  <div class='form-group'>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control', placeholder: 'Enter locality name' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :street_address %>
+    <%= f.text_field :street_address, class: 'form-control', placeholder: '123 Any St' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :city %>
+    <%= f.text_field :city, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.hidden_field :country_code, value: 'US' %>
+    <%= f.label :state_code %>
+    <% # subregion_select method from "carmen-rails" gem %>
+    <%= f.subregion_select :state_code, 'US', {}, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :zip %>
+    <%= f.text_field :zip, size: 10, class: 'form-group' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :location_notes %>
+    <%= f.text_area :location_notes, rows: 10, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :website_url %>
+    <%= f.url_field :website_url, size: 20, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <div class='radio'>
+      <label>
+        <%= f.radio_button :volunteer_needed, 'true' %>
+        Yes
+      </label>
+    </div>
+    <div class='radio'>
+      <label>
+        <%= f.radio_button :volunteer_needed, 'false' %>
+        No
+      </label>
+    </div>
+  </div>
+  <div class='form-group'>
+    <%= f.label :meeting_data_url %>
+    <%= f.url_field :meeting_data_url, size: 20, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :meeting_schedule %>
+    <%= f.text_area :meeting_schedule, rows: 10, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <div class='radio'>
+      <label>
+        <%= f.radio_button :invocations_conducted, 'true'  %>
+        Yes
+      </label>
+    </div>
+    <div class='radio'>
+      <label>
+        <%= f.radio_button :invocations_conducted, 'false' %>
+        No
+      </label>
+    </div>
+  </div>
+  <h4>Locality Contact:</h4>
+  <%= f.fields_for :contact do |contact| %>
+    <div class='form-group'>
+      <%= contact.label :name %>
+      <%= contact.text_field :name, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= contact.label :title %>
+      <%= contact.text_field :title, size: 5, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= contact.label :phone %>
+      <%= contact.telephone_field :phone, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= contact.label :email %>
+      <%= contact.email_field :email, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= contact.label :street_address %>
+      <%= contact.text_field :street_address, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= contact.label :city %>
+      <%= contact.text_field :city, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= contact.hidden_field :country_code, value: 'US' %>
+      <%= contact.label :state_code, 'State' %>
+      <%= contact.subregion_select :state_code, 'US', {}, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= contact.label :zip %>
+      <%= contact.text_field :zip, size: 10, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= contact.label :notes %>
+      <%= contact.text_area :notes, rows: 10, class: 'form-control' %>
+    </div>
+  <% end %>
+  <%= f.button type: 'submit', class: 'btn btn-default btn-lg pull-right'  %>
+<% end %>

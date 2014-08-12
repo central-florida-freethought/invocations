@@ -1,6 +1,11 @@
 class LocalitiesController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
+  respond_to :html
+
+  def edit
+    @locality = Locality.find params[:id]
+  end
 
   def new
     @locality = Locality.new params[:locality]
@@ -17,7 +22,15 @@ class LocalitiesController < ApplicationController
   end
 
   def show
-    @locality = Locality.find(params[:id])
+    @locality = Locality.find params[:id]
+  end
+
+  def update
+    @locality = Locality.find params[:id]
+    if @locality.update_attributes(locality_params)
+      flash[:notice] = 'Locality was successfully updated'
+    end
+    respond_with @locality
   end
 
   private
