@@ -5,24 +5,26 @@ class LocalitiesController < ApplicationController
 
   def edit
     @locality = Locality.find params[:id]
+    respond_with @locality
   end
 
   def new
     @locality = Locality.new params[:locality]
     @locality.build_contact
+    respond_with @locality
   end
 
   def create
     @locality = Locality.new locality_params
     if @locality.save
-      redirect_to @locality, notice: "#{@locality.name} locality successfully created"
-    else
-      render :new
+      flash[:notice] = "#{@locality.name} locality successfully created"
     end
+    respond_with @locality
   end
 
   def show
     @locality = Locality.find params[:id]
+    respond_with @locality
   end
 
   def update
