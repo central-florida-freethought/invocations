@@ -2,10 +2,13 @@ feature 'locality' do
   context 'admin user' do
     given!(:admin) { FactoryGirl.create(:user, :admin) }
 
-    context 'successfully' do
-      scenario 'creates a new locality' do
-        admin.confirm!
-        signin(admin.email, admin.password)
+    before do
+      admin.confirm!
+      signin(admin.email, admin.password)
+    end
+
+    context 'can' do
+      scenario 'create a new locality' do
         visit new_locality_path
         fill_in 'locality[name]', with: Faker::Name.name
         fill_in 'locality[street_address]', with: Faker::Address.street_address
@@ -27,9 +30,17 @@ feature 'locality' do
         select 'Florida', from: 'locality[contact_attributes][state_code]'
         fill_in 'locality[contact_attributes][zip]', with: Faker::Address.zip
         fill_in 'locality[contact_attributes][notes]', with: Faker::Lorem.sentence
-        click_on 'Create locality'
+        click_on 'Create Locality'
         expect(page.text).to match /locality successfully created/
         expect(Locality.last.contact).not_to be_nil
+      end
+
+      scenario 'update an existing locality' do
+        locality = FactoryGirl.create :locality
+        visit edit_locality_path(locality)
+        fill_in 'locality[name]', with: Faker::Name.name
+        click_on 'Update Locality'
+        expect(page.text).to match /successfully updated/
       end
     end
   end
@@ -37,8 +48,8 @@ feature 'locality' do
   context 'registered user' do
     given(:user) { FactoryGirl.create :user }
 
-    context 'unsuccessfully' do
-      scenario 'creates a new locality' do
+    context 'can not' do
+      scenario 'create a new locality' do
         user.confirm!
         signin user.email, user.password
         visit new_locality_path
