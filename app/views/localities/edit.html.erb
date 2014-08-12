@@ -1,4 +1,4 @@
-<% content_for :title do %>Invocations - Edit <%=@locality.name%>
+<% content_for :title do %>Invocations - Edit <%= @locality.name %>
 <% end %>
 <% content_for :locality_class do %>active
 <% end %>
@@ -7,4 +7,8 @@
   Editing <span class="locality"><%= @locality.name %></span>
 <% end %>
 
-<%= render 'form' %>
+<div class='row'>
+  <div class='col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 authform'>
+    <%= render 'form' %>
+  </div>
+</div>
