@@ -17,8 +17,6 @@
  *= require_tree .
  *= require_self
  */
-
-
 /*
  * Variables
  */
@@ -81,19 +79,18 @@ body {
   margin-right: -21px; /* 20px padding + 1px border */
   margin-bottom: 20px;
   margin-left: -20px;
-
-  > li > a {
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-
-  > .active > a,
-  > .active > a:hover,
-  > .active > a:focus {
-    color: #fff;
-    background-color: $base_blue;
-  }
 }
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: $base_blue;
+}
+
 
 /*
  * Main content
@@ -108,13 +105,13 @@ body {
     padding-left: 40px;
   }
 
-  .page-header {
-    margin-top: 0;
+}
+.main .page-header {
+  margin-top: 0;
+}
 
-    .city-name {
-      color: $base_blue;
-    }
-  }
+.locality {
+  color: $base_blue;
 }
 
 /*
@@ -124,20 +121,22 @@ body {
 .placeholder {
   margin-bottom: 30px;
   text-align: center;
-  h4 {
-    margin-bottom: 0;
-  }
 }
-
+.placeholder h4 {
+  margin-bottom: 0;
+}
 .placeholder {
   margin-bottom: 20px;
-  img {
-    display: inline-block;
-    border-radius: 50%;
-  }
 }
-
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
 .radio {
   margin-top: 0;
 }
 
+//Fixes issue with datepicker showing under fixed header
+#ui-datepicker-div {
+  z-index: 2000 !important;
+}

@@ -1,23 +1,46 @@
 class LocalitiesController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
+  respond_to :html
+
+  def edit
+    @locality = Locality.find params[:id]
+    respond_with @locality
+  end
+
+  def index
+    @localities = Locality.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @localities}
+    end
+  end
 
   def new
     @locality = Locality.new params[:locality]
     @locality.build_contact
+    respond_with @locality
   end
 
   def create
     @locality = Locality.new locality_params
     if @locality.save
-      redirect_to @locality, notice: "#{@locality.name} locality successfully created"
-    else
-      render :new
+      flash[:notice] = "#{@locality.name} locality successfully created"
     end
+    respond_with @locality
   end
 
   def show
-    @locality = Locality.find(params[:id])
+    @locality = Locality.find params[:id]
+    respond_with @locality
+  end
+
+  def update
+    @locality = Locality.find params[:id]
+    if @locality.update_attributes(locality_params)
+      flash[:notice] = 'Locality was successfully updated'
+    end
+    respond_with @locality
   end
 
   private

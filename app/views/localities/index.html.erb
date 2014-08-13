@@ -1,0 +1,14 @@
+<% content_for :title do %>Invocations - Localities
+<% end %>
+<% content_for :locality_class do %>active
+<% end %>
+
+<h1>Locations</h1>
+
+<ul>
+  <% @localities.each do |locality| %>
+    <li><%= link_to locality.name, locality_path(locality) %></li>
+  <% end %>
+</ul>
+
+<p><%= link_to "Add a new locality!", new_locality_path %></p>

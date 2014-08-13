@@ -1,5 +1,5 @@
 // Survey scripts
-$('#eventDate').datetimepicker({
+$('#user_meeting_meeting_time').datetimepicker({
   timeFormat: 'HH:mm z',
   timezoneList: [
     { value: -300, label: 'Eastern'},
