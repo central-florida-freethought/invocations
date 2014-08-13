@@ -48,9 +48,10 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'faker'
   gem 'fuubar'
+  gem 'nyan-cat-formatter'
 end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'capybara-webkit'
+  gem 'poltergeist'
 end
