@@ -163,6 +163,9 @@ GEM
     nyan-cat-formatter (0.10.0)
       rspec (>= 2.99, >= 2.14.2, < 4)
     orm_adapter (0.5.0)
+    paper_trail (3.0.3)
+      activerecord (>= 3.0, < 5.0)
+      activesupport (>= 3.0, < 5.0)
     poltergeist (1.5.1)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -316,6 +319,7 @@ DEPENDENCIES
   launchy
   mysql2
   nyan-cat-formatter
+  paper_trail
   poltergeist
   pry-rails
   pry-rescue

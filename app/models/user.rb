@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  
+  # Store who activates/inactivates volunteers
+  has_paper_trail only: [ :approved ]
+
   has_many :user_meetings
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
