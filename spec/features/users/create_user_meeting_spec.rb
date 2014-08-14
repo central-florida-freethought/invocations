@@ -15,8 +15,9 @@ feature 'create user meeting' do
       FactoryGirl.create(:religion, name: 'Crazyness')
       FactoryGirl.create(:denomination, name: 'Non-denominational')
       signin @user.email, @user.password
-      visit new_user_meeting_path
-      select 'Bacontown'
+      visit localities_path
+      click_link 'Bacontown'
+      click_link 'Submit a new meeting'
       choose 'Regular'
       fill_in 'Meeting time', with: DateTime.now
       choose 'user_meeting_invocation_conducted_yes'

@@ -3,7 +3,7 @@
     <%= form_for @user_meeting, html: { class: 'form-vertical' } do |f| %>
       <h3>New User Meeting</h3>
       <div class='form-group'>
-        <%= f.collection_select :locality_id, @localities, :id, :name, { prompt: 'Please select a locality' }, { class: 'form-control', required: true } %>
+        <%= f.hidden_field :locality_id, :value => params[:locality_id] %>
       </div>
       <div class='form-group'>
         <%= f.label :meeting_type, '* Meeting type' %>
