@@ -1,6 +1,7 @@
 // Survey scripts
 $('#user_meeting_meeting_time').datetimepicker({
-  timeFormat: 'HH:mm z',
+  dateFormat: 'D dd M yy',
+  timeFormat: 'HH:mm:ss z',
   timezoneList: [
     { value: -300, label: 'Eastern'},
     { value: -360, label: 'Central' },
