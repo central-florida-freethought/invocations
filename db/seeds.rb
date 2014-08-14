@@ -92,5 +92,17 @@ UserMeeting.create(meeting_type: "Regular", meeting_time: "2014-01-01 00:00:00.0
                     speaker_preached: "Yes. Said stuff...blah blah", speaker_praised: "Yes. Said stuff...blah blah",
                     user: user, locality: locality6)
 
+Religion.create(name: 'Buddhist')
+Religion.create(name: 'Catholic')
+Religion.create(name: 'Hindu')
+Religion.create(name: "Jehovah's Witness" )
+Religion.create(name: 'Jewish')
+Religion.create(name: 'Mormon')
+Religion.create(name: 'Muslim')
+Religion.create(name: 'None')
+Religion.create(name: 'Orthodox Christian')
+Religion.create(name: 'Other Religion')
+Religion.create(name: 'Protestant')
+
 
 # Environment variables (ENV['...']) can be set in the file .env file.
