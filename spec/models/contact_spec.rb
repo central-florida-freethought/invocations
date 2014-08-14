@@ -1,12 +1,6 @@
-require 'rails_helper'
+describe Contact do
 
-RSpec.describe Contact, :type => :model do
-  it { should have_many(:localities) }
+  it { is_expected.to have_many(:localities) }
+  it { is_expected.to validate_presence_of(:name) }
   
-  describe 'Failure' do
-    it "doesn't create a Contact without a name" do
-      contact = FactoryGirl.build :contact, name: ''
-      expect(contact).not_to be_valid
-    end
-  end
 end
