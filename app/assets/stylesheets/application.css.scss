@@ -140,3 +140,12 @@ body {
 #ui-datepicker-div {
   z-index: 2000 !important;
 }
+
+form {
+  select {
+    display: block;
+  }
+  textarea {
+    margin-top: 0.5em;
+  }
+}
