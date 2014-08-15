@@ -35,29 +35,19 @@ hideShowClear = function (changeNode, hideNode, checkVal, clearField)
   });
 };
 
-// show/hide meeting text field
-hideShowClear($('#meeting_type'), $('#meeting_type_explaination').parent().parent(),
-  'Other', $('#meeting_type_explaination') );
-
 // show/hide invocation-related fields
-hideShowClear($('#invocation_conducted'), $('.invocation_only'),
+hideShowClear($('#user_meeting_invocation_conducted'), $('.invocation_only'),
   'Yes', false );
 
 // show/hide speaker preaching explanation
-hideShowClear($('#speaker_preached'), $('#preached_explain').parent().parent(),
-  'Yes', $('preached_explain') );
-
-// show/hide religion fields
-hideShowClear($('#religion'), $('#other_religion').parent().parent(),
-  'Other', $('#other_religion'));
-
-// show/hide denomination fields
-hideShowClear($('#denomination'), $('#other_denomination').parent().parent(),
-  'Other', $('#other_denomination'));
+var preached = $('#user_meeting_speaker_preached');
+hideShowClear(preached, preached.next(),
+  'Yes, Explain', preached.next() );
 
 // show/hide praised fields
-hideShowClear($('#speaker_praised'), $('#praised_explain').parent().parent(),
-  'Yes', $('#praised_explain'));
+var praised = $('#user_meeting_speaker_praised');
+hideShowClear(praised, praised.next(),
+  'Yes, Explain', praised.next());
 
 // submit validation
 $('#submit').click(function(e)
