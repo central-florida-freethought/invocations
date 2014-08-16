@@ -16,4 +16,5 @@
 //= require jquery-ui-timepicker-addon
 //= require turbolinks
 //= require bootstrap
+//= require google.jsapi.js
 //= require_tree .
