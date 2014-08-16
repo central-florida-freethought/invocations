@@ -1,5 +1,7 @@
 var searchBox = $('#user_meeting_speaker_attributes_name');
 var searchResults = $('#searchResults');
+var speakerName = $('a.result');
+
 
 searchBox.keyup(function ()
 {
@@ -14,14 +16,20 @@ searchBox.keyup(function ()
     success: function (resp)
     {
       var output = '<ul>';
-      $.each(resp, function(index, value)
+      $.each(resp, function (index, value)
       {
-        output += '<li><a href="#">' + value.name + '</a></li>';
+        output += '<li>' + value.name + '</li>';
       });
       output += "</ul>";
       searchResults.append(output);
+    },
+    complete: function ()
+    {
+      speakerName.click(function (e)
+      {
+        e.preventDefault();
+        console.log(speakerName);
+      });
     }
   });
 });
-
-

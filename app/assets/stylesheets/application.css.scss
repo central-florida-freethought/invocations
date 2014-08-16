@@ -22,8 +22,9 @@
  */
 $base_blue: #428bca;
 $sidebar_bg: #f5f5f5;
-$link_color: #2a6496;
-$link_hover_color: #eeeeee;
+$link_hover_color: #2a6496;
+$link_color: #428bca;
+$link_bg_hover_color: #eeeeee;
 $border_colors: #9a9a9a;
 
 /*
@@ -41,7 +42,7 @@ body {
 
 .sub-header {
   padding-bottom: 10px;
-  border-bottom: 1px solid $link_hover_color;
+  border-bottom: 1px solid $link_bg_hover_color;
 }
 
 /*
@@ -73,7 +74,7 @@ body {
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     background-color: $sidebar_bg;
-    border-right: 1px solid $link_hover_color;
+    border-right: 1px solid $link_bg_hover_color;
   }
 }
 
@@ -179,16 +180,16 @@ form {
     list-style: none;
     padding: 0;
     margin: 0;
-    li:hover, li:focus {
-      background-color: $link_hover_color;
-    }
-    a {
+    li {
+      color: $link_color;
       line-height: 2em;
       padding: 0.5em 1em;
       display: block;
+      cursor: pointer;
     }
-    a:hover, a:focus {
-      text-decoration: none;
+    li:hover, li:focus {
+      background-color: $link_bg_hover_color;
+      color: $link_hover_color;
     }
   }
 }
