@@ -141,6 +141,10 @@ body {
   z-index: 2000 !important;
 }
 
+textarea.form-control {
+  margin-top: 0.7em;
+}
+
 form {
   select {
     display: block;
