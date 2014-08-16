@@ -15,7 +15,9 @@
       <div class='form-group'>
         <%= f.label :meeting_type, '* Meeting type' %>
         <%= f.select :meeting_type, options_for_select([ ['Choose', ''], ['Regular', 'Regular'],
-                                                         ['Special', 'Special'], ['Other', 'Other']]) %>
+                                                         ['Special', 'Special'], ['Other', 'Other']]), {},
+                     html_options = {:class => 'form-control'}
+         %>
       </div>
         <div class='form-group'>
         <%= f.label :meeting_time, '* Meeting time' %>
@@ -24,34 +26,37 @@
       <div class='form-group'>
         <%= f.label :invocation_conducted, '* Invocation conducted?' %>
         <%= f.select :invocation_conducted, options_for_select([ ['Choose', ''], ['Yes', 'Yes'],
-                                                                 ['No', 'No'], ['Moment of silence', 'Moment of silence']]) %>
+                                                                 ['No', 'No'], ['Moment of silence', 'Moment of silence']]), {},
+                     html_options = {:class => 'form-control'} %>
       </div>
       <div class='form-group hide invocation_only'>
         <%= f.label :pledge_before, '* Was the invocation immediately before or immediately after the Pledge of Allegiance?' %>
         <%= f.select :pledge_before, options_for_select( [['Choose', ''], [ 'Immediately before', 'Immediately before' ],
                                                           [ 'Immediately after', 'Immediately after' ],
-                                                          [ 'Neither', 'Neither' ], ['Unknown', 'Unknown']]) %>
+                                                          [ 'Neither', 'Neither' ], ['Unknown', 'Unknown']]), {},
+                     html_options = {:class => 'form-control'} %>
       </div>
       <div class='form-group hide invocation_only'>
         <%= f.label :asked_to_stand, '* Were members of the public asked/invited to stand?' %>
         <%= f.select :asked_to_stand, options_for_select( [['Choose', ''], ['Yes, by official/employee', 'Yes, by official/employee'],
                                                           ['Yes, by speaker', 'Yes, by speaker'],
                                                           ['Both', 'Both'],
-                                                          ['Neither', 'Neither']]) %>
+                                                          ['Neither', 'Neither']]), {},
+                     html_options = {:class => 'form-control'} %>
 
       </div>
       <div class='form-group hide invocation_only'>
         <%= f.label :speaker_preached, '* Did the speaker denigrate anyone, threaten damnation, or preach conversion?' %>
         <%= f.select :speaker_preached, options_for_select([ ['Choose', ''], ['Yes, Explain', 'Yes, Explain'],
                                                              ['No', 'No'], ['Unknown', 'Unknown']]), {},
-                     html_options = {:class => 'explain'} %>
+                     html_options = {:class => 'explain form-control'} %>
         <%= text_area_tag(:message, '', size: "60x3", :class => 'text form-control hide', :name => 'speaker_preached_explaination') %>
       </div>
       <div class='form-group hide invocation_only'>
         <%= f.label :speaker_praised, '* Was the speaker and/or organization promoted or praised in any way other than announcing the speaker’s name and affiliation?' %>
           <%= f.select :speaker_praised,options_for_select([ ['Choose', ''], ['Yes, Explain', 'Yes, Explain'],
                                                              ['No', 'No'], ['Unknown', 'Unknown']]), {},
-                       html_options = {:class => 'explain'}  %>
+                       html_options = {:class => 'explain form-control'}  %>
           <%= text_area_tag(:message, '', size: "60x3", :class => 'text form-control hide', :name => 'speaker_praised_explaination') %>
       </div>
       <div class="hide invocation_only">
