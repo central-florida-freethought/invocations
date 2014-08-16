@@ -37,12 +37,12 @@ hideShowClear = function (changeNode, hideNode, checkVal, clearField)
 
 // show/hide invocation-related fields
 hideShowClear($('#user_meeting_invocation_conducted'), $('.invocation_only'),
-  'Yes', false );
+  'Yes', false);
 
 // show/hide speaker preaching explanation
 var preached = $('#user_meeting_speaker_preached');
 hideShowClear(preached, preached.next(),
-  'Yes, Explain', preached.next() );
+  'Yes, Explain', preached.next());
 
 // show/hide praised fields
 var praised = $('#user_meeting_speaker_praised');
@@ -50,7 +50,7 @@ hideShowClear(praised, praised.next(),
   'Yes, Explain', praised.next());
 
 // submit validation
-$('#submit').click(function(e)
+$('#submit').click(function (e)
 {
   if ($('#policy:checked').val() !== 'on')
   {
@@ -64,3 +64,20 @@ $('#submit').click(function(e)
   }
 });
 
+// Explain box value swap
+// todo: figure out how to swap the datafields. Probably best to do this in the controller.
+$('.explain').change(function ()
+{
+  var $this = $(this);
+  if (this.value === 'Yes, Explain')
+  {
+    $this.next().blur(function ()
+    { // this fails to allow one to submit.
+      //$this.val(this.value);
+    });
+  }
+  else
+  {
+    console.log("err. else");
+  }
+});
