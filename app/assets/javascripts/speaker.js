@@ -1,9 +1,10 @@
+// Ajax-y/livesearch for speaker names.
 var searchBox = $('#user_meeting_speaker_attributes_name');
 var searchResults = $('#searchResults');
 var speakerName = $('a.result');
 
 
-searchBox.keyup(function ()
+searchBox.bind('keypress focus', function (e)
 {
   var searchVal = $(this).val();
   searchResults.empty().removeClass('hide');
@@ -32,4 +33,15 @@ searchBox.keyup(function ()
       });
     }
   });
+});
+
+// Close live-search when clicking outside it
+$(document.body).click(function (e)
+{
+  var clicked = jQuery(e.target);
+
+  if (!(clicked.is(searchBox) || clicked.is(searchResults) || clicked.is('input')))
+  {
+    searchResults.addClass('hide');
+  }
 });
