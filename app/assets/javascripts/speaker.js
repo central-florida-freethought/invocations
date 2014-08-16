@@ -4,8 +4,7 @@ var searchResults = $('#searchResults');
 searchBox.keyup(function ()
 {
   var searchVal = $(this).val();
-
-  searchResults.empty();
+  searchResults.empty().removeClass('hide');
 
   $.ajax({
     type: 'get',
@@ -17,10 +16,12 @@ searchBox.keyup(function ()
       var output = '<ul>';
       $.each(resp, function(index, value)
       {
-        output += '<li>' + value.name + '</li>';
+        output += '<li><a href="#">' + value.name + '</a></li>';
       });
       output += "</ul>";
       searchResults.append(output);
     }
   });
 });
+
+

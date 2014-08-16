@@ -69,7 +69,7 @@
         <div class='form-group'>
           <%= speaker.label :name, '* Name of Speaker' %>
           <%= speaker.text_field :name, class: 'form-control', required: true %>
-          <div id="searchResults" class="dropdown"></div>
+          <div id="searchResults" class="hide"></div>
         </div>
         <%= speaker.fields_for :organization, speaker.object.build_organization do |org| %>
           <div class='form-group'>
