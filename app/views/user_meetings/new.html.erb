@@ -45,14 +45,14 @@
         <%= f.select :speaker_preached, options_for_select([ ['Choose', ''], ['Yes, Explain', 'Yes, Explain'],
                                                              ['No', 'No'], ['Unknown', 'Unknown']]), {},
                      html_options = {:class => 'explain form-control'} %>
-        <%= text_area_tag(:message, '', size: "60x3", :class => 'text form-control hide', :name => 'speaker_preached_explaination') %>
+        <%= text_area_tag(:speaker_preached_explaination, '', size: "60x3", :class => 'text form-control hide', :name => 'speaker_preached_explaination') %>
       </div>
       <div class='form-group hide invocation_only'>
         <%= f.label :speaker_praised, '* Was the speaker and/or organization promoted or praised in any way other than announcing the speaker’s name and affiliation?' %>
           <%= f.select :speaker_praised,options_for_select([ ['Choose', ''], ['Yes, Explain', 'Yes, Explain'],
                                                              ['No', 'No'], ['Unknown', 'Unknown']]), {},
                        html_options = {:class => 'explain form-control'}  %>
-          <%= text_area_tag(:message, '', size: "60x3", :class => 'text form-control hide', :name => 'speaker_praised_explaination') %>
+          <%= text_area_tag(:speaker_praised_explaination, '', size: "60x3", :class => 'text form-control hide', :name => 'speaker_praised_explaination') %>
       </div>
       <div class="hide invocation_only">
       <%= f.fields_for :speaker do |speaker| %>
