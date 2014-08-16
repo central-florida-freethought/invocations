@@ -1,7 +1,7 @@
 // Ajax-y/livesearch for speaker names.
 var searchBox = $('#user_meeting_speaker_attributes_name');
 var searchResults = $('#searchResults');
-var speakerName = $('a.result');
+var speakerNames;
 
 
 searchBox.bind('keypress focus', function (e)
@@ -26,10 +26,10 @@ searchBox.bind('keypress focus', function (e)
     },
     complete: function ()
     {
-      speakerName.click(function (e)
+      speakerNames = searchResults.find('li');
+      speakerNames.click(function()
       {
-        e.preventDefault();
-        console.log(speakerName);
+        searchBox.val(this.innerHTML);
       });
     }
   });
@@ -38,7 +38,7 @@ searchBox.bind('keypress focus', function (e)
 // Close live-search when clicking outside it
 $(document.body).click(function (e)
 {
-  var clicked = jQuery(e.target);
+  var clicked = $(e.target);
 
   if (!(clicked.is(searchBox) || clicked.is(searchResults) || clicked.is('input')))
   {
