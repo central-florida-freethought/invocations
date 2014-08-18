@@ -15,7 +15,11 @@ describe UserMeeting do
 
   context 'does' do
     context 'create a new UserMeeting' do
-      let(:user_meeting) { FactoryGirl.build :user_meeting }
+      let(:religion) { Fabricate :religion }
+      let(:user_meeting) do
+        Fabricate.build :user_meeting,
+          speaker_attributes: { religion: religion }
+      end
 
       it 'given valid attributes' do
         expect(user_meeting).to be_valid
@@ -31,7 +35,7 @@ describe UserMeeting do
 
   context 'does not' do
     context 'create a UserMeeting' do
-      let(:user_meeting) { FactoryGirl.build :user_meeting }
+      let(:user_meeting) { Fabricate.build :user_meeting }
 
       it "without speaker name" do
         user_meeting.speaker.name = ''

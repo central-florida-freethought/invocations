@@ -1,9 +1,11 @@
 feature 'locality' do
   context 'admin user' do
-    given!(:admin) { FactoryGirl.create(:user, :admin) }
+    given!(:admin) { Fabricate :user }
 
     before do
+      admin.admin!
       admin.confirm!
+      admin.approve!
       signin(admin.email, admin.password)
     end
 
@@ -36,7 +38,7 @@ feature 'locality' do
       end
 
       scenario 'update an existing locality' do
-        locality = FactoryGirl.create :locality
+        locality = Fabricate :locality
         visit edit_locality_path(locality)
         fill_in 'locality[name]', with: Faker::Name.name
         click_on 'Update Locality'
@@ -46,7 +48,7 @@ feature 'locality' do
   end
 
   context 'registered user' do
-    given(:user) { FactoryGirl.create :user }
+    given(:user) { Fabricate :user }
 
     context 'can not' do
       scenario 'create a new locality' do

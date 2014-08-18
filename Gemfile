@@ -42,7 +42,7 @@ group :development do
   gem 'launchy'
 end
 group :development, :test do
-  gem 'factory_girl_rails'
+  gem 'fabrication'
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'

@@ -12,8 +12,8 @@ describe Locality do
 
   context 'successfully' do
     it 'creates a new Locality given valid attributes' do
-      locality = FactoryGirl.build(:locality,
-        contact_attributes: FactoryGirl.attributes_for(:contact))
+      locality = Fabricate.build(:locality,
+        contact_attributes: Fabricate.attributes_for(:contact))
       expect(locality).to be_valid
       expect { locality.save }.to change(Locality, :count).by(1)
     end

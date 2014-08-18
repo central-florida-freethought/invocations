@@ -4,7 +4,8 @@ describe Speaker do
   it { is_expected.to belong_to(:denomination) }
   it { is_expected.to validate_presence_of(:name) }
 
-  let(:speaker) { FactoryGirl.build :speaker }
+  let(:religion) { Fabricate :religion }
+  let(:speaker) { Fabricate.build :speaker, religion: religion }
 
   describe 'successfully' do
     it 'creates a new Speaker given valid attributes' do
