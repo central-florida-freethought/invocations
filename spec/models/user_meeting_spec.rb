@@ -26,11 +26,6 @@ describe UserMeeting do
         expect { user_meeting.save }.to change(Speaker, :count).by(1)
         expect(user_meeting.speaker_id).to eq(Speaker.first.id)
       end
-
-      it 'with a version' do
-        user_meeting.save
-        expect(user_meeting.versions).not_to be_empty
-      end
     end
   end
 
