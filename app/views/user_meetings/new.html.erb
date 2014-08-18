@@ -2,8 +2,13 @@
   <div class='col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 authform'>
     <%= form_for @user_meeting, html: { class: 'form-vertical' } do |f| %>
       <h3>New User Meeting</h3>
+      <% if @user_meeting.errors.any? %>
+        <% @user_meeting.errors.full_messages.each do |msg| %>
+          <%= msg %>
+        <% end %>
+      <% end %>
       <div class='form-group'>
-        <%= f.collection_select :locality_id, @localities, :id, :name, { prompt: 'Please select a locality' }, { class: 'form-control', required: true } %>
+        <%= f.collection_select :locality_id, Locality.order(:name), :id, :name, { prompt: 'Please select a locality' }, { class: 'form-control', required: true } %>
       </div>
       <div class='form-group'>
         <%= f.label :meeting_type, '* Meeting type' %>
@@ -172,7 +177,7 @@
         <% end %>
         <div class='form-group'>
           <%= speaker.label :religion_id, '* Religion' %>
-          <%= speaker.collection_select :religion_id, @religions, :id, :name, { prompt: 'Please select a religion' }, { class: 'form-control', required: true } %>
+          <%= speaker.collection_select :religion_id, Religion.order(:name), :id, :name, { prompt: 'Please select a religion' }, { class: 'form-control', required: true } %>
         </div>
       <% end %>
       <div class='form-group'>
