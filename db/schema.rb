@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811140415) do
+ActiveRecord::Schema.define(version: 20140818233501) do
 
   create_table "contacts", force: true do |t|
     t.string   "name",           null: false
@@ -75,12 +75,12 @@ ActiveRecord::Schema.define(version: 20140811140415) do
   end
 
   create_table "user_meetings", force: true do |t|
-    t.datetime "meeting_time",         null: false
-    t.string   "invocation_conducted", null: false
-    t.string   "pledge_before",        null: false
-    t.string   "asked_to_stand",       null: false
-    t.text     "speaker_preached",     null: false
-    t.text     "speaker_praised",      null: false
+    t.datetime "meeting_time",                 null: false
+    t.string   "invocation_conducted",         null: false
+    t.string   "pledge_before",                null: false
+    t.string   "asked_to_stand",               null: false
+    t.text     "speaker_preached",             null: false
+    t.text     "speaker_praised",              null: false
     t.text     "concerns"
     t.binary   "attachment"
     t.boolean  "pending"
@@ -88,13 +88,15 @@ ActiveRecord::Schema.define(version: 20140811140415) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "locality_id"
-    t.string   "meeting_type",         null: false
+    t.string   "meeting_type",                 null: false
     t.string   "meeting_url"
     t.string   "street_address"
     t.integer  "speaker_id"
     t.string   "minutes_url"
     t.string   "agenda_url"
     t.string   "media_url"
+    t.text     "speaker_preached_explanation"
+    t.text     "speaker_praised_explanation"
   end
 
   create_table "users", force: true do |t|
@@ -127,5 +129,16 @@ ActiveRecord::Schema.define(version: 20140811140415) do
   add_index "users", ["first_name"], name: "index_users_on_first_name", using: :btree
   add_index "users", ["last_name"], name: "index_users_on_last_name", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "versions", force: true do |t|
+    t.string   "item_type",  null: false
+    t.integer  "item_id",    null: false
+    t.string   "event",      null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
 end
