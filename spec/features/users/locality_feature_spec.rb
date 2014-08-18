@@ -53,7 +53,7 @@ feature 'locality' do
         user.confirm!
         signin user.email, user.password
         visit new_locality_path
-        expect(page).to have_content 'not authorized'
+        expect(page).to have_content 'not authorized to create a new locality'
       end
     end
   end

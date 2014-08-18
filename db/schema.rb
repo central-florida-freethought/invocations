@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814031533) do
+ActiveRecord::Schema.define(version: 20140814194816) do
 
   create_table "contacts", force: true do |t|
     t.string   "name",           null: false
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20140814031533) do
     t.string   "phone_number",                           null: false
     t.integer  "locality_id"
     t.boolean  "approved",               default: false, null: false
+    t.integer  "roles_mask"
   end
 
   add_index "users", ["approved"], name: "index_users_on_approved", using: :btree
