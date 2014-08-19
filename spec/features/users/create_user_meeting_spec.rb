@@ -20,9 +20,9 @@ feature 'create user meeting' do
   end
 
   context 'successfully' do
-    given!(:locality) { FactoryGirl.create(:locality) }
-    given!(:religion) { FactoryGirl.create(:religion) }
-    given!(:user) { FactoryGirl.create(:user, first_name: 'Chunky') }
+    given!(:locality) { Fabricate :locality }
+    given!(:religion) { Fabricate :religion }
+    given!(:user) { Fabricate :user, first_name: 'Chunky' }
 
     background do
       user.confirm!

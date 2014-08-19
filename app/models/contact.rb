@@ -10,6 +10,5 @@ class Contact < ActiveRecord::Base
             :state_code,
             :country_code,
             :zip,
-            :notes,
             presence: true
 end

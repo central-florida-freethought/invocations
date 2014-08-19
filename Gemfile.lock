@@ -96,11 +96,7 @@ GEM
     dotenv-deployment (0.0.2)
     erubis (2.7.0)
     execjs (2.2.1)
-    factory_girl (4.4.0)
-      activesupport (>= 3.0.0)
-    factory_girl_rails (4.4.1)
-      factory_girl (~> 4.4.0)
-      railties (>= 3.0.0)
+    fabrication (2.11.3)
     faker (1.4.2)
       i18n (~> 0.5)
     ffi (1.9.3)
@@ -306,7 +302,7 @@ DEPENDENCIES
   country_select
   database_cleaner
   devise
-  factory_girl_rails
+  fabrication
   faker
   figaro
   foreman
