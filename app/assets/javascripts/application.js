@@ -15,4 +15,5 @@
 //= require jquery-ui.min
 //= require jquery-ui-timepicker-addon
 //= require bootstrap
+//= require jsapi
 //= require_tree .
