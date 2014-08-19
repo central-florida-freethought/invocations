@@ -16,4 +16,7 @@
 //= require jquery-ui-timepicker-addon
 //= require bootstrap
 //= require jsapi
-//= require_tree .
+//= require charts
+//= require datetime
+//= require script
+//= require speaker
