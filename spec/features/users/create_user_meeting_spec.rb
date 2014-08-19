@@ -4,14 +4,13 @@
 #   So the user meeting data can be collected
 feature 'create user meeting' do
   def fill_in_fields
-    select locality.name
-    choose 'Regular'
+    select 'Regular', :from => 'Meeting type'
     fill_in 'Meeting time', with: DateTime.now
-    choose 'user_meeting_invocation_conducted_yes'
-    choose 'user_meeting_pledge_before_immediately_before'
-    choose 'user_meeting_asked_to_stand_yes_by_speaker'
-    choose 'user_meeting_speaker_preached_no'
-    choose 'user_meeting_speaker_praised_no'
+    select 'Yes', :from => 'Invocation conducted?'
+    select 'Immediately before', :from => 'Was the invocation immediately before or immediately after the Pledge of Allegiance?'
+    select 'Yes, by speaker', :from => 'Were members of the public asked/invited to stand?'
+    select 'No', :from => 'Did the speaker denigrate anyone, threaten damnation, or preach conversion?'
+    select 'No', :from => 'Was the speaker and/or organization promoted or praised in any way other than announcing the speaker’s name and affiliation?'
     fill_in 'Honorific', with: 'Mr.'
     fill_in 'Name of Speaker', with: 'Chunky Bacon'
     fill_in 'Organization or House of Worship', with: 'Hell House'
@@ -33,7 +32,9 @@ feature 'create user meeting' do
       user.roles = [:user]
       user.save!
       signin user.email, user.password
-      visit new_user_meeting_path
+      visit localities_path
+      click_link 'BaconTown'
+      click_link 'Submit a new meeting'
       fill_in_fields
       click_button 'Create meeting'
       expect(page).to have_content 'Your meeting was successfully created and will be reviewed.'
@@ -48,7 +49,9 @@ feature 'create user meeting' do
         user.roles = [:user, :trusted]
         user.save!
         signin user.email, user.password
-        visit new_user_meeting_path
+        visit localities_path
+        click_link 'BaconTown'
+        click_link 'Submit a new meeting'
         fill_in_fields
         click_button 'Create meeting'
         expect(UserMeeting.last.user_id).to eq(user.id)
