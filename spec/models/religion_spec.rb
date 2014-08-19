@@ -1,11 +1,5 @@
-require 'rails_helper'
+describe Religion do
 
-RSpec.describe Religion, :type => :model do
+  it { is_expected.to validate_presence_of(:name) }
 
-  describe 'Failure' do
-    it "doesn't create a religion without a name" do
-      religion = FactoryGirl.build :religion, name: ''
-      expect(religion).not_to be_valid
-    end
-  end
 end

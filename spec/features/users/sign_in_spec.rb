@@ -3,7 +3,7 @@
 #   I want to sign in
 #   So I can visit protected areas of the site
 feature 'Sign in', :devise do
-  given(:user) { FactoryGirl.create :user }
+  given(:user) { Fabricate :user }
 
   context 'user cannot sign in' do
 
@@ -38,7 +38,7 @@ feature 'Sign in', :devise do
   end
 
   context 'user can sign in' do
-    given(:user) { FactoryGirl.create :user }
+    given(:user) { Fabricate :user }
 
     before do
       user.confirm!

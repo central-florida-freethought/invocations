@@ -15,10 +15,12 @@ gem 'devise'
 gem 'mysql2'
 gem 'puma'
 gem 'cancancan'
+gem 'role_model'
 gem 'carmen-rails'
 gem 'country_select'
 gem 'simple_form'
 gem 'high_voltage', '~> 2.2.1'
+gem 'paper_trail'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
@@ -40,7 +42,7 @@ group :development do
   gem 'launchy'
 end
 group :development, :test do
-  gem 'factory_girl_rails'
+  gem 'fabrication'
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'

@@ -9,20 +9,32 @@ class UserMeetingsController < ApplicationController
   def new
     @user_meeting = current_user.user_meetings.build params[:user_meeting]
     @user_meeting.build_speaker
-    @localities = Locality.order :name
-    @religions  = Religion.order :name
   end
 
   def create
     @user_meeting = current_user.user_meetings.build user_meeting_params
+    if current_user.has_any_role? :trusted
+      @user_meeting.pending = false
+    else
+      @user_meeting.pending = true
+    end
+
     if @user_meeting.save
-      redirect_to user_meetings_path, notice: t("user_meeting.created_successfully")
+      redirect_to user_meetings_path, notice: get_flash(@user_meeting)
     else
       render :new
     end
   end
 
   private
+
+  def get_flash(meeting)
+    if meeting.pending?
+      t("user_meeting.created_pending")
+    else
+      t("user_meeting.created_approved")
+    end
+  end
 
   def user_meeting_params
     params.require(:user_meeting).

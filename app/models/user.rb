@@ -1,6 +1,11 @@
 class User < ActiveRecord::Base
+  include RoleModel
+  roles :user, :trusted, :admin
+
+  # Store who activates/inactivates volunteers
+  has_paper_trail only: [ :approved ]
+
   has_many :user_meetings
-  enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
   validates :first_name, :last_name, :phone_number, presence: true
@@ -11,7 +16,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable
 
   def set_default_role
-    self.role ||= :user
+    self.roles = :user
+  end
+
+  def admin!
+    self.roles << :admin
+    self.save!
   end
 
   def approve!

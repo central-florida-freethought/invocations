@@ -1,4 +1,9 @@
 class UserMeeting < ActiveRecord::Base
+
+  # store new version when any attribute is changed
+  # see https://github.com/airblade/paper_trail for info
+  has_paper_trail
+
   belongs_to :user
   belongs_to :locality
   belongs_to :speaker

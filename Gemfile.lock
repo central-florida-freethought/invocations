@@ -96,11 +96,7 @@ GEM
     dotenv-deployment (0.0.2)
     erubis (2.7.0)
     execjs (2.2.1)
-    factory_girl (4.4.0)
-      activesupport (>= 3.0.0)
-    factory_girl_rails (4.4.1)
-      factory_girl (~> 4.4.0)
-      railties (>= 3.0.0)
+    fabrication (2.11.3)
     faker (1.4.2)
       i18n (~> 0.5)
     ffi (1.9.3)
@@ -163,6 +159,9 @@ GEM
     nyan-cat-formatter (0.10.0)
       rspec (>= 2.99, >= 2.14.2, < 4)
     orm_adapter (0.5.0)
+    paper_trail (3.0.3)
+      activerecord (>= 3.0, < 5.0)
+      activesupport (>= 3.0, < 5.0)
     poltergeist (1.5.1)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -209,6 +208,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.1.1)
       json (~> 1.4)
+    role_model (0.8.1)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
       rspec-expectations (~> 3.0.0)
@@ -302,7 +302,7 @@ DEPENDENCIES
   country_select
   database_cleaner
   devise
-  factory_girl_rails
+  fabrication
   faker
   figaro
   foreman
@@ -316,6 +316,7 @@ DEPENDENCIES
   launchy
   mysql2
   nyan-cat-formatter
+  paper_trail
   poltergeist
   pry-rails
   pry-rescue
@@ -326,6 +327,7 @@ DEPENDENCIES
   rb-fchange
   rb-fsevent
   rb-inotify
+  role_model
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
