@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><%= content_for?(:title) ? yield(:title) : 'Invocations Online' %><%= content_for?(:page_name) ? " - #{yield(:page_name)}" : '' %></title>
   <meta name="description" content="<%= content_for?(:description) ? yield(:description) : 'Invocations Online' %>">
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -40,6 +40,6 @@
   </div>
 
 </div>
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application' %>
 </body>
 </html>

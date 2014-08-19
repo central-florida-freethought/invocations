@@ -1,5 +1,5 @@
 // Load the Visualization API and the piechart package.
-google.load('visualization', '1.0', {'packages':['corechart']});
+google.load('visualization', '1.0', {'packages': ['corechart']});
 
 // Set a callback to run when the Google Visualization API is loaded.
 google.setOnLoadCallback(drawChart);
@@ -7,7 +7,8 @@ google.setOnLoadCallback(drawChart);
 // Callback that creates and populates a data table,
 // instantiates the pie chart, passes in the data and
 // draws it.
-function drawChart() {
+function drawChart()
+{
 
   // Create the data table.
   var data = new google.visualization.DataTable();
@@ -28,17 +29,26 @@ function drawChart() {
   ]);
 
   // Set chart options
-  var popOptions = {'title':'Religious Population',
-    'width':500,
-    'height':300};
+  var popOptions = {'title': 'Religious Population',
+    'width': 500,
+    'height': 300};
 
-  var invocOptions = {'title':'Invocations Conducted',
-    'width':500,
-    'height':300};
+  var invocOptions = {'title': 'Invocations Conducted',
+    'width': 500,
+    'height': 300};
 
-  // Instantiate and draw our chart, passing in some options.
-  var pop = new google.visualization.PieChart(document.getElementById('population_chart'));
-  var invoc = new google.visualization.PieChart(document.getElementById('invocations_chart'));
-  invoc.draw(data, invocOptions);
-  pop.draw(data, popOptions);
+  try
+  {
+
+    // Instantiate and draw our chart, passing in some options.
+    var pop = new google.visualization.PieChart(document.getElementById('population_chart'));
+    var invoc = new google.visualization.PieChart(document.getElementById('invocations_chart'));
+    invoc.draw(data, invocOptions);
+    pop.draw(data, popOptions);
+  }
+  catch (exception)
+  {
+    //ignore "container not found" error for google apis on pages where the charts won't be loaded.
+    //todo maybe use yep/nope to dynamically load the script instead?
+  }
 }
