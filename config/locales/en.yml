@@ -21,8 +21,12 @@
 
 en:
   user_meeting:
-    created_successfully: 'Your meeting was successfully created and will be reviewed.'
+    created_pending: 'Your meeting was successfully created and will be reviewed.'
+    created_approved: 'Your meeting was successfully created and approved.'
   unauthorized:
+    create:
+      locality: "You are not authorized to create a new locality."
+      user_meeting: 'You are not authorized to create a new meeting.'
     manage:
-      all: "You are not authorized to %{action} %{subject}."
+      all: "You are not authorized to %{action} %{subject}"
       user: "You are not allowed to manage other user accounts."

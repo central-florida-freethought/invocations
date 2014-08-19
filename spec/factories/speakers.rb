@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :speaker do
-    name "MyString"
-    honorific "MyString"
+    name Faker::Name.name
+    honorific Faker::Name.prefix
     association :organization, strategy: :build
     association :religion
     association :denomination

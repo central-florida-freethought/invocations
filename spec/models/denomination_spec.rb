@@ -1,11 +1,5 @@
-require 'rails_helper'
+describe Denomination do
 
-RSpec.describe Denomination, :type => :model do
-
-  describe 'Failure' do
-    it "doesn't create a Denomination without a name" do
-      denomination = FactoryGirl.build :denomination, name: ''
-      expect(denomination).not_to be_valid
-    end
-  end
+  it { is_expected.to validate_presence_of(:name) }
+  
 end

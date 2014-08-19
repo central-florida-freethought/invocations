@@ -7,7 +7,11 @@ FactoryGirl.define do
     password "please123"
 
     trait :admin do
-      role 'admin'
+      roles [:admin]
+    end
+
+    trait :trusted do
+      roles [:volunteer, :trusted]
     end
 
   end

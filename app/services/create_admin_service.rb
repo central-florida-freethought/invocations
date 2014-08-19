@@ -7,6 +7,7 @@ class CreateAdminService
         user.last_name = Rails.application.secrets.admin_lastname
         user.phone_number = Rails.application.secrets.admin_phone
         user.confirm!
+        user.approve!
         user.admin!
       end
   end
