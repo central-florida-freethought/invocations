@@ -1,3 +1,6 @@
+<% content_for :page_name do %>
+  New Meeting
+<% end %>
 <div class='row'>
   <div class='col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 authform'>
     <%= form_for @user_meeting, html: { class: 'form-vertical' } do |f| %>
@@ -8,157 +11,56 @@
         <% end %>
       <% end %>
       <div class='form-group'>
-        <%= f.collection_select :locality_id, Locality.order(:name), :id, :name, { prompt: 'Please select a locality' }, { class: 'form-control', required: true } %>
+        <%= f.hidden_field :locality_id, :value => params[:locality_id] %>
       </div>
       <div class='form-group'>
         <%= f.label :meeting_type, '* Meeting type' %>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :meeting_type, 'regular' %>
-            Regular
-          </label>
-        </div>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :meeting_type, 'special' %>
-            Special
-          </label>
-        </div>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :meeting_type, 'workshop' %>
-            Workshop
-          </label>
-        </div>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :meeting_type, 'other' %>
-            Other
-          </label>
-        </div>
+        <%= f.select :meeting_type, options_for_select([ ['Choose', ''], ['Regular', 'Regular'],
+                                                         ['Special', 'Special'], ['Other', 'Other']]), {},
+                     html_options = {:class => 'form-control'}
+         %>
       </div>
-      <div class='form-group'>
+        <div class='form-group'>
         <%= f.label :meeting_time, '* Meeting time' %>
-        <br />
-        <%= f.text_field :meeting_time, size: 5, class: 'form-control' %>
+        <%= f.text_field :meeting_time, size: 30, class: 'form-control' %>
       </div>
       <div class='form-group'>
         <%= f.label :invocation_conducted, '* Invocation conducted?' %>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :invocation_conducted, 'yes' %>
-            Yes
-          </label>
-        </div>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :invocation_conducted, 'no' %>
-            No
-          </label>
-        </div>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :invocation_conducted, 'moment of silence' %>
-            Moment of silence
-          </label>
-        </div>
+        <%= f.select :invocation_conducted, options_for_select([ ['Choose', ''], ['Yes', 'Yes'],
+                                                                 ['No', 'No'], ['Moment of silence', 'Moment of silence']]), {},
+                     html_options = {:class => 'form-control'} %>
       </div>
-      <div class='form-group'>
+      <div class='form-group hide invocation_only'>
         <%= f.label :pledge_before, '* Was the invocation immediately before or immediately after the Pledge of Allegiance?' %>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :pledge_before, 'immediately before' %>
-            Immediately before
-          </label>
-        </div>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :pledge_before, 'immediately after' %>
-            Immediately after
-          </label>
-        </div>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :pledge_before, 'neither' %>
-            Neither
-          </label>
-        </div>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :pledge_before, 'unknown' %>
-            Unknown
-          </label>
-        </div>
+        <%= f.select :pledge_before, options_for_select( [['Choose', ''], [ 'Immediately before', 'Immediately before' ],
+                                                          [ 'Immediately after', 'Immediately after' ],
+                                                          [ 'Neither', 'Neither' ], ['Unknown', 'Unknown']]), {},
+                     html_options = {:class => 'form-control'} %>
       </div>
-      <div class='form-group'>
+      <div class='form-group hide invocation_only'>
         <%= f.label :asked_to_stand, '* Were members of the public asked/invited to stand?' %>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :asked_to_stand, 'yes, by official/employee' %>
-            Yes, by official/employee
-          </label>
-        </div>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :asked_to_stand, 'yes, by speaker' %>
-            Yes, by speaker
-          </label>
-        </div>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :asked_to_stand, 'both' %>
-            Both
-          </label>
-        </div>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :asked_to_stand, 'neither' %>
-            Neither
-          </label>
-        </div>
+        <%= f.select :asked_to_stand, options_for_select( [['Choose', ''], ['Yes, by official/employee', 'Yes, by official/employee'],
+                                                          ['Yes, by speaker', 'Yes, by speaker'],
+                                                          ['Both', 'Both'],
+                                                          ['Neither', 'Neither']]), {},
+                     html_options = {:class => 'form-control'} %>
+
       </div>
-      <div class='form-group'>
+      <div class='form-group hide invocation_only'>
         <%= f.label :speaker_preached, '* Did the speaker denigrate anyone, threaten damnation, or preach conversion?' %>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :speaker_preached, 'yes, explain' %>
-            Yes, explain
-          </label>
-        </div>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :speaker_preached, 'no' %>
-            No
-          </label>
-        </div>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :speaker_preached, 'unknown' %>
-            Unknown
-          </label>
-        </div>
+        <%= f.select :speaker_preached, options_for_select([ ['Choose', ''], ['Yes, Explain', 'Yes, Explain'],
+                                                             ['No', 'No'], ['Unknown', 'Unknown']]), {},
+                     html_options = {:class => 'explain form-control'} %>
+        <%= f.text_area :speaker_preached_explanation, rows: 4, class: 'text form-control hide' %>
       </div>
-      <div class='form-group'>
+      <div class='form-group hide invocation_only'>
         <%= f.label :speaker_praised, '* Was the speaker and/or organization promoted or praised in any way other than announcing the speaker’s name and affiliation?' %>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :speaker_praised, 'yes, explain' %>
-            Yes, explain
-          </label>
-        </div>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :speaker_praised, 'no' %>
-            No
-          </label>
-        </div>
-        <div class='radio'>
-          <label>
-            <%= f.radio_button :speaker_praised, 'unknown' %>
-            Unknown
-          </label>
-        </div>
+          <%= f.select :speaker_praised,options_for_select([ ['Choose', ''], ['Yes, Explain', 'Yes, Explain'],
+                                                             ['No', 'No'], ['Unknown', 'Unknown']]), {},
+                       html_options = {:class => 'explain form-control'}  %>
+          <%= f.text_area :speaker_praised_explanation, rows: 4, class: 'text form-control hide' %>
       </div>
+      <div class="hide invocation_only">
       <%= f.fields_for :speaker do |speaker| %>
         <h4>Speaker</h4>
         <div class='form-group'>
@@ -168,6 +70,7 @@
         <div class='form-group'>
           <%= speaker.label :name, '* Name of Speaker' %>
           <%= speaker.text_field :name, class: 'form-control', required: true %>
+          <div id="searchResults" class="hide"></div>
         </div>
         <%= speaker.fields_for :organization, speaker.object.build_organization do |org| %>
           <div class='form-group'>
@@ -180,6 +83,7 @@
           <%= speaker.collection_select :religion_id, Religion.order(:name), :id, :name, { prompt: 'Please select a religion' }, { class: 'form-control', required: true } %>
         </div>
       <% end %>
+      </div>
       <div class='form-group'>
         <%= f.label :concerns %>
         <%= f.text_area :concerns, rows: 10, class: 'form-control' %>

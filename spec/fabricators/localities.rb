@@ -1,5 +1,5 @@
 Fabricator :locality do
-  name Faker::Name.name
+  name 'BaconTown'
   street_address Faker::Address.street_address
   city Faker::Address.city
   country_code 'US'

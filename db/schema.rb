@@ -75,12 +75,12 @@ ActiveRecord::Schema.define(version: 20140814194816) do
   end
 
   create_table "user_meetings", force: true do |t|
-    t.datetime "meeting_time",         null: false
-    t.string   "invocation_conducted", null: false
-    t.string   "pledge_before",        null: false
-    t.string   "asked_to_stand",       null: false
-    t.text     "speaker_preached",     null: false
-    t.text     "speaker_praised",      null: false
+    t.datetime "meeting_time",                 null: false
+    t.string   "invocation_conducted",         null: false
+    t.string   "pledge_before",                null: false
+    t.string   "asked_to_stand",               null: false
+    t.text     "speaker_preached",             null: false
+    t.text     "speaker_praised",              null: false
     t.text     "concerns"
     t.binary   "attachment"
     t.boolean  "pending"
@@ -88,13 +88,15 @@ ActiveRecord::Schema.define(version: 20140814194816) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "locality_id"
-    t.string   "meeting_type",         null: false
+    t.string   "meeting_type",                 null: false
     t.string   "meeting_url"
     t.string   "street_address"
     t.integer  "speaker_id"
     t.string   "minutes_url"
     t.string   "agenda_url"
     t.string   "media_url"
+    t.text     "speaker_preached_explanation"
+    t.text     "speaker_praised_explanation"
   end
 
   create_table "users", force: true do |t|

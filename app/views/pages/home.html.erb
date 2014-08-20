@@ -1,7 +1,9 @@
-<% content_for :title do %>Invocations - Home
+<% content_for :page_name do %>
+  Home
 <% end %>
 
-<% content_for :home_class do %>active
+<% content_for :home_class do %>
+  active
 <% end %>
 
 <h1 class="page-header">CFFC Invocation Tracker</h1>
@@ -11,13 +13,15 @@
   Aliquam cumque delectus deleniti est officia, omnis tempore!</p>
 
 <div class="row">
-  <div class="col-lg-5 col-md-5 col-sm-5 placeholder">
-    <img class="img-responsive" alt="Population" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBEOEZEQiIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjEwMCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojZmZmO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEzcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjAweDIwMDwvdGV4dD48L3N2Zz4=">
+
+    <!--Div that will hold the pie chart-->
+  <div class="col-lg-5 col-md-5 col-sm-5 graph">
+  <div id="population_chart"></div>
     <h4>Population</h4>
   </div>
 
-  <div class="col-lg-5 col-md-5 col-sm-5 placeholder">
-    <img class="img-responsive" alt="Invocations" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjEwMCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojMUUyOTJDO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEzcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjAweDIwMDwvdGV4dD48L3N2Zz4=">
+  <div class="col-lg-5 col-md-5 col-sm-5 graph">
+  <div id="invocations_chart"></div>
     <h4>Invocations</h4>
   </div>
 
