@@ -1,0 +1,33 @@
+<div id="confirmed_volunteers" class='row'>
+  <div class='col-md-8 col-md-offset-2'>
+    <h1>Inactive volunteers</h1>
+    <table class='table table-striped table-bordered'>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @confirmed_volunteers.each do |vol| %>
+          <tr>
+            <td>
+              <%= vol.full_name %>
+            </td>
+            <td>
+              <%= vol.email %>
+            </td>
+            <td>
+              <%= link_to activate_user_path(vol), method: :patch,
+                id: "activate_volunteer_#{vol.id}",
+                class: 'btn btn-primary btn-xs' do %>
+                <span class='glyphicon glyphicon-ok'></span> Activate
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

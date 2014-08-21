@@ -23,6 +23,10 @@ en:
         subject: "Reset password instructions"
       unlock_instructions:
         subject: "Unlock Instructions"
+      approval:
+        subject: 'Account activated'
+      deactivated:
+        subject: 'Account deactivated'
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
@@ -41,6 +45,10 @@ en:
       signed_up_but_not_approved: "You have successfully signed up but your account has not yet been approved. An admin will review this account and respond shortly."
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
       updated: "You updated your account successfully."
+      activated: 'Volunteer was successfully activated and an email has been sent.'
+      activated_error: 'An error prevented the user from being activated. Please contact the system administrator.'
+      deactivated: 'Volunteer was successfully deactivated and an email has been sent.'
+      deactivated_error: 'An error prevented the user from being deactivated. Please contact the system administrator'
     sessions:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
