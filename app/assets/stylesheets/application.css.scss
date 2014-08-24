@@ -71,6 +71,12 @@ header {
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   img {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  #logo img {
     width: 20%;
   }
 }
