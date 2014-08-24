@@ -44,6 +44,12 @@ header {
   margin-bottom: -10px;
 }
 
+.navbar-toggle:hover {
+  background-color: #eee;
+}
+.icon-bar {
+  background-color: #2f2f2f;
+}
 .sub-header {
   padding-bottom: 10px;
   border-bottom: 1px solid $link_bg_hover_color;
@@ -55,6 +61,18 @@ header {
  */
 .navbar-fixed-top {
   border: 0;
+}
+
+/*
+ * Logo
+ */
+#logo {
+  background-color: $sidebar_bg;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  img {
+    width: 20%;
+  }
 }
 
 /*
@@ -205,14 +223,5 @@ form {
       background-color: $link_bg_hover_color;
       color: $link_hover_color;
     }
-  }
-}
-
-#logo {
-  background-color: $sidebar_bg;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  img {
-    width: 20%;
   }
 }
