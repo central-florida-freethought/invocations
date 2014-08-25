@@ -26,6 +26,11 @@ When /^I fill in the locality fields$/ do
   fill_in 'locality[contact_attributes][notes]', with: Faker::Lorem.sentence
 end
 
+Then /^I should be on the locality page for (.*)$/i do |locality_name|
+  locality = Locality.where(name: locality_name).first
+  expect(current_path).to eq locality_path(locality)
+end
+
 Then /^I should be on the edit locality page for (.*)$/i do |locality_name|
   locality = Locality.where(name: locality_name).first
   expect(current_path).to eq edit_locality_path(locality)
