@@ -51,12 +51,8 @@ Then /^the meeting should have my user ID$/ do
   expect(UserMeeting.last.user_id).to eq @user.id
 end
 
-Then 'the meeting should be pending' do
-  expect(UserMeeting.last.pending).to eq true
-end
-
-Then 'the meeting should not be pending' do
-  expect(UserMeeting.last.pending).to eq false
+Then /^the meeting should( not)? be pending/i do |boolean|
+  expect(UserMeeting.last.pending).to eq boolean
 end
 
 Then 'the meeting should have a Speaker' do

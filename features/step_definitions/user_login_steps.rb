@@ -33,8 +33,8 @@ Given 'an approved volunteer' do
   step 'volunteer is confirmed and approved'
 end
 
-Given 'the volunteer is trusted' do
-  @user.roles << :trusted
+Given /^the volunteer has the "(.*?)" role$/ do |role|
+  @user.roles << role
   @user.save!
 end
 
