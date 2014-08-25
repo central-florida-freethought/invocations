@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :user_meetings_steps
   resources :localities
 
+  get 'volunteers/inactive', as: :inactive_volunteers
+  get 'volunteers/active', as: :active_volunteers
+  get 'cukes', to: 'cukes#index', as: :cukes
+
   # Uses the 'high_voltage' gem. Modify app/views/pages/home.html.erb
   get 'pages/home'
 end
