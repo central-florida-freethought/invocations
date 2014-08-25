@@ -1,17 +1,5 @@
-Given /^a locality with name "(.*?)"$/ do |name|
-  @locality = Fabricate :locality, name: name
-end
-
 Given /^a religion$/ do
   @religion = Fabricate :religion
-end
-
-When "I visit the localities page" do
-  visit localities_path
-end
-
-When "I visit the new user meeting page" do
-  visit new_user_meeting_path
 end
 
 When /^I click "(.*?)"$/ do |text|
