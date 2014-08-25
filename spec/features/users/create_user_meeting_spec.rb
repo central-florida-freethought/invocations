@@ -43,6 +43,14 @@ feature 'create user meeting' do
       expect(UserMeeting.last.speaker_id).to eq(Speaker.last.id)
     end
 
+    scenario 'after redirect' do
+      user.roles = [:user]
+      user.save!
+      signin user.email, user.password
+      visit new_user_meeting_path
+      expect(current_path).to eq(localities_path)
+    end
+
     context 'by a trusted user' do
 
       scenario 'that is auto-approved' do

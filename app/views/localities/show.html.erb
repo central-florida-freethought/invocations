@@ -5,53 +5,67 @@
   active
 <% end %>
 
-<h1><%= @locality.name %></h1>
-<p><strong>City</strong> <%= @locality.city %></p>
-<p><%= link_to "Edit this locality", edit_locality_path(@locality) %></p>
-<p><%= link_to "Submit a new meeting", controller: "user_meetings", action: "new", :locality_id => @locality.id %></p>
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1 col-md-6">
+    <h1 class="page-header"><%= @locality.name %></h1>
+    <p><strong>City</strong> <%= @locality.city %></p>
+  </div>
+</div>
+<div class="row">
+</div>
 
 <div class="row">
   <!--Div that will hold the pie chart-->
-  <div class="col-lg-5 col-md-5 col-sm-5 graph">
+  <div class="col-lg-4 col-lg-offset-1 col-md-6 col-sm-6 graph">
     <div id="population_chart"></div>
     <h4>Population</h4>
   </div>
 
-  <div class="col-lg-5 col-md-5 col-sm-5 graph">
+  <div class="col-lg-3 col-md-6 col-sm-6 graph">
     <div id="invocations_chart"></div>
     <h4>Invocations</h4>
+  </div>
+
+  <div class="col-lg-2 col-lg-offset-1 locality_nav">
+    <!--Todo Only show these links provided a user has the respective permissions for this locality-->
+    <ul role="navigation">
+      <li><%= link_to "Edit this locality", edit_locality_path(@locality) %></li>
+      <li><%= link_to "Submit a new meeting", controller: "user_meetings", action: "new", :locality_id => @locality.id %></li>
+    </ul>
   </div>
 </div>
 
 <div class="row">
-  <table class="table table-striped table-hover">
-    <thead>
-    <tr>
-      <th>Presenter</th>
-      <th>Affiliation</th>
-      <th>Date</th>
-      <th>Important Data</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr id="something">
-      <td>Mark</td>
-      <td>Christian</td>
-      <td>YYYY-MM-DD</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>Jacob</td>
-      <td>Pastafarian</td>
-      <td>YYYY-MM-DD</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>Larry</td>
-      <td>Awesomism</td>
-      <td>YYYY-MM-DD</td>
-      <td>9</td>
-    </tr>
-    </tbody>
-  </table>
+  <div class="col-lg-10 col-lg-offset-1 col-md-12">
+    <table class="table table-striped table-hover">
+      <thead>
+      <tr>
+        <th>Presenter</th>
+        <th>Affiliation</th>
+        <th>Date</th>
+        <th>Important Data</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr id="something">
+        <td>Mark</td>
+        <td>Christian</td>
+        <td>YYYY-MM-DD</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>Jacob</td>
+        <td>Pastafarian</td>
+        <td>YYYY-MM-DD</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Larry</td>
+        <td>Awesomism</td>
+        <td>YYYY-MM-DD</td>
+        <td>9</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

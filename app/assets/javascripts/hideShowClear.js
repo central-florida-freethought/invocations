@@ -52,20 +52,3 @@ $('#submit').click(function (e)
   }
 });
 
-// Explain box value swap
-// todo: figure out how to swap the datafields. Probably best to do this in the controller.
-$('.explain').change(function ()
-{
-  var $this = $(this);
-  if (this.value === 'Yes, Explain')
-  {
-    $this.next().blur(function ()
-    { // this fails to allow one to submit.
-      //$this.val(this.value);
-    });
-  }
-  else
-  {
-    console.log("err. else");
-  }
-});

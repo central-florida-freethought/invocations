@@ -26,6 +26,7 @@ $link_hover_color: #2a6496;
 $link_color: #428bca;
 $link_bg_hover_color: #eeeeee;
 $border_colors: #9a9a9a;
+$logo_bg_color: #4270d9;
 
 /*
  * Base structure
@@ -33,13 +34,22 @@ $border_colors: #9a9a9a;
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 50px;
+  padding-top: 10px;
 }
 
 /*
  * Global add-ons
  */
+header {
+  margin-bottom: -10px;
+}
 
+.navbar-toggle:hover {
+  background-color: #eee;
+}
+.icon-bar {
+  background-color: #2f2f2f;
+}
 .sub-header {
   padding-bottom: 10px;
   border-bottom: 1px solid $link_bg_hover_color;
@@ -54,6 +64,24 @@ body {
 }
 
 /*
+ * Logo
+ */
+#logo {
+  background-color: $sidebar_bg;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  img {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  #logo img {
+    width: 20%;
+  }
+}
+
+/*
  * Sidebar
  */
 
@@ -64,12 +92,10 @@ body {
 
 @media (min-width: 768px) {
   .sidebar {
-    position: fixed;
-    top: 51px;
     bottom: 0;
     left: 0;
     z-index: 1000;
-    display: block;
+    display: inherit;
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
@@ -121,6 +147,19 @@ body {
   color: $base_blue;
 }
 
+.locality_nav {
+  text-align: right;
+  ul {
+    list-style: none;
+    li a {
+      color: $border_colors;
+    }
+    li a:hover {
+      color: $base_blue;
+    }
+  }
+}
+
 /*
  * Graphs dashboard ideas
  */
@@ -140,7 +179,6 @@ body {
 
 .graph img {
   display: inline-block;
-  border-radius: 50%;
 }
 
 .radio {

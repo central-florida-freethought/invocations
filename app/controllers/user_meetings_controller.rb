@@ -7,6 +7,9 @@ class UserMeetingsController < ApplicationController
   end
 
   def new
+    if params[:locality_id] == nil then
+      redirect_to localities_path, alert: "Please choose a locality"
+    end
     @user_meeting = current_user.user_meetings.build params[:user_meeting]
     @user_meeting.build_speaker
   end

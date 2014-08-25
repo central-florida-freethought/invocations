@@ -18,5 +18,5 @@
 //= require jsapi
 //= require charts
 //= require datetime
-//= require script
-//= require speaker
+//= require hideShowClear
+//= require speakerLiveSearch
