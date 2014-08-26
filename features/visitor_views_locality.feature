@@ -1,4 +1,4 @@
-Feature: User locality
+Feature: Visitor views locality
   So that I can see what localities are available
   As a user
   I should be able to view localities
