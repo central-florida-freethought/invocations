@@ -40,3 +40,6 @@ production:
   username: 
   password:
   host: localhost
+  
+cucumber:
+  <<: *test
