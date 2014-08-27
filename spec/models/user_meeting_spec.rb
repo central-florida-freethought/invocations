@@ -57,5 +57,9 @@ describe UserMeeting do
         expect(user_meeting).not_to be_valid
       end
     end
+    it 'destroy an associated speaker' do
+      user_meeting = Fabricate :user_meeting
+      expect { user_meeting.destroy }.not_to change(Speaker, :count)
+    end
   end
 end
