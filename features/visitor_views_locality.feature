@@ -4,7 +4,7 @@ Feature: Visitor views locality
   I should be able to view localities
   
   Background:
-    Given a locality with name Orlando City Council
+    Given a locality with name "Orlando City Council"
     When I visit the localities page
   
   Scenario: visitor views locality

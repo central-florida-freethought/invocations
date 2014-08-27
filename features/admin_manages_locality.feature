@@ -15,7 +15,7 @@ Feature: Admin manages locality
     Then I should see "locality successfully created"
     
   Scenario: update an existing locality
-    Given a locality with name Orlando City Council
+    Given a locality with name "Orlando City Council"
     When I go to the locality page for Orlando City Council
     And I click "Edit this locality"
     Then I should be on the edit locality page for Orlando City Council
