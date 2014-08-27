@@ -1,7 +1,7 @@
-Given /^a locality(?: with name (.*?))?$/ do |name|
-  name ||= Faker::Company.name
-  @locality = Fabricate :locality, name: name
-end
+# Given /^a locality(?: with name (.*?))?$/ do |name|
+#   name ||= Faker::Company.name
+#   @locality = Fabricate :locality, name: name
+# end
 
 When /^I fill in the locality fields$/ do
   fill_in 'locality[name]', with: Faker::Name.name

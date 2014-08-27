@@ -1,5 +1,9 @@
-Given /^a religion$/ do
-  @religion = Fabricate :religion
+Given /^a (\w+)(?: with (\w+) "(.*?)")?$/ do |model, attribute, value|
+  if attribute
+    instance_variable_set "@#{model}", Fabricate(model, attribute => value)
+  else
+    instance_variable_set "@#{model}", Fabricate(model)
+  end
 end
 
 When /^I click "(.*?)"$/ do |text|
@@ -33,16 +37,4 @@ end
 
 Then 'I should be on the login page' do
   expect(current_path).to eq(new_user_session_path)
-end
-
-Then /^the meeting should have my user ID$/ do
-  expect(UserMeeting.last.user_id).to eq @user.id
-end
-
-Then /^the meeting should( not)? be pending/i do |boolean|
-  expect(UserMeeting.last.pending).to eq boolean
-end
-
-Then 'the meeting should have a Speaker' do
-  expect(UserMeeting.last.speaker_id).not_to be_nil
 end
