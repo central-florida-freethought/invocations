@@ -45,6 +45,13 @@ class UserMeetingsController < ApplicationController
     end
   end
 
+  def report
+    @user_meeting = UserMeeting.all
+    respond_to do |format|
+      format.json { render json: @user_meeting}
+    end
+  end
+
   def user_meeting_params
     params.require(:user_meeting).
             permit :id,
