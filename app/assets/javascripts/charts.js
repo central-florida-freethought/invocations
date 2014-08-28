@@ -39,7 +39,6 @@ function drawChart()
 
   try
   {
-
     // Instantiate and draw our chart, passing in some options.
     var pop = new google.visualization.PieChart(document.getElementById('population_chart'));
     var invoc = new google.visualization.PieChart(document.getElementById('invocations_chart'));
