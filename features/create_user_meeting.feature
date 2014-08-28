@@ -5,11 +5,11 @@ Feature: Create UserMeeting
   
   Background:
     Given a locality with name "Orlando City Council"
-    Given a religion
-    Given an approved volunteer
+    And an approved volunteer
 
   Scenario Outline: Successfully create a meeting
-    Given the volunteer has the <role> role
+    Given a religion
+    And the volunteer has the <role> role
     And volunteer is signed in
     When I visit the localities page
     And I click "Orlando City Council"
@@ -22,6 +22,15 @@ Feature: Create UserMeeting
       | role      | message                         |
       | "user"    | "created and will be reviewed." |
       | "trusted" | "created and approved."         |
+  
+  @javascript
+  Scenario: with an existing Speaker
+    Given a Christian speaker
+    And volunteer is signed in
+    When I visit the localities page
+    And I add a new meeting with an existing speaker
+    Then I should see "created and will be reviewed."
+    And a new speaker should not have been created
     
   Scenario: Cannot create a meeting without logging in
     When I visit the new user meeting page

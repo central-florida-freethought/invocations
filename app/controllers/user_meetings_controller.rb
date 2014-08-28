@@ -21,6 +21,8 @@ class UserMeetingsController < ApplicationController
     else
       @user_meeting.pending = true
     end
+    
+    @user_meeting.speaker = find_or_create_speaker
 
     if @user_meeting.save
       redirect_to user_meetings_path, notice: get_flash(@user_meeting)
@@ -30,6 +32,10 @@ class UserMeetingsController < ApplicationController
   end
 
   private
+  
+  def find_or_create_speaker
+    Speaker.find_by(name: user_meeting_params[:speaker_attributes][:name]) || Speaker.new(user_meeting_params[:speaker_attributes])
+  end
 
   def get_flash(meeting)
     if meeting.pending?
@@ -60,11 +66,7 @@ class UserMeetingsController < ApplicationController
                    :media_url,
                    :user_id,
                    :locality_id,
-                   speaker_attributes: [:id,
-                                        :name,
-                                        :honorific,
-                                        :organization_id,
-                                        :religion_id,
-                                        :denomination_id]
+                   speaker_attributes: [:id, :name, :honorific, :religion_id, 
+                     :denomination_id, organization_attributes: [:id, :name]]
   end
 end

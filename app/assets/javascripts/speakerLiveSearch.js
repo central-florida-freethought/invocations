@@ -11,7 +11,7 @@ searchBox.bind('keypress focus', function (e)
 
   $.ajax({
     type: 'get',
-    url: '/speaker/search.json',
+    url: '/speakers/search.json',
     datatype: 'json',
     data: {name: searchVal },
     success: function (resp)
