@@ -1,4 +1,4 @@
-class SpeakerController < ApplicationController
+class SpeakersController < ApplicationController
   before_filter :authenticate_user!
   def search
     @speakers = Speaker.where('name like :name ', {name: "#{params[:name]}%"}).all

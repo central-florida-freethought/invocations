@@ -43,7 +43,7 @@ After all of the above, restart the VM and with `vagrant reload`. To launch the 
 Profit!
 
 ## Running tests
-Before committing, or at least pushing, be sure your tests pass by running `foreman run rspec`. If you get an error regarding phantomjs, try manually install it via `sudo apt-get install phantomjs -y`. 
+Before committing, or at least pushing, be sure your tests pass by running `foreman run rspec`. If you get an error regarding phantomjs, try manually install it via `sudo apt-get install phantomjs -y`.
 
 ### File locations
 

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'speaker/search'
+  get 'speakers/search'
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
