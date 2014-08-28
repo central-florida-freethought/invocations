@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   resources :user_meetings
   resources :user_meetings_steps
-  resources :localities
+  resources :localities do
+    member do
+      get 'report'
+    end
+  end
 
   get 'volunteers/inactive', as: :inactive_volunteers
   get 'volunteers/active', as: :active_volunteers

@@ -43,6 +43,13 @@ class LocalitiesController < ApplicationController
     respond_with @locality
   end
 
+  def report
+    @user_meetings = UserMeeting.where(params[:id])
+    respond_to do |format|
+      format.json { render json: @user_meetings}
+    end
+  end
+
   private
 
   def locality_params
