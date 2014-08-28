@@ -10,10 +10,6 @@ class LocalitiesController < ApplicationController
 
   def index
     @localities = Locality.all
-    respond_to do |format|
-      format.html
-      format.json { render json: @localities}
-    end
   end
 
   def new
