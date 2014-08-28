@@ -44,7 +44,20 @@ class LocalitiesController < ApplicationController
   end
 
   def report
-    @user_meetings = UserMeeting.where(params[:id])
+    query = ' SELECT  '
+    query +=   'religions.name AS "Religion", '
+    query +=   'count(religions.name) AS "count" '
+    query += ' FROM '
+    query +=   ' user_meetings '
+    query +=   ' LEFT JOIN localities ON user_meetings.locality_id = localities.id '
+    query +=   ' LEFT JOIN speakers ON user_meetings.speaker_id = speakers.id '
+    query +=   ' LEFT JOIN religions ON speakers.religion_id = religions.id '
+    query +=   ' LEFT JOIN users ON user_meetings.user_id = users.id '
+    query += " where user_meetings.locality_id = #{params[:id]}"
+    query += ' GROUP BY religions.name '
+    query += ' ORDER BY "count" DESC '
+
+    @user_meetings = UserMeeting.find_by_sql(query)
     respond_to do |format|
       format.json { render json: @user_meetings}
     end
