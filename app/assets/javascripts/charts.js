@@ -11,15 +11,19 @@ function fetchData()
   });
   var data = [];
   var id = $('h1').data('id');
-  //todo needs to account for main page report
+  var url = '';
+  if (id === '')
+    url = '/localities/report_all.json';
+  else
+    url = '/localities/' + id + '/report.json';
+
   //todo populate population data separate from invocation data
-  $.getJSON('/localities/' + id + '/report.json', function (resp)
+  $.getJSON(url, function (resp)
   {
     $.each(resp, function (index, value)
     {
-      data.push([value.Religion, value.count]);
+      data.push([value.religion, value.count]);
     });
-  console.log(data);
   });
   return data;
 }
@@ -34,19 +38,6 @@ function drawChart()
   data.addColumn('string', 'Religion');
   data.addColumn('number', 'Invocations');
   data.addRows(fetchData());
-  //data.addRows([
-  //  ['Catholic', 10],
-  //  ['Orthodox Christian', 9],
-  //  ['Buddhist', 5],
-  //  ['Jewish', 4],
-  //  ['Protestant', 4],
-  //  ['Mormon', 2],
-  //  ['None', 2],
-  //  ['Other Religion', 2],
-  //  ['Hindu', 1],
-  //  ["Jehovah's Witness", 1],
-  //  ['Muslim', 1]
-  //]);
 
   // Set chart options
   var popOptions = {'title': 'Religious Population',

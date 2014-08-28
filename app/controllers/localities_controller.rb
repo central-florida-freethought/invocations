@@ -1,5 +1,5 @@
 class LocalitiesController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show, :report, :report_all]
   load_and_authorize_resource
   respond_to :html
 
@@ -40,8 +40,23 @@ class LocalitiesController < ApplicationController
   end
 
   def report
+    @user_meetings = locality_report(params[:id])
+    respond_to do |format|
+      format.json { render json: @user_meetings}
+    end
+  end
+
+  def report_all
+    @user_meetings = locality_report(nil)
+    respond_to do |format|
+      format.json { render json: @user_meetings}
+    end
+  end
+
+  private
+  def locality_report(id)
     query = ' SELECT  '
-    query +=   'religions.name AS "Religion", '
+    query +=   'religions.name AS "religion", '
     query +=   'count(religions.name) AS "count" '
     query += ' FROM '
     query +=   ' user_meetings '
@@ -49,14 +64,13 @@ class LocalitiesController < ApplicationController
     query +=   ' LEFT JOIN speakers ON user_meetings.speaker_id = speakers.id '
     query +=   ' LEFT JOIN religions ON speakers.religion_id = religions.id '
     query +=   ' LEFT JOIN users ON user_meetings.user_id = users.id '
-    query += " where user_meetings.locality_id = #{params[:id]}"
+    if id != nil
+      query += " where user_meetings.locality_id = #{id}"
+    end
     query += ' GROUP BY religions.name '
     query += ' ORDER BY "count" DESC '
-
     @user_meetings = UserMeeting.find_by_sql(query)
-    respond_to do |format|
-      format.json { render json: @user_meetings}
-    end
+
   end
 
   private
