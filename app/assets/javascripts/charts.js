@@ -10,10 +10,10 @@ function fetchData()
     async: false
   });
   var data = [];
-  var id = $('.page_header').data('id');
-  //todo update to use locality specific report
+  var id = $('h1').data('id');
   //todo needs to account for main page report
-  $.getJSON('/localities/1/report.json', function (resp)
+  //todo populate population data separate from invocation data
+  $.getJSON('/localities/' + id + '/report.json', function (resp)
   {
     $.each(resp, function (index, value)
     {
