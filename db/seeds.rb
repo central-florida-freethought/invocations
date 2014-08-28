@@ -39,59 +39,6 @@ locality5 = Locality.create(name: "Oviedo", street_address: "400 Alexandria Blvd
 locality6 = Locality.create(name: "Altamonte Springs", street_address: "225 Newburyport Ave.", city: "Altamonte Springs", state_code: "FL", country_code: "US",
                             zip: "32701", volunteer_needed: "1", invocations_conducted: "1", contact: contact[3] )
 
-puts "Cleaning up the UserMeetings table"
-UserMeeting.delete_all
-
-puts "Seeding UserMeetings"
-UserMeeting.create(meeting_type: "Regular", meeting_time: "2014-01-01 00:00:00.0", invocation_conducted: "Yes",
-                    pledge_before: "Immediately before", asked_to_stand: "Yes, by official/employee",
-                    speaker_preached: "Yes. Said stuff...blah blah", speaker_praised: "Yes. Said stuff...blah blah",
-                    user: user, locality: locality1)
-UserMeeting.create(meeting_type: "Regular", meeting_time: "2014-01-01 00:00:00.0", invocation_conducted: "Yes",
-                    pledge_before: "Immediately before", asked_to_stand: "Yes, by official/employee",
-                    speaker_preached: "Yes. Said stuff...blah blah", speaker_praised: "Yes. Said stuff...blah blah",
-                    user: user, locality: locality1)
-UserMeeting.create(meeting_type: "Regular", meeting_time: "2014-01-01 00:00:00.0", invocation_conducted: "Yes",
-                    pledge_before: "Immediately before", asked_to_stand: "Yes, by official/employee",
-                    speaker_preached: "Yes. Said stuff...blah blah", speaker_praised: "Yes. Said stuff...blah blah",
-                    user: user, locality: locality1)
-UserMeeting.create(meeting_type: "Regular", meeting_time: "2014-01-01 00:00:00.0", invocation_conducted: "Yes",
-                    pledge_before: "Immediately before", asked_to_stand: "Yes, by official/employee",
-                    speaker_preached: "Yes. Said stuff...blah blah", speaker_praised: "Yes. Said stuff...blah blah",
-                    user: user, locality: locality2)
-UserMeeting.create(meeting_type: "Regular", meeting_time: "2014-01-01 00:00:00.0", invocation_conducted: "Yes",
-                    pledge_before: "Immediately before", asked_to_stand: "Yes, by official/employee",
-                    speaker_preached: "Yes. Said stuff...blah blah", speaker_praised: "Yes. Said stuff...blah blah",
-                    user: user, locality: locality2)
-UserMeeting.create(meeting_type: "Regular", meeting_time: "2014-01-01 00:00:00.0", invocation_conducted: "Yes",
-                    pledge_before: "Immediately before", asked_to_stand: "Yes, by official/employee",
-                    speaker_preached: "Yes. Said stuff...blah blah", speaker_praised: "Yes. Said stuff...blah blah",
-                    user: user, locality: locality3)
-UserMeeting.create(meeting_type: "Regular", meeting_time: "2014-01-01 00:00:00.0", invocation_conducted: "Yes",
-                    pledge_before: "Immediately before", asked_to_stand: "Yes, by official/employee",
-                    speaker_preached: "Yes. Said stuff...blah blah", speaker_praised: "Yes. Said stuff...blah blah",
-                    user: user, locality: locality3)
-UserMeeting.create(meeting_type: "Regular", meeting_time: "2014-01-01 00:00:00.0", invocation_conducted: "Yes",
-                    pledge_before: "Immediately before", asked_to_stand: "Yes, by official/employee",
-                    speaker_preached: "Yes. Said stuff...blah blah", speaker_praised: "Yes. Said stuff...blah blah",
-                    user: user, locality: locality4)
-UserMeeting.create(meeting_type: "Regular", meeting_time: "2014-01-01 00:00:00.0", invocation_conducted: "Yes",
-                    pledge_before: "Immediately before", asked_to_stand: "Yes, by official/employee",
-                    speaker_preached: "Yes. Said stuff...blah blah", speaker_praised: "Yes. Said stuff...blah blah",
-                    user: user, locality: locality5)
-UserMeeting.create(meeting_type: "Regular", meeting_time: "2014-01-01 00:00:00.0", invocation_conducted: "Yes",
-                    pledge_before: "Immediately before", asked_to_stand: "Yes, by official/employee",
-                    speaker_preached: "Yes. Said stuff...blah blah", speaker_praised: "Yes. Said stuff...blah blah",
-                    user: user, locality: locality6)
-UserMeeting.create(meeting_type: "Regular", meeting_time: "2014-01-01 00:00:00.0", invocation_conducted: "Yes",
-                    pledge_before: "Immediately before", asked_to_stand: "Yes, by official/employee",
-                    speaker_preached: "Yes. Said stuff...blah blah", speaker_praised: "Yes. Said stuff...blah blah",
-                    user: user, locality: locality6)
-UserMeeting.create(meeting_type: "Regular", meeting_time: "2014-01-01 00:00:00.0", invocation_conducted: "Yes",
-                    pledge_before: "Immediately before", asked_to_stand: "Yes, by official/employee",
-                    speaker_preached: "Yes. Said stuff...blah blah", speaker_praised: "Yes. Said stuff...blah blah",
-                    user: user, locality: locality6)
-
 Religion.create(name: 'Buddhist')
 Religion.create(name: 'Catholic')
 Religion.create(name: 'Hindu')
