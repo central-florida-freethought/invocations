@@ -16,7 +16,6 @@
 //= require jquery-ui-timepicker-addon
 //= require bootstrap
 //= require jsapi
-//= require charts
 //= require datetime
 //= require hideShowClear
 //= require speakerLiveSearch

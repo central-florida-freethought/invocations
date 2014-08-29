@@ -1,18 +1,18 @@
 // Load the Visualization API and the piechart package.
 google.load('visualization', '1.0', {'packages': ['corechart']});
 
-// Set a callback to run when the Google Visualization API is loaded.
-google.setOnLoadCallback(drawChart);
+fetchData()
+
 
 function fetchData()
 {
   $.ajaxSetup({
-    async: false
+    //async: false
   });
-  var data = [];
+  var fetchedData = [];
   var id = $('h1').data('id');
   var url = '';
-  if (id === '')
+  if (id == '')
     url = '/localities/report_all.json';
   else
     url = '/localities/' + id + '/report.json';
@@ -22,10 +22,37 @@ function fetchData()
   {
     $.each(resp, function (index, value)
     {
-      data.push([value.religion, value.count]);
+      fetchedData.push([value.religion, value.count]);
     });
+    // Create the data table.
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Religion');
+    data.addColumn('number', 'Invocations');
+    data.addRows(fetchedData);
+
+    // Set chart options
+    var popOptions = {'title': 'Religious Population',
+      'width': 500,
+      'height': 300};
+
+    var invocOptions = {'title': 'Invocations Conducted',
+      'width': 500,
+      'height': 300};
+
+    try
+    {
+      // Instantiate and draw our chart, passing in some options.
+      var pop = new google.visualization.PieChart(document.getElementById('population_chart'));
+      var invoc = new google.visualization.PieChart(document.getElementById('invocations_chart'));
+      invoc.draw(data, invocOptions);
+      pop.draw(data, popOptions);
+    }
+    catch (exception)
+    {
+      //ignore "container not found" error for google apis on pages where the charts won't be loaded.
+    }
   });
-  return data;
+  //return fetchedData;
 }
 // Callback that creates and populates a data table,
 // instantiates the pie chart, passes in the data and
