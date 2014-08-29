@@ -1,7 +1,7 @@
 class LocalitiesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show, :report, :report_all]
   load_and_authorize_resource except: [:report, :report_all, :index]
-  respond_to :html
+  respond_to :html, :json
 
   def edit
     @locality = Locality.find params[:id]
@@ -40,10 +40,12 @@ class LocalitiesController < ApplicationController
   end
 
   def report
-    @user_meetings = locality_report(params[:id])
-    respond_to do |format|
-      format.json { render json: @user_meetings}
-    end
+    # Find all religions for a locality and group by Religion name
+    @user_meetings = Locality.find(params[:id]).religions.group :name
+    # respond_to do |format|
+    #   format.json { render json: @user_meetings}
+    # end
+    respond_with @user_meetings
   end
 
   def report_all
