@@ -1,6 +1,6 @@
 class LocalitiesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show, :report, :report_all]
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:report, :report_all, :index]
   respond_to :html
 
   def edit
