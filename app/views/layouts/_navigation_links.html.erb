@@ -7,7 +7,14 @@
   <li class="<%= 'active' if current_page? localities_path %>"> <%= link_to 'Locations', localities_path %></li>
 <% if user_signed_in? %>
   <% if current_user.has_role?(:admin) %>
-    <li><%= link_to 'Cukes', cukes_path %></li>
+    <li class="dropdown" id="adminMenu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Adminstration <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="adminMenu">
+        <li><%= link_to 'Cukes', cukes_path %></li>
+        <li class="<%= 'active' if current_page? active_volunteers_path %>"><%= link_to 'Active Volunteers', active_volunteers_path %></li>
+        <li class="<%= 'active' if current_page? inactive_volunteers_path %>"><%= link_to 'Inactive Volunteers', inactive_volunteers_path %></li>
+      </ul>
+    </li>
   <% end %>
   <li class="<%= 'active' if current_page? edit_user_registration_path %>"><%= link_to 'Account', edit_user_registration_path %></li>
   <li><%= link_to 'Log out', destroy_user_session_path, :method=>'delete' %></li>
