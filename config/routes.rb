@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   get 'speakers/search'
+  get 'volunteers/pending'
 
   devise_for :users, controllers: { registrations: 'registrations' }
+  devise_scope :user do
+    patch ':id/activate', to: 'registrations#activate', as: 'activate_user'
+    patch ':id/deactivate', to: 'registrations#deactivate', as: 'deactivate_user'
+  end
 
   resources :user_meetings
   resources :user_meetings_steps
