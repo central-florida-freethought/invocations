@@ -3,11 +3,15 @@ class UserMeetingsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @user_meetings = UserMeeting.where('user_id = ?', current_user)
+    if current_user.has_any_role? :admin
+      @user_meetings = UserMeeting.where('pending = ?', 1)
+    else
+      @user_meetings = UserMeeting.where('user_id = ?', current_user)
+    end
   end
 
   def new
-    if params[:locality_id] == nil then
+    if params[:locality_id] == nil
       redirect_to localities_path, alert: "Please choose a locality"
     end
     @user_meeting = current_user.user_meetings.build params[:user_meeting]
