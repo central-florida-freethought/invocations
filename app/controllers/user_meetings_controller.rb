@@ -3,7 +3,7 @@ class UserMeetingsController < ApplicationController
   load_and_authorize_resource
 
   def index
-
+    @user_meetings = UserMeeting.where('user_id = ?', current_user)
   end
 
   def new

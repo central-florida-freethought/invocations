@@ -6,3 +6,36 @@
     <h1 class="page-header">My Meeting Data</h1>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1 col-md-12">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+            <th>Meeting ID</th>
+            <th>Meeting Time</th>
+            <th>Invocation Conducted?</th>
+            <th>Before Pledge?</th>
+            <th>Asked to Stand?</th>
+            <th>Speaker Preach?</th>
+            <th>Speaker Praised?</th>
+            <th>Pending?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user_meetings.each do |m| %>
+        <tr>
+          <td><%= m.id %></td>
+          <td><%= m.meeting_time %></td>
+          <td><%= m.invocation_conducted %></td>
+          <td><%= m.pledge_before %></td>
+          <td><%= m.asked_to_stand %></td>
+          <td><%= m.speaker_preached %></td>
+          <td><%= m.speaker_praised %></td>
+          <td class="<%= 'text_good' %>"><%= m.pending ? 'Yes' : 'No' %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
