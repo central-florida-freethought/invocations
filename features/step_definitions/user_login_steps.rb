@@ -1,4 +1,4 @@
-Given 'a $user_type volunteer' do |user_type|
+Given /^a (\w+) volunteer$/ do |user_type|
   case user_type
   when 'regular'
     @user = Fabricate.build :user
@@ -21,6 +21,18 @@ end
 
 Given 'volunteer is approved' do
   @user.approve!
+end
+
+Given /^a signed in admin$/ do
+  admin = Fabricate :user, confirmed_at: Time.now, approved: true
+  admin.roles << :admin
+  admin.save!
+  sign_in_user admin
+end
+
+Given /^a regular, confirmed volunteer$/ do
+  @volunteer = Fabricate :user, email: 'chunky@bacon.com', roles: [:user],
+    confirmed_at: Time.now
 end
 
 Given 'volunteer is confirmed and approved' do
