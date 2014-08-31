@@ -1,12 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
-gem 'figaro'
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'rails', '4.1.4'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
@@ -33,6 +32,7 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
+  gem 'guard-cucumber'
   gem 'terminal-notifier-guard'
   gem 'quiet_assets'
   gem 'rails_layout'
@@ -46,6 +46,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
+  gem 'rspec-example_steps', '~> 3.0'
   gem 'shoulda-matchers', require: false
   gem 'spring-commands-rspec'
   gem 'faker'
@@ -54,6 +55,8 @@ group :development, :test do
 end
 group :test do
   gem 'capybara'
+  gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'poltergeist'
+  gem 'spring-commands-cucumber'
 end

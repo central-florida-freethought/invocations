@@ -1,0 +1,34 @@
+<div id="confirmed_volunteers" class='row'>
+  <div class='col-md-8 col-md-offset-2'>
+    <h1>Active volunteers</h1>
+    <table class='table table-striped table-bordered'>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @confirmed_volunteers.each do |vol| %>
+          <tr>
+            <td>
+              <%= vol.full_name %>
+            </td>
+            <td>
+              <%= vol.email %>
+            </td>
+            <td>
+              <%= button_to deactivate_user_path(vol), method: :patch,
+                id: "deactivate_volunteer_#{vol.id}",
+                class: 'btn btn-danger btn-xs',
+                disabled: vol == current_user do %>
+                <span class='glyphicon glyphicon-remove'></span> Deactivate
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

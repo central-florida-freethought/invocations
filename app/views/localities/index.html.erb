@@ -19,6 +19,8 @@
       <% end %>
     </ul>
 
-    <p><%= link_to "Add a new locality!", new_locality_path %></p>
+    <% if user_signed_in? && current_user.has_role?(:admin) %>
+      <p><%= link_to "Add a new locality!", new_locality_path %></p>
+    <% end %>
   </div>
 </div>

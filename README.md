@@ -19,20 +19,31 @@ To develop the application, you can either setup Rails according to the previous
 
 ### Development with Vagrant
 
-The `Vagrantfile` provides a way to quickly set up a [Vagrant](http://vagrantup.com) development box with everything needed for the application. To use it, first [install Vagrant](http://docs.vagrantup.com/v2/installation/index.html), and then install the `librarian-chef` plugin for Vagrant: `vagrant plugin install vagrant-librarian-chef`. To pull down the Git submodules, you'll need to run `git submodule init` and `git submodule update` then from the project directory run the `vagrant up` command to start everything.
+The `Vagrantfile` provides a way to quickly set up a [Vagrant](http://vagrantup.com) development box with everything needed for the application. To use it, 
 
-After the virtual Machine is running, you can login to it with `vagrant ssh` and from the `/vagrant` directory, run `bundle install` to pull down the application dependencies.
+1. [Install Vagrant](http://docs.vagrantup.com/v2/installation/index.html), 
+2. Install the `librarian-chef` plugin for Vagrant: `vagrant plugin install vagrant-librarian-chef`. 
+3. Pull down the Git submodules, by running `git submodule init` and `git submodule update`
+4. From the project directory run `vagrant up` to start provisioning the server.
 
-To configure the database settings, rename the `database.yml.example` file to `database.yml` and then run `bundle exec rake db:setup` to create the database, perform the migrations, and create the admin user account.
+After the virtual Machine is running, you can login to it with `vagrant ssh`. From the `/vagrant` directory, run `bundle install` to pull down the application dependencies.
+
+### Configure environment variables
+1. Rename the `.env.example` file to `.env` and populate it with your values.
+2. Run `rake secret` to generate some values for both the `DEVISE_SECRET` and `SECRET_KEY_BASE`. 
+
+## Database setup
+To configure the database settings, rename the `config/database.yml.example` file to `config/database.yml`, change any necessary values, and then run `bundle exec rake db:setup` to create the database, perform the migrations, and create the admin user account.
+Set up will seed the database and create a new admin user account with the email and password specified in the `config/secrets.yml` file, which will use the `.env` variables. This should be fine for development but feel free to change them.
+
 
 #### Launch the server
-After all of the above, logout of the VM and run `vagrant reload`. Log back in after the reboot and run `cd /vagrant && rails server` to start the app. Point your browser to [http://localhost:3000](http://localhost:3000).
+After all of the above, restart the VM and with `vagrant reload`. To launch the server, log back in run `cd /vagrant && foreman run rails server` to start the app. Point your browser to [http://localhost:3000](http://localhost:3000).
 
 Profit!
 
-## Developing the app
-
-If you seed the database, it will create a new admin user account with the email and password specified in the `config/secrets.yml` file. This should be fine for development but feel free to change them.
+## Running tests
+Before committing, or at least pushing, be sure your tests pass by running `foreman run rspec`. If you get an error regarding phantomjs, try manually install it via `sudo apt-get install phantomjs -y`.
 
 ### File locations
 
