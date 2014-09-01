@@ -10,9 +10,12 @@
     <li class="dropdown" id="adminMenu">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Adminstration <span class="caret"></span></a>
       <ul class="dropdown-menu" role="menu" aria-labelledby="adminMenu">
-        <li><%= link_to 'Cukes', cukes_path %></li>
+        <li class="<%= 'active' if current_page? user_meetings_path %>"><%= link_to 'Approve Submissions', user_meetings_path %></li>
+        <li role="presentation" class="divider"></li>
         <li class="<%= 'active' if current_page? active_volunteers_path %>"><%= link_to 'Active Volunteers', active_volunteers_path %></li>
         <li class="<%= 'active' if current_page? inactive_volunteers_path %>"><%= link_to 'Inactive Volunteers', inactive_volunteers_path %></li>
+        <li role="presentation" class="divider"></li>
+        <li><%= link_to 'Cukes', cukes_path %></li>
       </ul>
     </li>
   <% end %>
