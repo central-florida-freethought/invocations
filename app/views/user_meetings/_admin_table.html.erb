@@ -22,9 +22,23 @@
       <td><%= m.speaker_praised %></td>
       <td width="24%">
           <div class="btn-group">
-              <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Approve</button>
-              <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
-              <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Deny</button>
+              <%= button_to approve_user_meeting_path(m), method: :patch,
+                            id: "approve_meeting_#{m.id}",
+                            class: 'btn btn-success btn-xs' do %>
+                            <span class="glyphicon glyphicon-ok"></span> Approve
+              <%end%>
+              <!--todo update to use the correct action-->
+              <%= button_to approve_user_meeting_path(m), method: :patch,
+                            id: "approve_meeting_#{m.id}",
+                            class: 'btn btn-primary btn-xs' do %>
+                            <span class="glyphicon glyphicon-pencil"></span> Edit
+              <%end%>
+              <!--todo update to use the correct action-->
+              <%= button_to approve_user_meeting_path(m), method: :patch,
+                            id: "approve_meeting_#{m.id}",
+                            class: 'btn btn-danger btn-xs' do %>
+                            <span class="glyphicon glyphicon-remove"></span> Deny
+              <%end%>
           </div>
       </td>
     </tr>

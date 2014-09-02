@@ -75,6 +75,7 @@ header {
   }
 }
 
+//todo add another size for medium screens
 @media (min-width: 768px) {
   #logo img {
     width: 20%;
@@ -229,5 +230,12 @@ form {
       background-color: $link_bg_hover_color;
       color: $link_hover_color;
     }
+  }
+}
+
+.btn-group > form.button_to {
+  display: inline;
+  div {
+    display: inline;
   }
 }

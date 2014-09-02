@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     patch ':id/deactivate', to: 'registrations#deactivate', as: 'deactivate_user'
   end
 
-  resources :user_meetings
+  resources :user_meetings do
+    member do
+      patch 'approve'
+    end
+  end
   resources :user_meetings_steps
   resources :localities
 

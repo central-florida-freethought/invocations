@@ -18,6 +18,13 @@ class UserMeetingsController < ApplicationController
     @user_meeting.build_speaker
   end
 
+  def approve
+    # Need some kind of valication?
+    @user_meeting = UserMeeting.find(params[:id])
+    @user_meeting.update_attribute('pending', false)
+    redirect_to user_meetings_path, notice: 'Meeting approved.'
+  end
+
   def create
     @user_meeting = current_user.user_meetings.build user_meeting_params
     if current_user.has_any_role? :trusted
