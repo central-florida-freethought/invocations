@@ -1,6 +1,6 @@
 class LocalitiesController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
-  load_and_authorize_resource
+  before_filter :authenticate_user!, except: [:index, :show, :report, :report_all]
+  load_and_authorize_resource except: [:report, :report_all, :index]
   respond_to :html
 
   def edit
@@ -10,10 +10,6 @@ class LocalitiesController < ApplicationController
 
   def index
     @localities = Locality.all
-    respond_to do |format|
-      format.html
-      format.json { render json: @localities}
-    end
   end
 
   def new
@@ -41,6 +37,41 @@ class LocalitiesController < ApplicationController
       flash[:notice] = 'Locality was successfully updated'
     end
     respond_with @locality
+  end
+
+  def report
+    @user_meetings = locality_report(params[:id])
+    respond_to do |format|
+      format.json { render json: @user_meetings}
+    end
+  end
+
+  def report_all
+    @user_meetings = locality_report(nil)
+    respond_to do |format|
+      format.json { render json: @user_meetings}
+    end
+  end
+
+  private
+  def locality_report(id)
+    query = ' SELECT  '
+    query +=   'religions.name AS "religion", '
+    query +=   'count(religions.name) AS "count" '
+    query += ' FROM '
+    query +=   ' user_meetings '
+    query +=   ' LEFT JOIN localities ON user_meetings.locality_id = localities.id '
+    query +=   ' LEFT JOIN speakers ON user_meetings.speaker_id = speakers.id '
+    query +=   ' LEFT JOIN religions ON speakers.religion_id = religions.id '
+    query +=   ' LEFT JOIN users ON user_meetings.user_id = users.id where '
+    if id != nil
+      query += " user_meetings.locality_id = #{id} and "
+    end
+    query += ' user_meetings.invocation_conducted like "Yes%" and user_meetings.pending = 0'
+    query += ' GROUP BY religions.name '
+    query += ' ORDER BY "count" DESC '
+    @user_meetings = UserMeeting.find_by_sql(query)
+
   end
 
   private
