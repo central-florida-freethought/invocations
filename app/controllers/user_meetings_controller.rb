@@ -4,9 +4,9 @@ class UserMeetingsController < ApplicationController
 
   def index
     if current_user.has_any_role? :admin
-      @user_meetings = UserMeeting.where('pending = ?', 1)
+      @user_meetings = UserMeeting.pending
     else
-      @user_meetings = UserMeeting.where('user_id = ?', current_user)
+      @user_meetings = current_user.user_meetings
     end
   end
 
