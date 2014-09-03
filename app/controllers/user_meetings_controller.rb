@@ -26,7 +26,7 @@ class UserMeetingsController < ApplicationController
       @user_meeting.pending = true
     end
     
-    @user_meeting.speaker = find_or_create_speaker
+    @user_meeting.speaker = find_or_create_speaker unless user_meeting_params[:speaker_attributes].empty?
 
     if @user_meeting.save
       redirect_to user_meetings_path, notice: get_flash(@user_meeting)
