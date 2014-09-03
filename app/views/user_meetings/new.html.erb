@@ -1,4 +1,7 @@
 <% page_name 'New Meeting' %>
+<% content_for :scripts do %>
+  <%= javascript_include_tag 'jquery-ui-timepicker-addon', 'datetime', 'hideShowClear', 'speakerLiveSearch' %>
+<% end %>
 <div class='row'>
   <div class='col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 authform'>
     <%= form_for @user_meeting, html: { class: 'form-vertical' } do |f| %>
