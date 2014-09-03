@@ -27,6 +27,7 @@ $link_color: #428bca;
 $link_bg_hover_color: #eeeeee;
 $border_colors: #9a9a9a;
 $logo_bg_color: #4270d9;
+$table-bg-accent: #f9f9f9;
 
 /*
  * Base structure
@@ -238,4 +239,19 @@ form {
   div {
     display: inline;
   }
+}
+
+.slide-panel {
+  background-color: $sidebar_bg;
+  padding: 1em;
+  border: 1px solid #ccc;
+  box-shadow: inset 1px 1px 5px #ccc;
+}
+
+.even {
+  background-color: $table-bg-accent;
+}
+
+.odd {
+  background-color: transparent;
 }
