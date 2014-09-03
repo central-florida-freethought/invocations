@@ -24,19 +24,19 @@
           <div class="btn-group">
               <%= button_to approve_user_meeting_path(m), method: :patch,
                             id: "approve_meeting_#{m.id}",
-                            class: 'btn btn-success btn-xs' do %>
+                            class: 'btn btn-success btn-xs', data: {confirm: 'Are you sure you wish to approve?'} do %>
                             <span class="glyphicon glyphicon-ok"></span> Approve
               <%end%>
               <!--todo update to use the correct action-->
               <%= button_to approve_user_meeting_path(m), method: :patch,
                             id: "approve_meeting_#{m.id}",
-                            class: 'btn btn-primary btn-xs' do %>
+                            class: 'btn btn-primary btn-xs', data: {confirm: 'Are you sure you wish to approve?'} do %>
                             <span class="glyphicon glyphicon-pencil"></span> Edit
               <%end%>
               <!--todo update to use the correct action-->
               <%= button_to approve_user_meeting_path(m), method: :patch,
                             id: "approve_meeting_#{m.id}",
-                            class: 'btn btn-danger btn-xs' do %>
+                            class: 'btn btn-danger btn-xs', data: {confirm: 'Are you sure you wish to approve?'} do %>
                             <span class="glyphicon glyphicon-remove"></span> Deny
               <%end%>
           </div>
