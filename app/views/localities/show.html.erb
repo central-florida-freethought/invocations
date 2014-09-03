@@ -1,12 +1,8 @@
-<% content_for :page_name do %>
-  <%= @locality.name %>
-<% end %>
-<% content_for :locality_class do %>
-  active
-<% end %>
+<% page_name @locality.name %>
 <% content_for :scripts do %>
   <%= javascript_include_tag 'charts' %>
 <% end %>
+
 
 <div class="row">
   <div class="col-lg-10 col-lg-offset-1 col-md-6">

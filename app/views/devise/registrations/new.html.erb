@@ -1,7 +1,10 @@
+<% page_name 'New Account' %>
 <div class='row'>
   <div class='col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2 authform'>
     <%= form_for(resource, as: resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f| %>
       <h3>Sign up</h3>
+      <p>By creating an account, you are agreeing to the the <%= link_to 'privacy policy', page_path('volunteer', anchor: 'policy') %>
+          and the <%= link_to 'terms and conditions', page_path('volunteer', anchor: 'terms') %>.</p>
       <%= devise_error_messages! %>
       <div class="form-group">
         <%= f.label :first_name %>

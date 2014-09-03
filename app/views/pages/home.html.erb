@@ -1,10 +1,4 @@
-<% content_for :page_name do %>
-  Home
-<% end %>
-
-<% content_for :home_class do %>
-  active
-<% end %>
+<% page_name 'Home' %>
 
 <% content_for :scripts do %>
   <%= javascript_include_tag 'charts' %>

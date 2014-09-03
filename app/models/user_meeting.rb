@@ -4,6 +4,7 @@ class UserMeeting < ActiveRecord::Base
   # see https://github.com/airblade/paper_trail for info
   has_paper_trail
 
+  scope :pending, -> {where pending: true}
   belongs_to :user
   belongs_to :locality
   belongs_to :speaker
