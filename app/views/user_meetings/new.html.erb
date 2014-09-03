@@ -4,7 +4,7 @@
 <% end %>
 <div class='row'>
   <div class='col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 authform'>
-    <%= form_for @user_meeting, html: { class: 'form-vertical' } do |f| %>
+    <%= form_for @user_meeting, html: { class: 'form-vertical', :novalidate => true} do |f| %>
       <h3>New User Meeting</h3>
       <% if @user_meeting.errors.any? %>
         <% @user_meeting.errors.full_messages.each do |msg| %>
