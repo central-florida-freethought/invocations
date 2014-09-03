@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825025355) do
+ActiveRecord::Schema.define(version: 20140903141213) do
 
   create_table "contacts", force: true do |t|
     t.string   "name",           null: false
@@ -77,10 +77,10 @@ ActiveRecord::Schema.define(version: 20140825025355) do
   create_table "user_meetings", force: true do |t|
     t.datetime "meeting_time",                 null: false
     t.string   "invocation_conducted",         null: false
-    t.string   "pledge_before",                null: false
-    t.string   "asked_to_stand",               null: false
-    t.text     "speaker_preached",             null: false
-    t.text     "speaker_praised",              null: false
+    t.string   "pledge_before"
+    t.string   "asked_to_stand"
+    t.text     "speaker_preached"
+    t.text     "speaker_praised"
     t.text     "concerns"
     t.binary   "attachment"
     t.boolean  "pending"

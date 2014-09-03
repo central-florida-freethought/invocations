@@ -7,7 +7,7 @@ Feature: Create UserMeeting
     Given a locality with name "Orlando City Council"
     And an approved volunteer
 
-  Scenario Outline: Successfully create a meeting
+  Scenario Outline: Successfully create a meeting without an invocation
     Given a religion
     And the volunteer has the <role> role
     And volunteer is signed in
