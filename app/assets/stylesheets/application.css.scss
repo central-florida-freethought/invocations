@@ -243,11 +243,17 @@ form {
   }
 }
 
-.slide-panel {
-  background-color: $sidebar_bg;
-  padding: 1em;
-  border: 1px solid #ccc;
-  box-shadow: inset 1px 1px 5px #ccc;
+.toggleable {
+  background-color: #EFEFEF;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin: 0;
+  padding: 0;
+  .slide-panel {
+    margin: 0;
+    padding: 0;
+    background-color: #EFEFEF;
+  }
 }
 
 .even {

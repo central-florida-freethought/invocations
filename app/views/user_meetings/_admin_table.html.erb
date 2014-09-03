@@ -1,3 +1,7 @@
+<% content_for :scripts do %>
+  <%= javascript_include_tag 'meetingApproval' %>
+<% end %>
+
 <table class="table table-hover">
   <caption id="meeting-caption">Invocation Conducted Meetings Awaiting Approval</caption>
   <thead>
@@ -31,16 +35,17 @@
               <button class="btn btn-primary btn-xs" type="submit">
                             <span class="glyphicon glyphicon-eye-open"></span> Preview</button>
               <!--todo update to use the correct action-->
-              <%= button_to approve_user_meeting_path(m), method: :patch,
-                            id: "approve_meeting_#{m.id}",
-                            class: 'btn btn-danger btn-xs', data: {confirm: 'Are you sure you wish to approve?'} do %>
-                            <span class="glyphicon glyphicon-remove"></span> Deny
-              <%end%>
+              <button class="btn btn-danger btn-xs">
+                            <span class="glyphicon glyphicon-remove"></span> Deny</button>
           </div>
       </td>
     </tr>
-    <tr class="hide">
-      <td><div class="slide-panel">Foo bar</div></td>
+    <tr class="toggleable">
+      <td colspan="7">
+        <div class="slide-panel">
+          foo bar
+        </div>
+      </td>
     </tr>
   <% end %>
   </tbody>

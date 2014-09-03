@@ -12,3 +12,4 @@ Rails.application.config.assets.precompile += %w( jquery-ui-timepicker-addon.js 
 Rails.application.config.assets.precompile += %w( datetime.js )
 Rails.application.config.assets.precompile += %w( hideShowClear.js )
 Rails.application.config.assets.precompile += %w( speakerLiveSearch.js )
+Rails.application.config.assets.precompile += %w( meetingApproval.js )
