@@ -1,8 +1,12 @@
 <% page_name @locality.name %>
+<% content_for :scripts do %>
+  <%= javascript_include_tag 'jsapi','charts' %>
+<% end %>
+
 
 <div class="row">
   <div class="col-lg-10 col-lg-offset-1 col-md-6">
-    <h1 class="page-header"><%= @locality.name %></h1>
+    <h1 class="page-header" data-id="<%= @locality.id %>"><%= @locality.name %></h1>
     <p><strong>City</strong> <%= @locality.city %></p>
   </div>
 </div>
@@ -14,11 +18,13 @@
   <div class="col-lg-4 col-lg-offset-1 col-md-6 col-sm-6 graph">
     <div id="population_chart"></div>
     <h4>Population</h4>
+    <small>Data supplied by <a href="http://religions.pewforum.org/pdf/report-religious-landscape-study-full.pdf" target="_blank">Pew Reserch U.S.Religious Landscape Survey.</a></small>
   </div>
 
   <div class="col-lg-3 col-md-6 col-sm-6 graph">
     <div id="invocations_chart"></div>
     <h4>Invocations</h4>
+    <small>Data supplied by user submissions.</small>
   </div>
 
   <div class="col-lg-2 col-lg-offset-1 locality_nav">

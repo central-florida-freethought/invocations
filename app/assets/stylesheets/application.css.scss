@@ -211,6 +211,8 @@ form {
   border-radius: 4px;
   position: absolute;
   width: 94%;
+  height: 200px;
+  overflow-x: scroll;
   -webkit-box-shadow: 2px 2px 2px $border_colors;
   -moz-box-shadow: 2px 2px 2px $border_colors;
   box-shadow: 2px 2px 2px $border_colors;

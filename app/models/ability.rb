@@ -17,6 +17,7 @@ class Ability
     else
       can :read, UserMeeting, pending: false
       can :read, Locality
+      can :report, Locality
     end
     #
     # The first argument to `can` is the action you are giving the user

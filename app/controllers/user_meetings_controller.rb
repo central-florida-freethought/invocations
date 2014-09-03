@@ -4,9 +4,9 @@ class UserMeetingsController < ApplicationController
 
   def index
     if current_user.has_any_role? :admin
-      @user_meetings = UserMeeting.where('pending = ?', 1)
+      @user_meetings = UserMeeting.pending
     else
-      @user_meetings = UserMeeting.where('user_id = ?', current_user)
+      @user_meetings = current_user.user_meetings
     end
   end
 
@@ -33,7 +33,7 @@ class UserMeetingsController < ApplicationController
       @user_meeting.pending = true
     end
     
-    @user_meeting.speaker = find_or_create_speaker
+    @user_meeting.speaker = find_or_create_speaker unless user_meeting_params[:speaker_attributes].empty?
 
     if @user_meeting.save
       redirect_to user_meetings_path, notice: get_flash(@user_meeting)
@@ -53,6 +53,13 @@ class UserMeetingsController < ApplicationController
       t("user_meeting.created_pending")
     else
       t("user_meeting.created_approved")
+    end
+  end
+
+  def report
+    @user_meeting = UserMeeting.all
+    respond_to do |format|
+      format.json { render json: @user_meeting}
     end
   end
 

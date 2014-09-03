@@ -2,7 +2,6 @@ describe Speaker do
   it { is_expected.to belong_to(:organization) }
   it { is_expected.to belong_to(:religion) }
   it { is_expected.to belong_to(:denomination) }
-  it { is_expected.to validate_presence_of(:name) }
 
   let(:religion) { Fabricate :religion }
   let(:speaker) { Fabricate.build :speaker, religion: religion }
