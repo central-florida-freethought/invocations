@@ -6,8 +6,9 @@ class UserMeetingsController < ApplicationController
   def index
     if current_user.has_any_role? :admin
       @user_meetings = UserMeeting.pending.order(sort_column + ' ' + sort_direction)
+      @user_meetings = UserMeeting.includes({speaker: [:religion, :organization]}, :locality).pending
     else
-      @user_meetings = current_user.user_meetings
+      @user_meetings = current_user.user_meetings.includes({speaker: [:religion, :organization]}, :locality)
     end
   end
 

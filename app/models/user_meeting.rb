@@ -8,6 +8,7 @@ class UserMeeting < ActiveRecord::Base
   belongs_to :user
   belongs_to :locality
   belongs_to :speaker
+  delegate :religion, to: :speaker
 
   validates :meeting_type,
             :meeting_time,

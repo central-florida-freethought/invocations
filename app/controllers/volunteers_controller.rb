@@ -9,4 +9,8 @@ class VolunteersController < ApplicationController
   def active
     @confirmed_volunteers = User.where.not(confirmed_at: nil).where(approved: true)
   end
+  
+  def show
+    @volunteer = User.find params[:id]
+  end
 end

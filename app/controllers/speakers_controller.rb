@@ -6,4 +6,8 @@ class SpeakersController < ApplicationController
       format.json {render json: @speakers}
     end
   end
+  
+  def show
+    @speaker = Speaker.find params[:id]
+  end
 end
