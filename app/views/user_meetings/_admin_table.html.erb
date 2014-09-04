@@ -70,12 +70,12 @@
          <ul>
            <li>Invocation: <%= m.invocation_conducted %></li>
            <li>Pending: <%= m.pending %></li>
-           <li>Submitted by: <%= link_to "User number #{m.user_id}", '#' %></li>
-           <li>Locality: <%= link_to "Locality Number #{m.locality_id}", '#' %></li>
+           <li>Submitted by: <%= link_to m.user.full_name, volunteer_path(m.user) %></li>
+           <li>Locality: <%= link_to m.locality.name, locality_path(m.locality) %></li>
            <li>Meeting Type: <%= m.meeting_type %></li>
-           <li>Speaker: <%= link_to "Speaker #{m.speaker_id}", '#' %></a></li>
-           <li>Organization: <%= link_to 'Organization Name', '#' %></li>
-           <li>Religion: <%	 link_to 'Relgion Name', '#' %></li>
+           <li>Speaker: <%= link_to m.speaker.name, speaker_path(m.speaker) %></a></li>
+           <li>Organization: <%= link_to m.speaker.organization.name %></li>
+           <li>Religion: <%= link_to m.religion.name %></li>
          </ul>
        </div>
       </td>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'speakers/search'
   get 'volunteers/pending'
+  get 'volunteers/:id', to: 'volunteers#show', as: 'volunteer'
+  get 'speakers/:id', to: 'speakers#show', as: 'speaker'
 
   devise_for :users, controllers: { registrations: 'registrations' }
   devise_scope :user do
