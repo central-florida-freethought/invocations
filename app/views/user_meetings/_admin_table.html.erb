@@ -16,7 +16,7 @@
   </tr>
   </thead>
   <tbody>
-  <% @user_meetings.each_with_index  do |m, i| %>
+  <% @user_meetings.each_with_index do |m, i| %>
     <tr class="<%= (i % 2 == 0) ? 'even' : 'odd' %>">
       <td><%= m.id %></td>
       <td><%= m.meeting_time %></td>
@@ -29,55 +29,71 @@
           <%= button_to approve_user_meeting_path(m), method: :patch,
                         id: "approve_meeting_#{m.id}",
                         class: 'btn btn-success btn-xs', data: {confirm: 'Are you sure you wish to approve?'} do %>
-                        <span class="glyphicon glyphicon-ok"></span> Approve
-          <%end%>
+            <span class="glyphicon glyphicon-ok"></span> Approve
+          <% end %>
           <!--todo update to use the correct action-->
           <%= button_to user_meeting_path(m), method: :get, id: "show_meeting_#{m.id}", class: 'btn btn-primary btn-xs hide' do %>
-                        <span class="glyphicon glyphicon-eye-open"></span> Preview
+            <span class="glyphicon glyphicon-eye-open"></span> Preview
           <% end %>
           <!--todo update to use the correct action-->
           <button class="btn btn-danger btn-xs">
-                            <span class="glyphicon glyphicon-remove"></span> Deny</button>
+            <span class="glyphicon glyphicon-remove"></span> Deny
+          </button>
         </div>
       </td>
     </tr>
     <tr class="toggleable">
       <td colspan="7">
-       <div class="col-lg-3">
-         <h4>Meeting Links</h4>
-         <ul>
-           <li><%= link_to 'Single record view', user_meeting_path(m) %></li>
-           <li><%= link_to 'Meeting', m.meeting_url %></li>
-           <li><%= link_to 'Minutes', m.minutes_url %></li>
-           <li><%= link_to 'Agenda', m.agenda_url %></li>
-           <li><%= link_to 'Media', m.media_url %></li>
-           <li><%= link_to 'Attachment', m.attachment %></li>
-         </ul>
-       </div>
-       <div class="col-lg-5">
-         <h4>Explanations</h4>
-         <h5>Preached</h5>
-         <p><%= m.speaker_preached_explanation %></p>
+        <div class="col-lg-3">
+          <h4>Meeting Links</h4>
+          <ul>
+            <li><%= link_to 'Single record view', user_meeting_path(m) %></li>
+            <li><%= link_to 'Meeting', m.meeting_url %></li>
+            <li><%= link_to 'Minutes', m.minutes_url %></li>
+            <li><%= link_to 'Agenda', m.agenda_url %></li>
+            <li><%= link_to 'Media', m.media_url %></li>
+            <li><%= link_to 'Attachment', m.attachment %></li>
+          </ul>
+        </div>
+        <div class="col-lg-5">
+          <h4>Explanations</h4>
+          <h5>Preached</h5>
 
-         <h5>Praised</h5>
-         <p><%= m.speaker_praised_explanation %></p>
+          <p><%= m.speaker_preached_explanation %></p>
 
-         <h5>Concerns</h5>
-         <p><%= m.concerns %></p>
-       </div>
-       <div class="col-lg-3">
-         <h4>Other</h4>
-         <ul>
-           <li>Invocation: <%= m.invocation_conducted %></li>
-           <li>Pending: <%= m.pending %></li>
-           <li>Submitted by: <%= link_to m.user.full_name, volunteer_path(m.user) %></li>
-           <li>Locality: <%= link_to m.locality.name, locality_path(m.locality) %></li>
-           <li>Meeting Type: <%= m.meeting_type %></li>
-           <li>Speaker: <%= link_to m.speaker.name, speaker_path(m.speaker) %></a></li>
-           <li>Organization: <%= link_to m.speaker.organization.name %></li>
-           <li>Religion: <%= link_to m.religion.name %></li>
-         </ul>
-       </div>
+          <h5>Praised</h5>
+
+          <p><%= m.speaker_praised_explanation %></p>
+
+          <h5>Concerns</h5>
+
+          <p><%= m.concerns %></p>
+        </div>
+        <div class="col-lg-3">
+          <h4>Other</h4>
+          <ul>
+            <li>Invocation: <%= m.invocation_conducted %></li>
+            <li>Pending: <%= m.pending %></li>
+            <li>Submitted by: <%= link_to m.user.full_name, volunteer_path(m.user) %></li>
+            <li>Locality: <%= link_to m.locality.name, locality_path(m.locality) %></li>
+            <li>Meeting Type: <%= m.meeting_type %></li>
+            <li>Speaker: <%= link_to m.speaker.name, speaker_path(m.speaker) %></a></li>
+            <li>Organization:
+              <% if m.speaker.organization.nil? %>
+                <%= 'Not provided' %>
+              <% else %>
+                <%= link_to m.speaker.organization.name %>
+              <% end %>
+            </li>
+            <li>Religion:
+              <% if m.speaker.religion.nil? %>
+                <%= 'Not provided' %>
+              <% else %>
+                <%= link_to m.speaker.religion.name %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
       </td>
     </tr>
   <% end %>
