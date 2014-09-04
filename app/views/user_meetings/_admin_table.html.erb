@@ -32,7 +32,7 @@
                         <span class="glyphicon glyphicon-ok"></span> Approve
           <%end%>
           <!--todo update to use the correct action-->
-          <%= button_to user_meeting_path(m), method: :get, id: "show_meeting_#{m.id}", class: 'btn btn-primary btn-xs' do %>
+          <%= button_to user_meeting_path(m), method: :get, id: "show_meeting_#{m.id}", class: 'btn btn-primary btn-xs hide' do %>
                         <span class="glyphicon glyphicon-eye-open"></span> Preview
           <% end %>
           <!--todo update to use the correct action-->
@@ -53,13 +53,16 @@
            <li>Media: <%= m.media_url %></li>
          </ul>
        </div>
-       <div class="col-lg-4">
+       <div class="col-lg-5">
          <h4>Explanations</h4>
-         <ul>
-           <li>Preached: <%= m.speaker_preached_explanation %></li>
-           <li>Praised: <%= m.speaker_praised_explanation %></li>
-           <li>Concerns: <%= m.concerns %></li>
-         </ul>
+         <h5>Preached</h5>
+         <p><%= m.speaker_preached_explanation %></p>
+
+         <h5>Praised</h5>
+         <p><%= m.speaker_praised_explanation %></p>
+
+         <h5>Concerns</h5>
+         <p><%= m.concerns %></p>
        </div>
        <div class="col-lg-3">
          <h4>Other</h4>
