@@ -25,26 +25,53 @@
       <td><%= m.speaker_preached %></td>
       <td><%= m.speaker_praised %></td>
       <td>
-          <div class="btn-group">
-              <%= button_to approve_user_meeting_path(m), method: :patch,
-                            id: "approve_meeting_#{m.id}",
-                            class: 'btn btn-success btn-xs', data: {confirm: 'Are you sure you wish to approve?'} do %>
-                            <span class="glyphicon glyphicon-ok"></span> Approve
-              <%end%>
-              <!--todo update to use the correct action-->
-              <button class="btn btn-primary btn-xs" type="submit">
-                            <span class="glyphicon glyphicon-eye-open"></span> Preview</button>
-              <!--todo update to use the correct action-->
-              <button class="btn btn-danger btn-xs">
+        <div class="btn-group">
+          <%= button_to approve_user_meeting_path(m), method: :patch,
+                        id: "approve_meeting_#{m.id}",
+                        class: 'btn btn-success btn-xs', data: {confirm: 'Are you sure you wish to approve?'} do %>
+                        <span class="glyphicon glyphicon-ok"></span> Approve
+          <%end%>
+          <!--todo update to use the correct action-->
+          <%= button_to user_meeting_path(m), method: :get, id: "show_meeting_#{m.id}", class: 'btn btn-primary btn-xs' do %>
+                        <span class="glyphicon glyphicon-eye-open"></span> Preview
+          <% end %>
+          <!--todo update to use the correct action-->
+          <button class="btn btn-danger btn-xs">
                             <span class="glyphicon glyphicon-remove"></span> Deny</button>
-          </div>
+        </div>
       </td>
     </tr>
     <tr class="toggleable">
       <td colspan="7">
-        <div class="slide-panel">
-          foo bar
-        </div>
+       <div class="col-lg-3">
+         <h4>Links</h4>
+         <ul>
+           <li><%= link_to 'Single record view', user_meeting_path(m) %></li>
+           <li>Meeting: <%= m.meeting_url %></li>
+           <li>Minutes: <%= m.minutes_url %></li>
+           <li>Agenda: <%= m.agenda_url %></li>
+           <li>Media: <%= m.media_url %></li>
+         </ul>
+       </div>
+       <div class="col-lg-4">
+         <h4>Explanations</h4>
+         <ul>
+           <li>Preached: <%= m.speaker_preached_explanation %></li>
+           <li>Praised: <%= m.speaker_praised_explanation %></li>
+           <li>Concerns: <%= m.concerns %></li>
+         </ul>
+       </div>
+       <div class="col-lg-3">
+         <h4>Other</h4>
+         <ul>
+           <li>Invocation: <%= m.invocation_conducted %></li>
+           <li>Pending: <%= m.pending %></li>
+           <li>Submitter: <%= m.user_id %></li>
+           <li>Locality: <%= m.locality_id %></li>
+           <li>Meeting Type: <%= m.meeting_type %></li>
+           <li>Speaker: <%= m.speaker_id %></li>
+         </ul>
+       </div>
       </td>
     </tr>
   <% end %>

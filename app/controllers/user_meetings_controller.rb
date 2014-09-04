@@ -18,6 +18,10 @@ class UserMeetingsController < ApplicationController
     @user_meeting.build_speaker
   end
 
+  def show
+    @user_meeting = UserMeeting.find(params[:id])
+  end
+
   def approve
     # Need some kind of valication?
     @user_meeting = UserMeeting.find(params[:id])

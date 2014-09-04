@@ -1,0 +1,43 @@
+<% page_name "Meeting #{@user_meeting.id}" %>
+<div class='row'>
+  <div class='col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 '>
+    <h3 class="page-header">Showing Meeting <%= @user_meeting.id %></h3>
+    <table class="table table-bordered">
+        <thead>
+        <th>Field</th>
+        <th>Value</th>
+        </thead>
+        <tbody>
+        <tr><th>Meeting ID </th><td><%= @user_meeting.id %></td></tr>
+        <tr><th>Meeting Time </th><td><%= @user_meeting.meeting_time %></td></tr>
+        <tr><th>Was an incvocation conducted?</th><td><%= @user_meeting.invocation_conducted %></td></tr>
+        <tr><th>Were people asked to pldege?</th><td><%= @user_meeting.pledge_before %></td></tr>
+        <tr><th>Were people asked to stand?</th><td><%= @user_meeting.asked_to_stand %></td></tr>
+        <tr><th>Did the speaker preach?</th><td><%= @user_meeting.speaker_preached %></td></tr>
+        <tr><th>Explanation</th><td><%= @user_meeting.speaker_preached_explanation %></td></tr>
+        <tr><th>Was the speaker praised?</th><td><%= @user_meeting.speaker_praised %></td></tr>
+        <tr><th>Explanation</th><td><%= @user_meeting.speaker_praised_explanation %></td></tr>
+        <tr><th>Is this record in pending status?</th><td><%= @user_meeting.pending %></td></tr>
+        <!--todo pull in submitter name-->
+        <tr><th>Submitter ID</th><td><%= @user_meeting.user_id %></td></tr>
+        <tr><th>Database create date</th><td><%= @user_meeting.created_at %></td></tr>
+        <tr><th>Last updated</th><td><%= @user_meeting.updated_at %></td></tr>
+        <!--todo pull in locality name-->
+        <tr><th>Locality ID</th><td><%= @user_meeting.locality_id %></td></tr>
+        <tr><th>Meeting type</th><td><%= @user_meeting.meeting_type %></td></tr>
+        <tr><th>Meeting address</th><td><%= @user_meeting.street_address %></td></tr>
+        <!--todo update to use speaker name and info-->
+        <tr><th>Speaker ID</th><td><%= @user_meeting.speaker_id %></td></tr>
+        <tr><th>Concerns</th><td><%= @user_meeting.concerns %></td></tr>
+        <tr><th>Meeting URL</th><td><%= @user_meeting.meeting_url %></td></tr>
+        <tr><th>Minutes URL</th><td><%= @user_meeting.minutes_url %></td></tr>
+        <tr><th>Agenda URL</th><td><%= @user_meeting.agenda_url %></td></tr>
+        <tr><th>Media URL</th><td><%= @user_meeting.media_url %></td></tr>
+        <tr><th>Attachment</th><td><%= @user_meeting.attachment %></td></tr>
+
+
+        </tbody>
+
+    </table>
+  </div>
+</div>
