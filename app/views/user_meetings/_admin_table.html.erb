@@ -44,13 +44,14 @@
     <tr class="toggleable">
       <td colspan="7">
        <div class="col-lg-3">
-         <h4>Links</h4>
+         <h4>Meeting Links</h4>
          <ul>
            <li><%= link_to 'Single record view', user_meeting_path(m) %></li>
-           <li>Meeting: <%= m.meeting_url %></li>
-           <li>Minutes: <%= m.minutes_url %></li>
-           <li>Agenda: <%= m.agenda_url %></li>
-           <li>Media: <%= m.media_url %></li>
+           <li><%= link_to 'Meeting', m.meeting_url %></li>
+           <li><%= link_to 'Minutes', m.minutes_url %></li>
+           <li><%= link_to 'Agenda', m.agenda_url %></li>
+           <li><%= link_to 'Media', m.media_url %></li>
+           <li><%= link_to 'Attachment', m.attachment %></li>
          </ul>
        </div>
        <div class="col-lg-5">
@@ -69,10 +70,12 @@
          <ul>
            <li>Invocation: <%= m.invocation_conducted %></li>
            <li>Pending: <%= m.pending %></li>
-           <li>Submitter: <%= m.user_id %></li>
-           <li>Locality: <%= m.locality_id %></li>
+           <li>Submitted by: <%= link_to "User number #{m.user_id}", '#' %></li>
+           <li>Locality: <%= link_to "Locality Number #{m.locality_id}", '#' %></li>
            <li>Meeting Type: <%= m.meeting_type %></li>
-           <li>Speaker: <%= m.speaker_id %></li>
+           <li>Speaker: <%= link_to "Speaker #{m.speaker_id}", '#' %></a></li>
+           <li>Organization: <%= link_to 'Organization Name', '#' %></li>
+           <li>Religion: <%	 link_to 'Relgion Name', '#' %></li>
          </ul>
        </div>
       </td>
