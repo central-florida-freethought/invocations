@@ -1,10 +1,11 @@
 class UserMeetingsController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
+  helper_method :sort_column, :sort_direction
 
   def index
     if current_user.has_any_role? :admin
-      @user_meetings = UserMeeting.pending
+      @user_meetings = UserMeeting.pending.order(sort_column + ' ' + sort_direction)
     else
       @user_meetings = current_user.user_meetings
     end
@@ -90,5 +91,15 @@ class UserMeetingsController < ApplicationController
                    :locality_id,
                    speaker_attributes: [:id, :name, :honorific, :religion_id, 
                      :denomination_id, organization_attributes: [:id, :name]]
+  end
+
+  private
+  def sort_column
+    UserMeeting.column_names.include?(params[:sort]) ? params[:sort] : 'id'
+  end
+
+  private
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
 end

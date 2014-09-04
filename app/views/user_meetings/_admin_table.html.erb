@@ -6,12 +6,12 @@
   <caption id="meeting-caption">Invocation Conducted Meetings Awaiting Approval</caption>
   <thead>
   <tr>
-    <th>Meeting ID</th>
-    <th>Meeting Time</th>
-    <th>Before Pledge?</th>
-    <th>Asked to Stand?</th>
-    <th>Speaker Preach?</th>
-    <th>Speaker Praised?</th>
+    <th><%= sortable 'id', 'Meeting ID' %></th>
+    <th><%= sortable 'meeting_time', 'Meeting Time' %></th>
+    <th><%= sortable 'pledge_before', 'Before Pledge?' %></th>
+    <th><%= sortable 'asked_to_stand', 'Asked to Stand?' %></th>
+    <th><%= sortable 'speaker_preached', 'Speaker Preach?' %></th>
+    <th><%= sortable 'speaker_praised', 'Speaker Praised?' %></th>
     <th>Action</th>
   </tr>
   </thead>
