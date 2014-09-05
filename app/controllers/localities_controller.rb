@@ -69,7 +69,7 @@ class LocalitiesController < ApplicationController
     end
     query += ' user_meetings.invocation_conducted like "Yes%" and user_meetings.pending = 0'
     query += ' GROUP BY religions.name '
-    query += ' ORDER BY "count" DESC '
+    query += ' ORDER BY 2 DESC '
     @user_meetings = UserMeeting.find_by_sql(query)
 
   end
