@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'speakers/search'
   get 'volunteers/pending'
+  get 'volunteers/inactive', as: :inactive_volunteers
+  get 'volunteers/active', as: :active_volunteers
   get 'volunteers/:id', to: 'volunteers#show', as: 'volunteer'
   get 'speakers/:id', to: 'speakers#show', as: 'speaker'
 
@@ -24,9 +26,7 @@ Rails.application.routes.draw do
       get 'report_all'
     end
   end
-
-  get 'volunteers/inactive', as: :inactive_volunteers
-  get 'volunteers/active', as: :active_volunteers
+  
   get 'cukes', to: 'cukes#index', as: :cukes
 
   # Uses the 'high_voltage' gem. Modify app/views/pages/home.html.erb
