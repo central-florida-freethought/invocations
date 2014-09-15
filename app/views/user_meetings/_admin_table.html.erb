@@ -75,7 +75,7 @@
             <ul>
               <li>Invocation: <%= m.invocation_conducted %></li>
               <li>Pending: <%= m.pending %></li>
-              <li>Submitted by: <%= link_to m.user.full_name, volunteer_path(m.user) %></li>
+              <li>Submitted by: <%= m.user.full_name %></li>
               <li>Locality: <%= link_to m.locality.name, locality_path(m.locality) %></li>
               <li>Meeting Type: <%= m.meeting_type %></li>
               <li>Speaker: <%= link_to m.speaker.name, speaker_path(m.speaker) %></a></li>
@@ -83,14 +83,14 @@
                 <% if m.speaker.organization.nil? %>
                   <%= 'Not provided' %>
                 <% else %>
-                  <%= link_to m.speaker.organization.name %>
+                  <%= m.speaker.organization.name %>
                 <% end %>
               </li>
               <li>Religion:
                 <% if m.speaker.religion.nil? %>
                   <%= 'Not provided' %>
                 <% else %>
-                  <%= link_to m.speaker.religion.name %>
+                  <%= m.speaker.religion.name %>
                 <% end %>
               </li>
             </ul>
