@@ -12,13 +12,13 @@
     <th><%= sortable 'asked_to_stand', 'Asked to Stand?' %></th>
     <th><%= sortable 'speaker_preached', 'Speaker Preach?' %></th>
     <th><%= sortable 'speaker_praised', 'Speaker Praised?' %></th>
-    <th>Action</th>
+    <th class="text-center">Action</th>
   </tr>
   </thead>
   <tbody>
   <% @user_meetings.each_with_index do |m, i| %>
     <tr class="<%= (i % 2 == 0) ? 'even' : 'odd' %>">
-      <td><%= m.id %></td>
+      <td><%= link_to m.id, user_meeting_path(m) %></td>
       <td><%= m.meeting_time %></td>
       <td><%= m.pledge_before %></td>
       <td><%= m.asked_to_stand %></td>
@@ -49,11 +49,11 @@
             <h4>Meeting Links</h4>
             <ul>
               <li><%= link_to 'Single record view', user_meeting_path(m) %></li>
-              <li><%= link_to 'Meeting', m.meeting_url %></li>
-              <li><%= link_to 'Minutes', m.minutes_url %></li>
-              <li><%= link_to 'Agenda', m.agenda_url %></li>
-              <li><%= link_to 'Media', m.media_url %></li>
-              <li><%= link_to 'Attachment', m.attachment %></li>
+              <li><%= get_meeting_links 'Meeting', m.meeting_url %></li>
+              <li><%= get_meeting_links 'Minutes', m.minutes_url %></li>
+              <li><%= get_meeting_links 'Agenda', m.agenda_url %></li>
+              <li><%= get_meeting_links 'Media', m.media_url %></li>
+              <li><%= get_meeting_links 'Attachment', m.attachment %></li>
             </ul>
           </div>
           <div class="col-lg-5">
@@ -79,20 +79,8 @@
               <li>Locality: <%= link_to m.locality.name, locality_path(m.locality) %></li>
               <li>Meeting Type: <%= m.meeting_type %></li>
               <li>Speaker: <%= link_to m.speaker.name, speaker_path(m.speaker) %></a></li>
-              <li>Organization:
-                <% if m.speaker.organization.nil? %>
-                  <%= 'Not provided' %>
-                <% else %>
-                  <%= m.speaker.organization.name %>
-                <% end %>
-              </li>
-              <li>Religion:
-                <% if m.speaker.religion.nil? %>
-                  <%= 'Not provided' %>
-                <% else %>
-                  <%= m.speaker.religion.name %>
-                <% end %>
-              </li>
+              <li>Organization: <%= get_obj_name(m.speaker.organization) %> </li>
+              <li>Religion: <%= get_obj_name(m.speaker.religion) %> </li>
             </ul>
           </div>
         </div>
