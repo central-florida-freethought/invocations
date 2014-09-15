@@ -18,7 +18,7 @@
   <tbody>
   <% @user_meetings.each_with_index do |m, i| %>
     <tr class="<%= (i % 2 == 0) ? 'even' : 'odd' %>">
-      <td><%= link_to m.id, user_meeting_path(m) %></td>
+      <td><%= current_user.has_role?(:admin) ? link_to( 'Single record view', user_meeting_path(m)) : m.id %></td>
       <td><%= m.meeting_time %></td>
       <td><%= m.pledge_before %></td>
       <td><%= m.asked_to_stand %></td>
@@ -26,19 +26,18 @@
       <td><%= m.speaker_praised %></td>
       <td>
         <div class="btn-group">
-          <%= button_to approve_user_meeting_path(m), method: :patch,
-                        id: "approve_meeting_#{m.id}",
-                        class: 'btn btn-success btn-xs', data: {confirm: 'Are you sure you wish to approve?'} do %>
-            <span class="glyphicon glyphicon-ok"></span> Approve
-          <% end %>
-          <!--todo update to use the correct action-->
           <%= button_to user_meeting_path(m), method: :get, id: "show_meeting_#{m.id}", class: 'btn btn-primary btn-xs hide hide-panel' do %>
             <span class="glyphicon glyphicon-eye-open"></span> Preview
           <% end %>
-          <!--todo update to use the correct action-->
-          <button class="btn btn-danger btn-xs">
-            <span class="glyphicon glyphicon-remove"></span> Deny
-          </button>
+          <% if current_user.has_role?(:admin) %>
+            <%= button_to approve_user_meeting_path(m), method: :patch, id: "approve_meeting_#{m.id}", class: 'btn btn-success btn-xs', data: {confirm: 'Are you sure you wish to approve?'} do %>
+              <span class="glyphicon glyphicon-ok"></span> Approve
+            <% end %>
+            <!--todo update to use the correct action-->
+            <button class="btn btn-danger btn-xs">
+              <span class="glyphicon glyphicon-remove"></span> Deny
+            </button>
+          <% end %>
         </div>
       </td>
     </tr>
@@ -48,7 +47,7 @@
           <div class="col-lg-3">
             <h4>Meeting Links</h4>
             <ul>
-              <li><%= link_to 'Single record view', user_meeting_path(m) %></li>
+              <li><%= current_user.has_role?(:admin) ? link_to( 'Single record view', user_meeting_path(m)) : m.id %></li>
               <li><%= get_meeting_links 'Meeting', m.meeting_url %></li>
               <li><%= get_meeting_links 'Minutes', m.minutes_url %></li>
               <li><%= get_meeting_links 'Agenda', m.agenda_url %></li>
