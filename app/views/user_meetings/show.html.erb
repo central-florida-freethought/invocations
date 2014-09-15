@@ -5,7 +5,7 @@
     <p><%= link_to(raw('<span class="glyphicon glyphicon-arrow-left"></span> Back to list'), user_meetings_path ) %></p>
     <table class="table table-bordered table-striped">
       <thead>
-      <th>Field</th>
+      <th width="25%">Field</th>
       <th>Value</th>
       </thead>
       <tbody>
@@ -123,31 +123,31 @@
       <tr>
         <th>Meeting URL</th>
         <td>
-          <%= @user_meeting.meeting_url %>
+          <%= get_meeting_links 'Meeting URL', @user_meeting.meeting_url %>
         </td>
       </tr>
       <tr>
         <th>Minutes URL</th>
         <td>
-          <%= @user_meeting.minutes_url %>
+          <%= get_meeting_links 'Minutes URL', @user_meeting.minutes_url %>
         </td>
       </tr>
       <tr>
         <th>Agenda URL</th>
         <td>
-          <%= @user_meeting.agenda_url %>
+          <%= get_meeting_links 'Agenda URL', @user_meeting.agenda_url %>
         </td>
       </tr>
       <tr>
         <th>Media URL</th>
         <td>
-          <%= @user_meeting.media_url %>
+          <%= get_meeting_links 'Media URL', @user_meeting.media_url %>
         </td>
       </tr>
       <tr>
         <th>Attachment</th>
         <td>
-          <%= @user_meeting.attachment %>
+          <%= get_meeting_links 'Attachment', @user_meeting.attachment %>
         </td>
       </tr>
       </tbody>
