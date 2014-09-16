@@ -8,36 +8,22 @@
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
 
-# Names generated from http://www.fakenamegenerator.com
-puts "Cleaning up the UserMeetings table"
-Contact.delete_all
-
-puts "Seeding Contacts"
-
-contact = []
-4.times do |i|
-  contact[i] = Contact.create(name: Faker::Name.name, title: Faker::Name.title, phone: Faker::PhoneNumber.phone_number,
-                              email: Faker::Internet.email, street_address: Faker::Address.street_address,
-                              city: Faker::Address.city, state_code: Faker::Address.state_abbr, country_code: "US",
-                              zip: Faker::Address.zip, notes: Faker::Lorem.sentence)
-end
-
 puts "Cleaning up the UserMeetings table"
 Locality.delete_all
 
 puts "Seeding Localities"
 Locality.create(name: "Orlando", street_address: "400 South Orange Avenue", city: "Orlando", state_code: "FL", country_code: "US",
-               zip: "32801", volunteer_needed: "1", invocations_conducted: "1", contact: contact[rand(contact.count)] )
+               zip: "32801", volunteer_needed: "1", invocations_conducted: "1", contact_name: Faker::Name.name, contact_title: Faker::Name.title )
 Locality.create(name: "Kissimmee", street_address: "101 Church Street ", city: "Kissimmee", state_code: "FL", country_code: "US",
-                zip: "34741", volunteer_needed: "1", invocations_conducted: "1", contact: contact[rand(contact.count)] )
+                zip: "34741", volunteer_needed: "1", invocations_conducted: "1", contact_name: Faker::Name.name, contact_email: Faker::Internet.email, contact_phone: Faker::PhoneNumber.phone_number )
 Locality.create(name: "Sanford", street_address: "300 N Park Avenue", city: "Sanford", state_code: "FL", country_code: "US",
-                zip: "32771", volunteer_needed: "1", invocations_conducted: "1", contact: contact[rand(contact.count)] )
+                zip: "32771", volunteer_needed: "1", invocations_conducted: "1", contact_phone: Faker::PhoneNumber.phone_number )
 Locality.create(name: "Winter Park", street_address: "401 South Park Avenue", city: "Winter Park", state_code: "FL", country_code: "US",
-                zip: "32789", volunteer_needed: "1", invocations_conducted: "1", contact: contact[rand(contact.count)] )
+                zip: "32789", volunteer_needed: "1", invocations_conducted: "1" )
 Locality.create(name: "Oviedo", street_address: "400 Alexandria Blvd", city: "Oviedo", state_code: "FL", country_code: "US",
-                zip: "32765", volunteer_needed: "1", invocations_conducted: "1", contact: contact[rand(4)] )
+                zip: "32765", volunteer_needed: "1", invocations_conducted: "1" )
 Locality.create(name: "Altamonte Springs", street_address: "225 Newburyport Ave.", city: "Altamonte Springs", state_code: "FL", country_code: "US",
-                zip: "32701", volunteer_needed: "1", invocations_conducted: "1", contact: contact[rand(contact.count)] )
+                zip: "32701", volunteer_needed: "1", invocations_conducted: "1" )
 
 Religion.create(name: 'Buddhist')
 Religion.create(name: 'Catholic')

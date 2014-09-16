@@ -69,44 +69,5 @@
     </div>
   </div>
   <h4>Locality Contact:</h4>
-  <%= f.fields_for :contact do |contact| %>
-    <div class='form-group'>
-      <%= contact.label :name %>
-      <%= contact.text_field :name, class: 'form-control' %>
-    </div>
-    <div class='form-group'>
-      <%= contact.label :title %>
-      <%= contact.text_field :title, size: 5, class: 'form-control' %>
-    </div>
-    <div class='form-group'>
-      <%= contact.label :phone %>
-      <%= contact.telephone_field :phone, class: 'form-control' %>
-    </div>
-    <div class='form-group'>
-      <%= contact.label :email %>
-      <%= contact.email_field :email, class: 'form-control' %>
-    </div>
-    <div class='form-group'>
-      <%= contact.label :street_address %>
-      <%= contact.text_field :street_address, class: 'form-control' %>
-    </div>
-    <div class='form-group'>
-      <%= contact.label :city %>
-      <%= contact.text_field :city, class: 'form-control' %>
-    </div>
-    <div class='form-group'>
-      <%= contact.hidden_field :country_code, value: 'US' %>
-      <%= contact.label :state_code, 'State' %>
-      <%= contact.subregion_select :state_code, 'US', {}, class: 'form-control' %>
-    </div>
-    <div class='form-group'>
-      <%= contact.label :zip %>
-      <%= contact.text_field :zip, size: 10, class: 'form-control' %>
-    </div>
-    <div class='form-group'>
-      <%= contact.label :notes %>
-      <%= contact.text_area :notes, rows: 10, class: 'form-control' %>
-    </div>
-  <% end %>
   <%= f.button type: 'submit', class: 'btn btn-default btn-lg pull-right' %>
 <% end %>

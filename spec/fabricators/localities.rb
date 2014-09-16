@@ -11,5 +11,4 @@ Fabricator :locality do
   meeting_data_url Faker::Internet.url
   meeting_schedule Faker::Lorem.sentence
   invocations_conducted true
-  contact
 end

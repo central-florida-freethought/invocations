@@ -14,7 +14,6 @@ class LocalitiesController < ApplicationController
 
   def new
     @locality = Locality.new params[:locality]
-    @locality.build_contact
     respond_with @locality
   end
 
