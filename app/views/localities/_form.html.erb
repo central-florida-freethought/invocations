@@ -1,5 +1,10 @@
 <%= form_for @locality, html: {class: 'form-vertical'} do |f| %>
   <h3><%= yield(:locality_heading) %></h3>
+  <% if @locality.errors.any? %>
+    <% @locality.errors.full_messages.each do |msg| %>
+      <%= msg %>
+    <% end %>
+  <% end %>
   <div class='form-group'>
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control', placeholder: 'Enter locality name' %>
@@ -23,6 +28,10 @@
     <%= f.text_field :zip, size: 10, class: 'form-group' %>
   </div>
   <div class='form-group'>
+    <%= f.label :phone_number %>
+    <%= f.phone_field :phone_number, size: 20, class: 'form-group' %>
+  </div>
+  <div class='form-group'>
     <%= f.label :location_notes %>
     <%= f.text_area :location_notes, rows: 10, class: 'form-control' %>
   </div>
@@ -31,6 +40,7 @@
     <%= f.url_field :website_url, size: 20, class: 'form-control' %>
   </div>
   <div class='form-group'>
+    <%= f.label :volunteer_needed %>
     <div class='radio'>
       <label>
         <%= f.radio_button :volunteer_needed, 'true' %>
@@ -53,6 +63,7 @@
     <%= f.text_area :meeting_schedule, rows: 10, class: 'form-control' %>
   </div>
   <div class='form-group'>
+    <%= f.label :invocations_conducted %>
     <div class='radio'>
       <label>
         <%= f.radio_button :invocations_conducted, 'true' %>
@@ -67,44 +78,42 @@
     </div>
   </div>
   <h4>Locality Contact:</h4>
-  <%= f.fields_for :contact do |contact| %>
-    <div class='form-group'>
-      <%= contact.label :name %>
-      <%= contact.text_field :name, class: 'form-control' %>
-    </div>
-    <div class='form-group'>
-      <%= contact.label :title %>
-      <%= contact.text_field :title, size: 5, class: 'form-control' %>
-    </div>
-    <div class='form-group'>
-      <%= contact.label :phone %>
-      <%= contact.telephone_field :phone, class: 'form-control' %>
-    </div>
-    <div class='form-group'>
-      <%= contact.label :email %>
-      <%= contact.email_field :email, class: 'form-control' %>
-    </div>
-    <div class='form-group'>
-      <%= contact.label :street_address %>
-      <%= contact.text_field :street_address, class: 'form-control' %>
-    </div>
-    <div class='form-group'>
-      <%= contact.label :city %>
-      <%= contact.text_field :city, class: 'form-control' %>
-    </div>
-    <div class='form-group'>
-      <%= contact.hidden_field :country_code, value: 'US' %>
-      <%= contact.label :state_code, 'State' %>
-      <%= contact.subregion_select :state_code, 'US', {}, class: 'form-control' %>
-    </div>
-    <div class='form-group'>
-      <%= contact.label :zip %>
-      <%= contact.text_field :zip, size: 10, class: 'form-control' %>
-    </div>
-    <div class='form-group'>
-      <%= contact.label :notes %>
-      <%= contact.text_area :notes, rows: 10, class: 'form-control' %>
-    </div>
-  <% end %>
+  <div class='form-group'>
+    <%= f.label :contact_name %>
+    <%= f.text_field :contact_name, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :contact_title %>
+    <%= f.text_field :contact_title, size: 5, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :contact_phone %>
+    <%= f.telephone_field :contact_phone, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :contact_email %>
+    <%= f.email_field :contact_email, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :contact_street_address %>
+    <%= f.text_field :contact_street_address, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :contact_city %>
+    <%= f.text_field :contact_city, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.hidden_field :contact_country_code, value: 'US' %>
+    <%= f.label :contact_state_code, 'State' %>
+    <%= f.subregion_select :contact_state_code, 'US', {}, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :contact_zip %>
+    <%= f.text_field :contact_zip, size: 10, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :contact_notes %>
+    <%= f.text_area :contact_notes, rows: 10, class: 'form-control' %>
+  </div>
   <%= f.button type: 'submit', class: 'btn btn-default btn-lg pull-right' %>
 <% end %>

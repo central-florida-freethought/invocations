@@ -1,5 +1,6 @@
 Fabricator :locality do
   name Faker::Company.name
+  phone_number Faker::PhoneNumber.phone_number
   street_address Faker::Address.street_address
   city Faker::Address.city
   country_code 'US'
@@ -11,5 +12,4 @@ Fabricator :locality do
   meeting_data_url Faker::Internet.url
   meeting_schedule Faker::Lorem.sentence
   invocations_conducted true
-  contact
 end

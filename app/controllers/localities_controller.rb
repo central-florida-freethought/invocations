@@ -14,7 +14,6 @@ class LocalitiesController < ApplicationController
 
   def new
     @locality = Locality.new params[:locality]
-    @locality.build_contact
     respond_with @locality
   end
 
@@ -78,27 +77,11 @@ class LocalitiesController < ApplicationController
 
   def locality_params
     params.require(:locality).
-      permit :name,
-             :street_address,
-             :country_code,
-             :state_code,
-             :city,
-             :zip,
-             :location_notes,
-             :website_url,
-             :volunteer_needed,
-             :meeting_data_url,
-             :meeting_schedule,
-             :invocations_conducted,
-             contact_attributes: [:name,
-                                  :title,
-                                  :phone,
-                                  :email,
-                                  :street_address,
-                                  :city,
-                                  :state_code,
-                                  :country_code,
-                                  :zip,
-                                  :notes]
+      permit :name, :phone_number, :street_address, :country_code, :state_code,
+        :city, :zip, :location_notes, :website_url, :volunteer_needed, 
+        :meeting_data_url, :meeting_schedule, :invocations_conducted, 
+        :contact_name, :contact_title, :contact_email, :contact_phone,
+        :contact_street_address, :contact_city, :contact_country_code,
+        :contact_state_code, :contact_zip, :contact_notes
   end
 end
