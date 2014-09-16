@@ -48,11 +48,11 @@ function fetchData()
     invocData.addRows(fetchedData);
 
     // Set chart options
-    var popOptions = {'title': 'Religious Population',
+    var popOptions = {
       'width': 500,
       'height': 300};
 
-    var invocOptions = {'title': 'Invocations Conducted',
+    var invocOptions = {
       'width': 500,
       'height': 300};
 
