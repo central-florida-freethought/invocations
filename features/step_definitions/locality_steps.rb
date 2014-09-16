@@ -5,6 +5,7 @@
 
 When /^I fill in the locality fields$/ do
   fill_in 'locality[name]', with: Faker::Name.name
+  fill_in 'locality[phone_number]', with: Faker::PhoneNumber.phone_number
   fill_in 'locality[street_address]', with: Faker::Address.street_address
   fill_in 'locality[city]', with: Faker::Address.city
   select 'Florida', from: 'locality[state_code]'

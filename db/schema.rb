@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903141213) do
+ActiveRecord::Schema.define(version: 20140916040851) do
 
   create_table "contacts", force: true do |t|
     t.string   "name",           null: false
@@ -35,21 +35,32 @@ ActiveRecord::Schema.define(version: 20140903141213) do
   end
 
   create_table "localities", force: true do |t|
-    t.string   "name",                            null: false
-    t.string   "city",                            null: false
-    t.string   "country_code",          limit: 2, null: false
-    t.string   "state_code",                      null: false
+    t.string   "name",                             null: false
+    t.string   "city",                             null: false
+    t.string   "country_code",           limit: 2, null: false
+    t.string   "state_code",                       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "street_address",                  null: false
-    t.string   "zip",                             null: false
+    t.string   "street_address",                   null: false
+    t.string   "zip",                              null: false
     t.text     "location_notes"
     t.string   "website_url"
-    t.boolean  "volunteer_needed",                null: false
+    t.boolean  "volunteer_needed",                 null: false
     t.string   "meeting_data_url"
     t.string   "meeting_schedule"
-    t.boolean  "invocations_conducted",           null: false
+    t.boolean  "invocations_conducted",            null: false
     t.integer  "contact_id"
+    t.string   "phone_number"
+    t.string   "contact_name"
+    t.string   "contact_title"
+    t.string   "contact_phone"
+    t.string   "contact_email"
+    t.string   "contact_street_address"
+    t.string   "contact_city"
+    t.string   "contact_country_code"
+    t.string   "contact_state_code"
+    t.string   "contact_zip"
+    t.text     "contact_notes"
   end
 
   create_table "organizations", force: true do |t|
