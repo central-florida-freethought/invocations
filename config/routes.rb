@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   get 'volunteers/active', as: :active_volunteers
   get 'cukes', to: 'cukes#index', as: :cukes
 
+  # Contact Form
+  get 'contact' => 'contact#new'
+  post 'contact' => 'contact#create'
+
   # Uses the 'high_voltage' gem. Modify app/views/pages/home.html.erb
   get 'pages/home'
 end
