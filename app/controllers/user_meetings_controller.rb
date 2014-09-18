@@ -32,12 +32,6 @@ class UserMeetingsController < ApplicationController
 
   def create
     @user_meeting = current_user.user_meetings.build user_meeting_params
-    if current_user.has_any_role? :trusted
-      @user_meeting.pending = false
-    else
-      @user_meeting.pending = true
-    end
-    
     @user_meeting.speaker = find_or_create_speaker unless user_meeting_params[:speaker_attributes].empty?
 
     if @user_meeting.save

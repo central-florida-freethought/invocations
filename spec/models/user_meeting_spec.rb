@@ -30,6 +30,11 @@ describe UserMeeting do
         expect { user_meeting.save }.to change(Speaker, :count).by(1)
         expect(user_meeting.speaker_id).to eq(Speaker.first.id)
       end
+      
+      it 'have the initial state of "pending"' do
+        user_meeting.save
+        expect(user_meeting.pending?).to eq true
+      end
     end
   end
 

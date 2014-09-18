@@ -66,7 +66,7 @@ class LocalitiesController < ApplicationController
     if id != nil
       query += " user_meetings.locality_id = #{id} and "
     end
-    query += ' user_meetings.invocation_conducted like "Yes%" and user_meetings.pending = 0'
+    query += ' user_meetings.invocation_conducted like "Yes%" and user_meetings.aasm_state = "approved"'
     query += ' GROUP BY religions.name '
     query += ' ORDER BY 2 DESC '
     @user_meetings = UserMeeting.find_by_sql(query)
