@@ -14,6 +14,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (3.3.3)
     actionmailer (4.2.0.beta1)
       actionpack (= 4.2.0.beta1)
       actionview (= 4.2.0.beta1)
@@ -326,6 +327,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   better_errors
   binding_of_caller
   bootstrap-sass
