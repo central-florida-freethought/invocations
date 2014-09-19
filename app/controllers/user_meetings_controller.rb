@@ -1,12 +1,13 @@
 class UserMeetingsController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
+  helper_method :sort_column, :sort_direction
 
   def index
     if current_user.has_any_role? :admin
-      @user_meetings = UserMeeting.pending
+      @user_meetings = UserMeeting.includes({speaker: [:religion, :organization]}, :locality).pending.order(sort_column + ' ' + sort_direction)
     else
-      @user_meetings = current_user.user_meetings
+      @user_meetings = current_user.user_meetings.includes({speaker: [:religion, :organization]}, :locality)
     end
   end
 
@@ -16,6 +17,17 @@ class UserMeetingsController < ApplicationController
     end
     @user_meeting = current_user.user_meetings.build params[:user_meeting]
     @user_meeting.build_speaker
+  end
+
+  def show
+    @user_meeting = UserMeeting.find(params[:id])
+  end
+
+  def approve
+    # Need some kind of valication?
+    @user_meeting = UserMeeting.find(params[:id])
+    @user_meeting.update_attribute('pending', false)
+    redirect_to user_meetings_path, notice: 'Meeting approved.'
   end
 
   def create
@@ -79,5 +91,15 @@ class UserMeetingsController < ApplicationController
                    :locality_id,
                    speaker_attributes: [:id, :name, :honorific, :religion_id, 
                      :denomination_id, organization_attributes: [:id, :name]]
+  end
+
+  private
+  def sort_column
+    UserMeeting.column_names.include?(params[:sort]) ? params[:sort] : 'id'
+  end
+
+  private
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
 end

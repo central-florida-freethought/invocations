@@ -1,0 +1,89 @@
+<% content_for :scripts do %>
+  <%= javascript_include_tag 'meetingApproval' %>
+<% end %>
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th><%= sortable 'id', 'Meeting ID' %></th>
+    <th><%= sortable 'meeting_time', 'Meeting Time' %></th>
+    <th><%= sortable 'pledge_before', 'Before Pledge?' %></th>
+    <th><%= sortable 'asked_to_stand', 'Asked to Stand?' %></th>
+    <th><%= sortable 'speaker_preached', 'Speaker Preach?' %></th>
+    <th><%= sortable 'speaker_praised', 'Speaker Praised?' %></th>
+    <th class="text-center">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @user_meetings.each_with_index do |m, i| %>
+    <tr class="<%= (i % 2 == 0) ? 'even' : 'odd' %>">
+      <td><%= current_user.has_role?(:admin) ? link_to( m.id, user_meeting_path(m)) : m.id %></td>
+      <td><%= m.meeting_time %></td>
+      <td><%= m.pledge_before %></td>
+      <td><%= m.asked_to_stand %></td>
+      <td><%= m.speaker_preached %></td>
+      <td><%= m.speaker_praised %></td>
+      <td>
+        <div class="btn-group">
+          <%= button_to user_meeting_path(m), method: :get, id: "show_meeting_#{m.id}", class: 'btn btn-primary btn-xs hide hide-panel' do %>
+            <span class="glyphicon glyphicon-eye-open"></span> Preview
+          <% end %>
+          <% if current_user.has_role?(:admin) %>
+            <%= button_to approve_user_meeting_path(m), method: :patch, id: "approve_meeting_#{m.id}", class: 'btn btn-success btn-xs', data: {confirm: 'Are you sure you wish to approve?'} do %>
+              <span class="glyphicon glyphicon-ok"></span> Approve
+            <% end %>
+            <!--todo update to use the correct action-->
+            <button class="btn btn-danger btn-xs">
+              <span class="glyphicon glyphicon-remove"></span> Deny
+            </button>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+    <tr class="toggleable">
+      <td colspan="7">
+        <div class="slide-panel">
+          <div class="col-lg-3">
+            <h4>Meeting Links</h4>
+            <ul>
+              <li><%= current_user.has_role?(:admin) ? link_to( 'Single record view', user_meeting_path(m)) : m.id %></li>
+              <li><%= get_meeting_links 'Meeting', m.meeting_url %></li>
+              <li><%= get_meeting_links 'Minutes', m.minutes_url %></li>
+              <li><%= get_meeting_links 'Agenda', m.agenda_url %></li>
+              <li><%= get_meeting_links 'Media', m.media_url %></li>
+              <li><%= get_meeting_links 'Attachment', m.attachment %></li>
+            </ul>
+          </div>
+          <div class="col-lg-5">
+            <h4>Explanations</h4>
+            <h5>Preached</h5>
+
+            <p><%= m.speaker_preached_explanation %></p>
+
+            <h5>Praised</h5>
+
+            <p><%= m.speaker_praised_explanation %></p>
+
+            <h5>Concerns</h5>
+
+            <p><%= m.concerns %></p>
+          </div>
+          <div class="col-lg-3">
+            <h4>Other</h4>
+            <ul>
+              <li>Invocation: <%= m.invocation_conducted %></li>
+              <li>Pending: <%= m.pending %></li>
+              <li>Submitted by: <%= m.user.full_name %></li>
+              <li>Locality: <%= link_to m.locality.name, locality_path(m.locality) %></li>
+              <li>Meeting Type: <%= m.meeting_type %></li>
+              <li>Speaker: <%= link_to m.speaker.name, speaker_path(m.speaker) %></a></li>
+              <li>Organization: <%= get_obj_name(m.speaker.organization) %> </li>
+              <li>Religion: <%= get_obj_name(m.speaker.religion) %> </li>
+            </ul>
+          </div>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

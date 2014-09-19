@@ -1,0 +1,12 @@
+<h1><%= @speaker.name %></h1>
+<h2>Meetings spoken at:</h2>
+<ul>
+  <% @speaker.user_meetings.each do |meeting| %>
+    <li>
+      <%= link_to user_meeting_path(meeting) do %>
+        <%= meeting.locality.name  %>
+        <%= meeting.meeting_time %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

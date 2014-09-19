@@ -13,9 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui.min
-//= require jquery-ui-timepicker-addon
 //= require bootstrap
-//= require jsapi
-//= require datetime
-//= require hideShowClear
-//= require speakerLiveSearch

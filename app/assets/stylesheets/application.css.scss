@@ -27,6 +27,7 @@ $link_color: #428bca;
 $link_bg_hover_color: #eeeeee;
 $border_colors: #9a9a9a;
 $logo_bg_color: #4270d9;
+$table-bg-accent: #f9f9f9;
 
 /*
  * Base structure
@@ -75,6 +76,7 @@ header {
   }
 }
 
+//todo add another size for medium screens
 @media (min-width: 768px) {
   #logo img {
     width: 20%;
@@ -232,4 +234,32 @@ form {
       color: $link_hover_color;
     }
   }
+}
+
+.btn-group > form.button_to {
+  display: inline;
+  div {
+    display: inline;
+  }
+}
+
+.toggleable, .toggleable:hover {
+  background-color: #EFEFEF;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin: 0;
+  padding: 0;
+  .slide-panel {
+    margin: 0;
+    padding: 0;
+    background-color: #EFEFEF;
+  }
+}
+
+.even {
+  background-color: $table-bg-accent;
+}
+
+.odd {
+  background-color: transparent;
 }
