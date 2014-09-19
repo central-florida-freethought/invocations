@@ -8,28 +8,7 @@
   <div class="col-lg-10 col-lg-offset-1 col-md-6">
     <h1 class="page-header" data-id="<%= @locality.id %>"><%= @locality.name %></h1>
     <p><strong>City</strong> <%= @locality.city %></p>
-  </div>
-</div>
-<div class="row">
-</div>
-
-<div class="row">
-  <!--Div that will hold the pie chart-->
-  <div class="col-lg-4 col-lg-offset-1 col-md-6 col-sm-6 graph">
-    <div id="population_chart"></div>
-    <h4>Population</h4>
-    <small>Data supplied by <a href="http://religions.pewforum.org/pdf/report-religious-landscape-study-full.pdf" target="_blank">Pew Reserch U.S.Religious Landscape Survey.</a></small>
-  </div>
-
-  <div class="col-lg-3 col-md-6 col-sm-6 graph">
-    <div id="invocations_chart"></div>
-    <h4>Invocations</h4>
-    <small>Data supplied by user submissions.</small>
-  </div>
-
-  <div class="col-lg-2 col-lg-offset-1 locality_nav">
-    <!--Todo Only show these links provided a user has the respective permissions for this locality-->
-    <ul role="navigation">
+    <ul class="locality_nav" role="navigation">
       <% if user_signed_in? && current_user.has_role?(:admin) %>
         <li><%= link_to "Edit this locality", edit_locality_path(@locality) %></li>
       <% end %>
@@ -37,38 +16,39 @@
     </ul>
   </div>
 </div>
+<div class="row">
+</div>
+
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-1 col-md-6 col-sm-6 graph">
+    <div id="population_chart"></div>
+    <h4>Florida Population</h4>
+    <small>(Source:
+      <a href="http://www.pewforum.org/2008/06/23/us-religious-landscape-survey-resources/" target="_blank">Pew
+        Research</a>*)
+    </small>
+  </div>
+
+  <div class="col-lg-4 col-lg-offset-1 col-md-6 col-sm-6 graph">
+    <div id="invocations_chart"></div>
+    <h4>InvocationsOnline Summary</h4>
+    <small>(All <%= link_to 'Locations', localities_path %> being monitored)</small>
+  </div>
+
+  <div class="col-lg-2 col-lg-offset-1 locality_nav">
+    <!--Todo Only show these links provided a user has the respective permissions for this locality-->
+  </div>
+</div>
 
 <div class="row">
   <div class="col-lg-10 col-lg-offset-1 col-md-12">
-    <table class="table table-striped table-hover">
-      <thead>
-      <tr>
-        <th>Presenter</th>
-        <th>Affiliation</th>
-        <th>Date</th>
-        <th>Important Data</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr id="something">
-        <td>Mark</td>
-        <td>Christian</td>
-        <td>YYYY-MM-DD</td>
-        <td>4</td>
-      </tr>
-      <tr>
-        <td>Jacob</td>
-        <td>Pastafarian</td>
-        <td>YYYY-MM-DD</td>
-        <td>2</td>
-      </tr>
-      <tr>
-        <td>Larry</td>
-        <td>Awesomism</td>
-        <td>YYYY-MM-DD</td>
-        <td>9</td>
-      </tr>
-      </tbody>
-    </table>
+    <small>* The data from Pew has been simplified for graphical representation as follows: Responses in the categories
+      of
+      'Other Christian' and 'Other World Religion' have been combined into 'Other Religion'. Unaffiliated has been
+      changed
+      to 'None'. Responses in the category of 'Don’t Know/Refused' have been added to 'None'. The responses Mormon,
+      Buddhist, and Hindu which were originally <0.5 have been rounded up to 0.5 each.
+    </small>
   </div>
 </div>
+

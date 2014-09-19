@@ -151,14 +151,12 @@ header {
 
 .locality_nav {
   text-align: right;
-  ul {
-    list-style: none;
-    li a {
-      color: $border_colors;
-    }
-    li a:hover {
-      color: $base_blue;
-    }
+  list-style: none;
+  li a {
+    color: $border_colors;
+  }
+  li a:hover {
+    color: $base_blue;
   }
 }
 
