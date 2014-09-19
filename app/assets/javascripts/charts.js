@@ -81,13 +81,11 @@ function fetchData()
       'colors': getReligionColorArray(popData)
     };
 
-    console.log(getReligionColorArray(popData));
     var invocOptions = {'title': 'Invocations Conducted',
       'width': 500,
       'height': 350,
       'colors': getReligionColorArray(invocData)};
 
-    console.log(invocData.getNumberOfRows());
     try
     {
       // Instantiate and draw our chart, passing in some options.
