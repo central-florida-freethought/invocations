@@ -8,6 +8,12 @@
   <div class="col-lg-10 col-lg-offset-1 col-md-6">
     <h1 class="page-header" data-id="<%= @locality.id %>"><%= @locality.name %></h1>
     <p><strong>City</strong> <%= @locality.city %></p>
+    <ul class="locality_nav" role="navigation">
+      <% if user_signed_in? && current_user.has_role?(:admin) %>
+        <li><%= link_to "Edit this locality", edit_locality_path(@locality) %></li>
+      <% end %>
+      <li><%= link_to "Submit a new meeting", controller: "user_meetings", action: "new", :locality_id => @locality.id %></li>
+    </ul>
   </div>
 </div>
 <div class="row">
@@ -31,12 +37,6 @@
 
   <div class="col-lg-2 col-lg-offset-1 locality_nav">
     <!--Todo Only show these links provided a user has the respective permissions for this locality-->
-    <ul role="navigation">
-      <% if user_signed_in? && current_user.has_role?(:admin) %>
-        <li><%= link_to "Edit this locality", edit_locality_path(@locality) %></li>
-      <% end %>
-      <li><%= link_to "Submit a new meeting", controller: "user_meetings", action: "new", :locality_id => @locality.id %></li>
-    </ul>
   </div>
 </div>
 
