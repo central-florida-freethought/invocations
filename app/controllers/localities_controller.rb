@@ -54,23 +54,17 @@ class LocalitiesController < ApplicationController
 
   private
   def locality_report(id)
-    query = ' SELECT  '
-    query +=   'religions.name AS "religion", '
-    query +=   'count(religions.name) AS "count" '
-    query += ' FROM '
-    query +=   ' user_meetings '
-    query +=   ' LEFT JOIN localities ON user_meetings.locality_id = localities.id '
-    query +=   ' LEFT JOIN speakers ON user_meetings.speaker_id = speakers.id '
-    query +=   ' LEFT JOIN religions ON speakers.religion_id = religions.id '
-    query +=   ' LEFT JOIN users ON user_meetings.user_id = users.id where '
-    if id != nil
-      query += " user_meetings.locality_id = #{id} and "
+    meetings = UserMeeting.joins { [locality.outer, speaker.outer.religion.outer, user.outer] }.
+      select('religions.name as religion, count(religions.name) as count').
+      group('religions.name').
+      approved.
+      order('2 DESC')
+    
+    if id
+      meetings.where{ locality_id.eq id }
     end
-    query += ' user_meetings.invocation_conducted like "Yes%" and user_meetings.aasm_state = "approved"'
-    query += ' GROUP BY religions.name '
-    query += ' ORDER BY 2 DESC '
-    @user_meetings = UserMeeting.find_by_sql(query)
 
+    return meetings
   end
 
   private

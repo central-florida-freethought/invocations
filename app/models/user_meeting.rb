@@ -10,13 +10,16 @@ class UserMeeting < ActiveRecord::Base
     end
   end
 
+  sifter :state_is do |meeting_state|
+    aasm_state.eq meeting_state
+  end
+
   before_create :check_user_role
 
   # store new version when any attribute is changed
   # see https://github.com/airblade/paper_trail for info
   has_paper_trail
 
-  scope :pending, -> {where pending: true}
   belongs_to :user
   belongs_to :locality
   belongs_to :speaker
