@@ -72,7 +72,7 @@
             <h4>Other</h4>
             <ul>
               <li>Invocation: <%= m.invocation_conducted %></li>
-              <li>Pending: <%= m.pending %></li>
+              <li>Pending: <%= m.pending? %></li>
               <li>Submitted by: <%= m.user.full_name %></li>
               <li>Locality: <%= link_to m.locality.name, locality_path(m.locality) %></li>
               <li>Meeting Type: <%= m.meeting_type %></li>
