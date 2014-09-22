@@ -26,8 +26,9 @@ class UserMeetingsController < ApplicationController
   def approve
     # Need some kind of valication?
     @user_meeting = UserMeeting.find(params[:id])
-    @user_meeting.update_attribute('pending', false)
-    redirect_to user_meetings_path, notice: 'Meeting approved.'
+    @user_meeting.approve!
+    MeetingMailer.approval_request(@user_meeting).deliver_later
+    redirect_to user_meetings_path, notice: t('user_meeting.admin.approved')
   end
 
   def create

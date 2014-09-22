@@ -23,6 +23,8 @@ en:
   user_meeting:
     created_pending: 'Your meeting was successfully created and will be reviewed.'
     created_approved: 'Your meeting was successfully created and approved.'
+    admin:
+      approved: 'Meeting was successfully approved.'
   unauthorized:
     create:
       locality: "You are not authorized to create a new locality."

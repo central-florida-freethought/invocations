@@ -6,3 +6,4 @@ When /^I go to the locality page for (.*)$/i do |locality_name|
   locality = Locality.where(name: locality_name).first
   visit locality_path(locality)
 end
+

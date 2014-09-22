@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  </head>
+  <body>
+    <h1>Meeting <%= @state %></h1>
+    <p>
+      Your meeting has been <%= @state %>. You can log in and view it <%= link_to 'here', user_meeting_url(@meeting.id) %>.
+    </p>
+  </body>
+</html>
+

@@ -3,7 +3,7 @@ class UserMeeting < ActiveRecord::Base
   
   aasm do
     state :pending, initial: true
-    state :approved
+    state :approved#, after_enter: :send_approval_request
 
     event :approve do
       transitions from: :pending, to: :approved
@@ -37,6 +37,10 @@ class UserMeeting < ActiveRecord::Base
     if self.user.has_any_role? :trusted
       self.approve
     end
+  end
+
+  def send_approval_request
+    MeetingMailer.approval_request(self, aasm.to_state.to_s).deliver_later
   end
 end
     
