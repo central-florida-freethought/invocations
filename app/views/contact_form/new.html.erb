@@ -1,0 +1,43 @@
+<% page_name 'Contact Us' %>
+
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1 col-md-6">
+    <h1 class="page-header">Contact Us</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 authform">
+
+    <%= form_for @message, :url => contact_path, html: { class: 'form-vertical'} do |form| %>
+      <% if @message.errors.any? %>
+        <% @message.errors.full_messages.each do |msg| %>
+          <%= msg %>
+        <% end %>
+      <% end %>
+      <fieldset class="form-group">
+        <div class="form-group">
+          <%= form.label :name %>
+          <%= form.text_field :name, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :email %>
+          <%= form.text_field :email, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= form.label :subject %>
+          <%= form.text_field :subject, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :body %>
+          <%= form.text_area :body, rows: 10, class: 'form-control' %>
+        </div>
+      </fieldset>
+
+      <fieldset class="actions">
+        <%= form.submit "Send", class: 'btn btn-default btn-lg pull-right' %>
+      </fieldset>
+    <% end %>
+  </div>
+</div>

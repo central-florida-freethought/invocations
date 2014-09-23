@@ -30,6 +30,10 @@ Rails.application.routes.draw do
   
   get 'cukes', to: 'cukes#index', as: :cukes
 
+  # Contact Form
+  get 'contact' => 'contact_form#new'
+  post 'contact' => 'contact_form#create'
+
   # Uses the 'high_voltage' gem. Modify app/views/pages/home.html.erb
   get 'pages/home'
 end
