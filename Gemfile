@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 gem 'dotenv-rails', groups: [:development, :test]
-gem 'rails', '4.2.0.beta1'
+gem 'rails', github: 'rails/rails'
 gem 'sass-rails', '5.0.0.beta1'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -20,6 +20,8 @@ gem 'country_select'
 gem 'simple_form'
 gem 'high_voltage', '~> 2.2.1'
 gem 'paper_trail'
+gem 'aasm'
+gem 'squeel'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

@@ -11,6 +11,21 @@ Given /^a (\w+) speaker$/i do |religion_name|
   @speaker = Fabricate :speaker, religion: religion
 end
 
+Given /^a pending user meeting$/ do
+  user = Fabricate :user, email: Faker::Internet.email
+  @user_meeting = Fabricate :user_meeting, aasm_state: 'pending', user: user
+end
+
+When /^I (\w+) the meeting$/ do |action|
+  if action == 'approve'
+    find("#approve_meeting_#{@user_meeting.id}").click
+  elsif action == 'deny'
+    find("#deny_meeting_#{@user_meeting.id}").click
+  elsif action == 'review'
+    find("#review_meeting_#{@user_meeting.id}").click
+  end
+end
+
 When /^I click "(.*?)"$/ do |text|
   click_on text
 end
@@ -58,4 +73,8 @@ end
 
 Then /^a new speaker should not have been created$/ do
   expect(Speaker.count).to eq 1
+end
+
+Then /^a meeting (\w+) email should be sent$/ do |mail_type|
+  expect(ActionMailer::Base.deliveries.last.subject).to eq "Meeting #{mail_type}"
 end

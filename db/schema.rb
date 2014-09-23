@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916040851) do
+ActiveRecord::Schema.define(version: 20140917180928) do
 
   create_table "contacts", force: true do |t|
     t.string   "name",           null: false
@@ -94,7 +94,6 @@ ActiveRecord::Schema.define(version: 20140916040851) do
     t.text     "speaker_praised"
     t.text     "concerns"
     t.binary   "attachment"
-    t.boolean  "pending"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -108,6 +107,7 @@ ActiveRecord::Schema.define(version: 20140916040851) do
     t.string   "media_url"
     t.text     "speaker_preached_explanation"
     t.text     "speaker_praised_explanation"
+    t.string   "aasm_state"
   end
 
   create_table "users", force: true do |t|

@@ -26,18 +26,27 @@ class UserMeetingsController < ApplicationController
   def approve
     # Need some kind of valication?
     @user_meeting = UserMeeting.find(params[:id])
-    @user_meeting.update_attribute('pending', false)
-    redirect_to user_meetings_path, notice: 'Meeting approved.'
+    @user_meeting.approve!
+    MeetingMailer.approval_request(@user_meeting).deliver_later
+    redirect_to user_meetings_path, notice: t('user_meeting.admin.approved')
+  end
+
+  def deny
+    @user_meeting = UserMeeting.find params[:id]
+    @user_meeting.deny!
+    MeetingMailer.approval_request(@user_meeting).deliver_later
+    redirect_to user_meetings_path, notice: t('user_meeting.admin.denied')
+  end
+
+  def review
+    @user_meeting = UserMeeting.find params[:id]
+    @user_meeting.review!
+    MeetingMailer.approval_request(@user_meeting).deliver_later
+    redirect_to user_meetings_path, notice: t('user_meeting.admin.reviewed')
   end
 
   def create
     @user_meeting = current_user.user_meetings.build user_meeting_params
-    if current_user.has_any_role? :trusted
-      @user_meeting.pending = false
-    else
-      @user_meeting.pending = true
-    end
-    
     @user_meeting.speaker = find_or_create_speaker unless user_meeting_params[:speaker_attributes].empty?
 
     if @user_meeting.save
