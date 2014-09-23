@@ -5,6 +5,7 @@ class UserMeeting < ActiveRecord::Base
     state :pending, initial: true
     state :approved
     state :denied
+    state :reviewed
 
     event :approve do
       transitions from: :pending, to: :approved
@@ -12,6 +13,10 @@ class UserMeeting < ActiveRecord::Base
 
     event :deny do
       transitions from: :pending, to: :denied
+    end
+
+    event :review do
+      transitions from: :pending, to: :reviewed
     end
   end
 

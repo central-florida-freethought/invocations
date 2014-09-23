@@ -7,7 +7,7 @@ Feature: Admin manages user meeting
     Given a signed in admin
     And a pending user meeting
     When I visit the user meetings page
-
+  
   Scenario Outline: 
     When I <action> the meeting
     Then I should see <message>
@@ -17,4 +17,5 @@ Feature: Admin manages user meeting
     | action  | message                             | email_type |
     | approve | "Meeting was successfully approved" | approved   |
     | deny    | "Meeting was denied"                | denied     |
+    | review  | "Meeting is in review"              | reviewed   |
 

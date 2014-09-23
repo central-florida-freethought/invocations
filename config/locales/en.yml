@@ -26,6 +26,7 @@ en:
     admin:
       approved: 'Meeting was successfully approved.'
       denied: 'Meeting was denied.'
+      reviewed: 'Meeting is in review.'
   unauthorized:
     create:
       locality: "You are not authorized to create a new locality."

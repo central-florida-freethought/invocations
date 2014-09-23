@@ -38,6 +38,13 @@ class UserMeetingsController < ApplicationController
     redirect_to user_meetings_path, notice: t('user_meeting.admin.denied')
   end
 
+  def review
+    @user_meeting = UserMeeting.find params[:id]
+    @user_meeting.review!
+    MeetingMailer.approval_request(@user_meeting).deliver_later
+    redirect_to user_meetings_path, notice: t('user_meeting.admin.reviewed')
+  end
+
   def create
     @user_meeting = current_user.user_meetings.build user_meeting_params
     @user_meeting.speaker = find_or_create_speaker unless user_meeting_params[:speaker_attributes].empty?

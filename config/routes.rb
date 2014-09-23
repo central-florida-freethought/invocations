@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     member do
       patch 'approve'
       patch 'deny'
+      patch 'review'
     end
   end
   resources :user_meetings_steps

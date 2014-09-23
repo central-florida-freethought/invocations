@@ -21,6 +21,8 @@ When /^I (\w+) the meeting$/ do |action|
     find("#approve_meeting_#{@user_meeting.id}").click
   elsif action == 'deny'
     find("#deny_meeting_#{@user_meeting.id}").click
+  elsif action == 'review'
+    find("#review_meeting_#{@user_meeting.id}").click
   end
 end
 
