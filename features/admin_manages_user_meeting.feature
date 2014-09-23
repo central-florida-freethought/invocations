@@ -3,11 +3,18 @@ Feature: Admin manages user meeting
   I want to manage user meetings
   So that they can be verified and approved
 
-  Scenario: approve user meeting
+  Background:
     Given a signed in admin
     And a pending user meeting
     When I visit the user meetings page
-    And I approve the meeting
-    Then I should see "Meeting was successfully approved"
-    And a meeting approved email should be sent
+
+  Scenario Outline: 
+    When I <action> the meeting
+    Then I should see <message>
+    And a meeting <email_type> email should be sent
+
+  Examples:
+    | action  | message                             | email_type |
+    | approve | "Meeting was successfully approved" | approved   |
+    | deny    | "Meeting was denied"                | denied     |
 

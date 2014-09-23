@@ -16,8 +16,12 @@ Given /^a pending user meeting$/ do
   @user_meeting = Fabricate :user_meeting, aasm_state: 'pending', user: user
 end
 
-When /^I approve the meeting$/ do
-  find("#approve_meeting_#{@user_meeting.id}").click
+When /^I (\w+) the meeting$/ do |action|
+  if action == 'approve'
+    find("#approve_meeting_#{@user_meeting.id}").click
+  elsif action == 'deny'
+    find("#deny_meeting_#{@user_meeting.id}").click
+  end
 end
 
 When /^I click "(.*?)"$/ do |text|
