@@ -52,6 +52,22 @@
                        html_options = {:class => 'explain form-control'}  %>
           <%= f.text_area :speaker_praised_explanation, rows: 4, class: 'text form-control hide' %>
       </div>
+      <div class="hide invocation_only form-group">
+        <%= f.label :meeting_url, 'Meeting URL (if available)' %>
+        <%= f.text_field :meeting_url, size: 30, class: 'form-control', type: 'url' %>
+      </div>
+      <div class="hide invocation_only form-group">
+        <%= f.label :minutes_url, 'Minutes URL (if available)' %>
+        <%= f.text_field :minutes_url, size: 30, class: 'form-control', type: 'url' %>
+      </div>
+      <div class="hide invocation_only form-group">
+        <%= f.label :agenda_url, 'Agenda URL (if available)' %>
+        <%= f.text_field :agenda_url, size: 30, class: 'form-control', type: 'url' %>
+      </div>
+      <div class="hide invocation_only form-group">
+        <%= f.label :media_url, 'Media URL (if available)' %>
+        <%= f.text_field :media_url, size: 30, class: 'form-control', type: 'url' %>
+      </div>
       <div class="hide invocation_only">
       <%= f.fields_for :speaker do |speaker| %>
         <h4>Speaker</h4>
