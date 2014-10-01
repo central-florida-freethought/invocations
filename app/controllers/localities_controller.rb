@@ -56,6 +56,7 @@ class LocalitiesController < ApplicationController
   def locality_report(id)
     meetings = UserMeeting.joins { [locality.outer, speaker.outer.religion.outer, user.outer] }.
       select('religions.name as religion, count(religions.name) as count').
+      where(:invocation_conducted => 'Yes').
       group('religions.name').
       approved.
       order('2 DESC')
