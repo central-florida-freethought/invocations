@@ -1,8 +1,29 @@
 <% page_name "Volunteer #{@volunteer.full_name}" %>
 
 <div class='row'>
-  <div class='col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 '>
+  <div class='col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1 col-lg-10'>
     <h3 class="page-header"><%= @volunteer.full_name %></h3>
   </div>
+</div>
+<div class="row">
+  <div class='col-md-5 col-md-offset-1 col-xs-5 col-xs-offset-1 col-lg-5'>
+    <p><strong>Email</strong>: <%= mail_to @volunteer.email %></p>
+
+    <p><strong>Phone</strong>: <%= @volunteer.phone_number %></p>
+
+    <p><strong>Approved?</strong>: <%= @volunteer.approved? %></p>
+
+    <p><strong>Role</strong>: <%= @volunteer.role %></p>
+
+    <p><strong>Locality</strong>: <%= @volunteer.locality_id %></p>
+  </div>
+
+  <div class="col-md-5 col-xs-5 col-lg-5">
+    <ul>
+      <li>Set Role:</li>
+      <li>Enable/Disable:</li>
+    </ul>
+  </div>
+</div>
 </div>
 
