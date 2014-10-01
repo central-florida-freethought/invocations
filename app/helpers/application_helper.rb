@@ -29,7 +29,7 @@ module ApplicationHelper
 
   # should probably be combined somehow with get_obj_name
   def get_meeting_links(link_text, obj)
-    if obj.nil?
+    if obj.nil? or obj == ''
       link_text + ' not provided'
     else
       link_to link_text, obj, {:target => '_blank'}
