@@ -93,6 +93,7 @@ class UserMeetingsController < ApplicationController
                    :attachment,
                    :pending,
                    :street_address,
+                   :meeting_url,
                    :minutes_url,
                    :agenda_url,
                    :media_url,
