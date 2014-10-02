@@ -6,7 +6,7 @@ Feature: Admin manages user meeting
   Background:
     Given a signed in admin
     And a pending user meeting
-    When I visit the user meetings page
+    When I visit the admin user meetings page
   
   Scenario Outline: 
     When I <action> the meeting
