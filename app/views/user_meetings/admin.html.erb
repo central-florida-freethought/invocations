@@ -22,13 +22,13 @@
         <th><%= sortable 'asked_to_stand', 'Asked to Stand?' %></th>
         <th><%= sortable 'speaker_preached', 'Speaker Preach?' %></th>
         <th><%= sortable 'speaker_praised', 'Speaker Praised?' %></th>
-        <th class="text-center">Action</th>
+        <th class="text-center action-col">Action</th>
       </tr>
       </thead>
       <tbody>
       <% @user_meetings.each_with_index do |m, i| %>
         <tr class="<%= (i % 2 == 0) ? 'even' : 'odd' %>">
-          <td><%= current_user.has_role?(:admin) ? link_to( m.id, user_meeting_path(m)) : m.id %></td>
+          <td><%= current_user.has_role?(:admin) ? link_to(m.id, user_meeting_path(m)) : m.id %></td>
           <td><%= m.meeting_time %></td>
           <td><%= m.pledge_before %></td>
           <td><%= m.asked_to_stand %></td>
@@ -39,6 +39,17 @@
               <%= button_to user_meeting_path(m), method: :get, id: "show_meeting_#{m.id}", class: 'btn btn-primary btn-xs hide hide-panel' do %>
                 <span class="glyphicon glyphicon-eye-open"></span> Preview
               <% end %>
+              <% if current_user.has_role?(:admin) %>
+                <%= button_to approve_user_meeting_path(m), method: :patch, id: "approve_meeting_#{m.id}", class: 'btn btn-success btn-xs' do %>
+                  <span class="glyphicon glyphicon-ok"></span> Approve
+                <% end %>
+                <%= button_to review_user_meeting_path(m), method: :patch, id: "review_meeting_#{m.id}", class: 'btn btn-warning btn-xs' do %>
+                  <span class='glyphicon glyphicon-exclamation-sign'></span> In Review
+                <% end %>
+                <%= button_to deny_user_meeting_path(m), method: :patch, id: "deny_meeting_#{m.id}", class: "btn btn-danger btn-xs" do %>
+                  <span class="glyphicon glyphicon-remove"></span> Deny
+                <% end %>
+              <% end %>
             </div>
           </td>
         </tr>
@@ -48,7 +59,7 @@
               <div class="col-lg-3">
                 <h4>Meeting Links</h4>
                 <ul>
-                  <li><%= current_user.has_role?(:admin) ? link_to( 'Single record view', user_meeting_path(m)) : m.id %></li>
+                  <li><%= current_user.has_role?(:admin) ? link_to('Single record view', user_meeting_path(m)) : m.id %></li>
                   <li><%= get_meeting_links 'Meeting', m.meeting_url %></li>
                   <li><%= get_meeting_links 'Minutes', m.minutes_url %></li>
                   <li><%= get_meeting_links 'Agenda', m.agenda_url %></li>
