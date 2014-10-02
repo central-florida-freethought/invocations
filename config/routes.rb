@@ -20,6 +20,9 @@ Rails.application.routes.draw do
       patch 'deny'
       patch 'review'
     end
+    collection do
+      get 'admin'
+    end
   end
   resources :user_meetings_steps
   resources :localities do

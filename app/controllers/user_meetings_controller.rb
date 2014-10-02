@@ -4,10 +4,12 @@ class UserMeetingsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
+    @user_meetings = current_user.user_meetings.includes({speaker: [:religion, :organization]}, :locality)
+  end
+
+  def admin
     if current_user.has_any_role? :admin
       @user_meetings = UserMeeting.includes({speaker: [:religion, :organization]}, :locality).pending.order(sort_column + ' ' + sort_direction)
-    else
-      @user_meetings = current_user.user_meetings.includes({speaker: [:religion, :organization]}, :locality)
     end
   end
 
@@ -24,7 +26,7 @@ class UserMeetingsController < ApplicationController
   end
 
   def approve
-    # Need some kind of valication?
+    # Need some kind of validation?
     @user_meeting = UserMeeting.find(params[:id])
     @user_meeting.approve!
     MeetingMailer.approval_request(@user_meeting).deliver_later
@@ -93,6 +95,7 @@ class UserMeetingsController < ApplicationController
                    :attachment,
                    :pending,
                    :street_address,
+                   :meeting_url,
                    :minutes_url,
                    :agenda_url,
                    :media_url,
