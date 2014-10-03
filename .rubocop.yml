@@ -7,5 +7,10 @@ Documentation:
   Enabled: false
 TrailingBlankLines:
   EnforcedStyle: final_blank_line
-Metrics/ClassLength:
+ClassLength:
   Max: 120
+MethodLength:
+  Max: 12
+LineLength:
+  Max: 85
+
