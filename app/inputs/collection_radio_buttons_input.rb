@@ -7,3 +7,4 @@ class CollectionRadioButtonsInput < SimpleForm::Inputs::CollectionRadioButtonsIn
     super.push 'form-group'
   end
 end
+
