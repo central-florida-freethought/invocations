@@ -7,3 +7,4 @@ class MeetingMailer < ActionMailer::Base
     mail to: @meeting.user.email, subject: "Meeting #{@meeting.aasm.current_state}"
   end
 end
+
