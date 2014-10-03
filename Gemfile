@@ -54,6 +54,7 @@ group :development, :test do
   gem 'faker'
   gem 'fuubar'
   gem 'nyan-cat-formatter'
+  gem 'rubocop'
 end
 group :test do
   gem 'capybara'

@@ -1,0 +1,11 @@
+AllCops:
+  RunRailsCops: true
+  Exclude:
+    - 'tmp/**/*'
+    - 'cookbooks/**/*'
+Documentation:
+  Enabled: false
+TrailingBlankLines:
+  EnforcedStyle: final_blank_line
+Metrics/ClassLength:
+  Max: 120
