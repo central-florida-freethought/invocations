@@ -16,3 +16,4 @@ describe Locality do
     end
   end
 end
+

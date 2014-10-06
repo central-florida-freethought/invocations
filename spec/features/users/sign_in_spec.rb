@@ -70,3 +70,4 @@ feature 'Sign in', :devise do
     end
   end
 end
+

@@ -19,3 +19,4 @@ feature 'Navigation links', :devise do
   end
 
 end
+

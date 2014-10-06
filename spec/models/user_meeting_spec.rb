@@ -18,7 +18,7 @@ describe UserMeeting do
       let(:religion) { Fabricate :religion }
       let(:user_meeting) do
         Fabricate.build :user_meeting,
-          speaker_attributes: { religion: religion }
+                        speaker_attributes: { religion: religion }
       end
 
       it 'given valid attributes' do
@@ -30,7 +30,7 @@ describe UserMeeting do
         expect { user_meeting.save }.to change(Speaker, :count).by(1)
         expect(user_meeting.speaker_id).to eq(Speaker.first.id)
       end
-      
+
       it 'have the initial state of "pending"' do
         user_meeting.save
         expect(user_meeting.pending?).to eq true
@@ -45,3 +45,4 @@ describe UserMeeting do
     end
   end
 end
+
