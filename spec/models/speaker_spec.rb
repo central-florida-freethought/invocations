@@ -13,3 +13,4 @@ describe Speaker do
     end
   end
 end
+

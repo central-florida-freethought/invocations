@@ -7,3 +7,4 @@ class StringInput < SimpleForm::Inputs::StringInput
     super.push 'form-group'
   end
 end
+

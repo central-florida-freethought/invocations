@@ -7,3 +7,4 @@ class CollectionSelectInput < SimpleForm::Inputs::CollectionSelectInput
     super.push 'form-group'
   end
 end
+

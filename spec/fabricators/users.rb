@@ -3,5 +3,6 @@ Fabricator :user do
   last_name Faker::Name.last_name
   email Faker::Internet.email
   phone_number Faker::PhoneNumber.phone_number
-  password "please123"
+  password 'please123'
 end
+

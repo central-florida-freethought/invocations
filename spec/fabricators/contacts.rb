@@ -8,7 +8,8 @@ Fabricator :contact do
   street_address Faker::Address.street_address
   city Faker::Address.city
   state_code Faker::Address.state_abbr
-  country_code "US"
+  country_code 'US'
   zip Faker::Address.zip
   notes Faker::Lorem.sentence
 end
+

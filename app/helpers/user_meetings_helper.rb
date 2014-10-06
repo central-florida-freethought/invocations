@@ -1,25 +1,44 @@
 module UserMeetingsHelper
   def meeting_types
-    [['Choose', ''], ['Regular', 'Regular'], ['Special', 'Special'], ['Other', 'Other']]
+    [
+      %w(Regular Regular),
+      %w(Special Special),
+      %w(Other Other)
+    ]
   end
 
   def invocation_options
-    [['Choose', ''], ['Yes', 'Yes'], ['No', 'No'], ['Moment of silence', 'Moment of silence']]
+    [
+      %w(Yes Yes),
+      %w(No No),
+      ['Moment of silence', 'Moment of silence']
+    ]
   end
 
   def pledge_options
-    [['Choose', ''], [ 'Immediately before', 'Immediately before' ], ['Immediately after', 'Immediately after' ],
-     ['Neither', 'Neither' ], ['Unknown', 'Unknown']]
+    [
+      ['Immediately before', 'Immediately before'],
+      ['Immediately after', 'Immediately after'],
+      %w(Neither Neither),
+      %w(Unknown Unknown)
+    ]
   end
 
   def stand_options
-    [['Choose', ''], ['Yes, by official/employee', 'Yes, by official/employee'],
-     ['Yes, by speaker', 'Yes, by speaker'],
-     ['Both', 'Both'], ['Neither', 'Neither']]
+    [
+      ['Yes, by official/employee', 'Yes, by official/employee'],
+      ['Yes, by speaker', 'Yes, by speaker'],
+      %w(Both Both),
+      %w(Neither Neither)
+    ]
   end
 
   def speaker_options
-    [['Choose', ''], ['Yes, Explain', 'Yes, Explain'],
-      ['No', 'No'], ['Unknown', 'Unknown']]
+    [
+      ['Yes, Explain', 'Yes, Explain'],
+      %w(No No),
+      %w(Unknown Unknown)
+    ]
   end
 end
+
