@@ -1,3 +1,4 @@
+# rubocop:disable all
 class DeferredGarbageCollection
   DEFERRED_GC_THRESHOLD = (ENV['DEFER_GC'] || 10.0).to_f
 
@@ -24,3 +25,4 @@ end
 After do
   DeferredGarbageCollection.reconsider
 end
+
