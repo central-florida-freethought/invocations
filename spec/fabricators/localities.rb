@@ -13,3 +13,4 @@ Fabricator :locality do
   meeting_schedule Faker::Lorem.sentence
   invocations_conducted true
 end
+

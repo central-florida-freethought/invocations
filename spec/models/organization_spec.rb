@@ -1,2 +1,3 @@
 describe Organization do
 end
+

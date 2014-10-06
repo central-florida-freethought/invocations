@@ -19,10 +19,11 @@ feature 'User delete', :devise, :js do
     # skip 'skip a slow test'
     user = Fabricate :user
     user.confirm!
-    login_as(user, :scope => :user)
+    login_as(user, scope: :user)
     visit edit_user_registration_path(user)
     click_button 'Cancel my account'
-    expect(page).to have_content 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+    expect(page).to have_content 'Bye! Your account was successfully cancelled.'
   end
 
 end
+
