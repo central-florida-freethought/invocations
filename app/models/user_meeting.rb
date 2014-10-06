@@ -1,6 +1,6 @@
 class UserMeeting < ActiveRecord::Base
   include AASM
-  
+
   aasm do
     state :pending, initial: true
     state :approved
@@ -44,13 +44,11 @@ class UserMeeting < ActiveRecord::Base
   accepts_nested_attributes_for :speaker
 
   def check_user_role
-    if self.user.has_any_role? :trusted
-      self.approve
-    end
+    approve if user.has_role? :trusted
   end
 
   def send_approval_request
     MeetingMailer.approval_request(self, aasm.to_state.to_s).deliver_later
   end
 end
-    
+

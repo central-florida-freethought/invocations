@@ -3,7 +3,7 @@
 #   @locality = Fabricate :locality, name: name
 # end
 
-When /^I fill in the locality fields$/ do
+When(/^I fill in the locality fields$/) do
   fill_in 'locality[name]', with: Faker::Name.name
   fill_in 'locality[phone_number]', with: Faker::PhoneNumber.phone_number
   fill_in 'locality[street_address]', with: Faker::Address.street_address
@@ -18,12 +18,13 @@ When /^I fill in the locality fields$/ do
   choose 'locality_invocations_conducted_true'
 end
 
-Then /^I should be on the locality page for (.*)$/i do |locality_name|
+Then(/^I should be on the locality page for (.*)$/i) do |locality_name|
   locality = Locality.where(name: locality_name).first
   expect(current_path).to eq locality_path(locality)
 end
 
-Then /^I should be on the edit locality page for (.*)$/i do |locality_name|
+Then(/^I should be on the edit locality page for (.*)$/i) do |locality_name|
   locality = Locality.where(name: locality_name).first
   expect(current_path).to eq edit_locality_path(locality)
 end
+

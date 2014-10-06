@@ -12,3 +12,4 @@ class Contact < ActiveRecord::Base
             :zip,
             presence: true
 end
+

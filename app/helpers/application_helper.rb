@@ -6,6 +6,7 @@ module ApplicationHelper
   def sortable(column, title = nil)
     title ||= column.titleize
     direction = column == sort_column && sort_direction == 'asc' ? 'desc' : 'asc'
+
     css_class = nil
     if column == sort_column
       if direction == 'asc'
@@ -14,7 +15,8 @@ module ApplicationHelper
         css_class = 'glyphicon glyphicon-sort-by-attributes '
       end
     end
-    content = link_to title, {:sort => column, :direction => direction}
+
+    content = link_to title, sort: column, direction: direction
     content + ' ' + content_tag(:span, '', class: css_class)
   end
 
@@ -29,10 +31,11 @@ module ApplicationHelper
 
   # should probably be combined somehow with get_obj_name
   def get_meeting_links(link_text, obj)
-    if obj.nil? or obj == ''
+    if obj.nil? || obj == ''
       link_text + ' not provided'
     else
-      link_to link_text, obj, {:target => '_blank'}
+      link_to link_text, obj, target: '_blank'
     end
   end
 end
+

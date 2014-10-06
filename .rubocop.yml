@@ -1,0 +1,27 @@
+AllCops:
+  RunRailsCops: true
+  Exclude:
+    - 'tmp/**/*'
+    - 'cookbooks/**/*'
+    - 'app/models/ability.rb'
+    - 'config/initializers/devise.rb'
+    - 'config/initializers/simple_form*.rb'
+    - 'Cheffile*'
+    - 'bin/**/*'
+    - 'db/migrate/*'
+    - 'db/schema.rb'
+    - 'lib/tasks/cucumber.rake'
+    - 'log/**/*'
+    - 'spec/spec_helper.rb'
+    - 'script/**/*'
+Documentation:
+  Enabled: false
+TrailingBlankLines:
+  EnforcedStyle: final_blank_line
+ClassLength:
+  Max: 120
+MethodLength:
+  Max: 12
+LineLength:
+  Max: 85
+

@@ -5,3 +5,4 @@ Fabricator :speaker do
   religion
   denomination
 end
+

@@ -24,7 +24,7 @@ gem 'aasm'
 gem 'squeel'
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_21]
+  gem 'binding_of_caller', platforms: [:mri_21]
   gem 'capistrano', '~> 3.0.1'
   gem 'capistrano-bundler'
   gem 'capistrano-rails', '~> 1.1.0'
@@ -38,9 +38,9 @@ group :development do
   gem 'terminal-notifier-guard'
   gem 'quiet_assets'
   gem 'rails_layout'
-  gem 'rb-fchange', :require=>false
-  gem 'rb-fsevent', :require=>false
-  gem 'rb-inotify', :require=>false
+  gem 'rb-fchange', require: false
+  gem 'rb-fsevent', require: false
+  gem 'rb-inotify', require: false
   gem 'launchy'
 end
 group :development, :test do
@@ -54,6 +54,7 @@ group :development, :test do
   gem 'faker'
   gem 'fuubar'
   gem 'nyan-cat-formatter'
+  gem 'rubocop'
 end
 group :test do
   gem 'capybara'
@@ -62,3 +63,4 @@ group :test do
   gem 'poltergeist'
   gem 'spring-commands-cucumber'
 end
+

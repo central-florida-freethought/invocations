@@ -73,6 +73,9 @@ GEM
     aasm (3.3.3)
     addressable (2.3.6)
     arel (6.0.0.beta1)
+    ast (2.0.0)
+    astrolabe (1.3.0)
+      parser (>= 2.2.0.pre.3, < 3.0)
     bcrypt (3.1.7)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
@@ -220,6 +223,9 @@ GEM
     paper_trail (3.0.5)
       activerecord (>= 3.0, < 5.0)
       activesupport (>= 3.0, < 5.0)
+    parser (2.2.0.pre.4)
+      ast (>= 1.1, < 3.0)
+      slop (~> 3.4, >= 3.4.5)
     poltergeist (1.5.1)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -227,6 +233,7 @@ GEM
       websocket-driver (>= 0.2.0)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
+    powerpack (0.0.9)
     pry (0.10.0)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -252,6 +259,7 @@ GEM
     rails-html-sanitizer (1.0.0)
       loofah (~> 2.0)
     rails_layout (1.0.20)
+    rainbow (2.0.0)
     rake (10.3.2)
     rb-fchange (0.0.6)
       ffi
@@ -285,6 +293,12 @@ GEM
       rspec-mocks (~> 3.0.0)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.3)
+    rubocop (0.26.1)
+      astrolabe (~> 1.3)
+      parser (>= 2.2.0.pre.4, < 3.0)
+      powerpack (~> 0.0.6)
+      rainbow (>= 1.99.1, < 3.0)
+      ruby-progressbar (~> 1.4)
     ruby-progressbar (1.5.1)
     sass (3.2.19)
     sass-rails (5.0.0.beta1)
@@ -390,6 +404,7 @@ DEPENDENCIES
   role_model
   rspec-example_steps (~> 3.0)
   rspec-rails
+  rubocop
   sass-rails (= 5.0.0.beta1)
   sdoc (~> 0.4.0)
   shoulda-matchers
