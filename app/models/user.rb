@@ -3,10 +3,10 @@ class User < ActiveRecord::Base
   roles :user, :trusted, :admin
 
   # Store who activates/inactivates volunteers
-  has_paper_trail only: [ :approved ]
+  has_paper_trail only: [:approved]
 
   has_many :user_meetings
-  after_initialize :set_default_role, :if => :new_record?
+  after_initialize :set_default_role, if: :new_record?
 
   validates :first_name, :last_name, :phone_number, presence: true
 
@@ -20,19 +20,20 @@ class User < ActiveRecord::Base
   end
 
   def admin!
-    self.roles << :admin
+    roles << :admin
     self.save!
   end
 
   def approve!
-    self.update_attributes approved: true
+    update_attributes approved: true
   end
 
   def timeout_in
     30.minutes
   end
-  
+
   def full_name
-    "#{self.first_name} #{self.last_name}"
+    "#{first_name} #{last_name}"
   end
 end
+

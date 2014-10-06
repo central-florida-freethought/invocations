@@ -3,6 +3,7 @@ AllCops:
   Exclude:
     - 'tmp/**/*'
     - 'cookbooks/**/*'
+    - 'app/models/ability.rb'
 Documentation:
   Enabled: false
 TrailingBlankLines:
