@@ -33,7 +33,7 @@ Rails.application.routes.draw do
       get 'report_all'
     end
   end
-  
+
   get 'cukes', to: 'cukes#index', as: :cukes
 
   # Contact Form
@@ -43,3 +43,4 @@ Rails.application.routes.draw do
   # Uses the 'high_voltage' gem. Modify app/views/pages/home.html.erb
   get 'pages/home'
 end
+
