@@ -22,6 +22,7 @@ gem 'high_voltage', '~> 2.2.1'
 gem 'paper_trail'
 gem 'aasm'
 gem 'squeel'
+gem 'newrelic_rpm'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', platforms: [:mri_21]
