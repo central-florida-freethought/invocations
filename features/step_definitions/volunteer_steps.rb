@@ -2,14 +2,30 @@ Given(/^the volunteer is active$/) do
   @volunteer.approve!
 end
 
+Given(/^the volunteer does not have the (\w+) role$/) do |role|
+  @volunteer.roles = []
+  @volunteer.save!
+end
+
 When(/^I (de)?activate the volunteer$/) do |prefix|
   within '#confirmed_volunteers' do
     find("##{prefix}activate_volunteer_#{@volunteer.id}").click
   end
 end
 
+When(/^I add the (\w+) role$/) do |role|
+  within "#volunteer_#{@volunteer.id}_roles" do
+    check "user[roles][#{role}]"
+    click_on 'Update'
+  end
+end
+
 Then(/^a(?:n)? (de)?activated email should be sent$/) do |prefix|
   last_subject = ActionMailer::Base.deliveries.last.subject
   expect(last_subject).to eq "Account #{prefix}activated"
+end
+
+Then(/^the volunteer should have the (\w+) role$/) do |role|
+  expect(@volunteer.roles).to include(role)
 end
 

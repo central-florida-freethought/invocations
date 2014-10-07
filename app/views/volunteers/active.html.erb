@@ -1,6 +1,6 @@
 <% page_name 'Active Volunteers' %>
 <div id="confirmed_volunteers" class='row'>
-  <div class="col-lg-10 col-lg-offset-1 col-md-6">
+  <div class="col-lg-10 col-lg-offset-1">
     <h1 class="page-header">Active volunteers</h1>
     <table class='table table-striped table-bordered'>
       <thead>
@@ -8,6 +8,7 @@
           <th>Name</th>
           <th>Email</th>
           <th>Actions</th>
+          <th>Roles</th>
         </tr>
       </thead>
       <tbody>
@@ -25,6 +26,18 @@
                 class: 'btn btn-danger btn-xs',
                 disabled: vol == current_user do %>
                 <span class='glyphicon glyphicon-remove'></span> Deactivate
+              <% end %>
+            </td>
+            <td id="volunteer_<%= vol.id %>_roles">
+              <%= form_for vol, as: :volunteer, url: volunteer_path(vol) do |v| %>
+                <% for role in User.valid_roles %>
+                  <%= check_box_tag "user[roles][#{role}]", role, vol.has_role?(role), id: "user_#{vol.id}_role_#{role}" %>
+                  <%= role.to_s.humanize %>
+                  &nbsp;
+                <% end %>
+                <%= v.button as: :submit, class: 'btn btn-primary btn-xs' do %>
+                  <span class='glyphicon glyphicon-ok'></span> Update
+                <% end %>
               <% end %>
             </td>
           </tr>
