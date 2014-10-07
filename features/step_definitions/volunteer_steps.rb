@@ -5,6 +5,7 @@ end
 Given(/^the volunteer does not have the (\w+) role$/) do |role|
   @volunteer.roles = []
   @volunteer.save!
+  expect(@volunteer.is? role).not_to eq true
 end
 
 When(/^I (de)?activate the volunteer$/) do |prefix|
