@@ -23,6 +23,7 @@ gem 'paper_trail'
 gem 'aasm'
 gem 'squeel'
 gem 'newrelic_rpm'
+gem 'faker'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', platforms: [:mri_21]
@@ -52,7 +53,6 @@ group :development, :test do
   gem 'rspec-example_steps', '~> 3.0'
   gem 'shoulda-matchers', require: false
   gem 'spring-commands-rspec'
-  gem 'faker'
   gem 'fuubar'
   gem 'nyan-cat-formatter'
   gem 'rubocop'
