@@ -8,12 +8,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = CreateAdminService.new.call
-logger.info 'CREATED ADMIN USER: ' << user.email
+Rails.logger.info 'CREATED ADMIN USER: ' << user.email
 
-logger.info 'Cleaning up the UserMeetings table'
+Rails.logger.info 'Cleaning up the UserMeetings table'
 Locality.delete_all
 
-logger.info 'Seeding Localities'
+Rails.logger.info 'Seeding Localities'
 Locality.create name: 'Orlando',
                 street_address: '400 South Orange Avenue',
                 city: 'Orlando',
