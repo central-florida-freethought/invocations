@@ -19,3 +19,17 @@ Feature: Admin manages volunteer
     And I deactivate the volunteer
     Then I should see "Volunteer was successfully deactivated"
     And a deactivated email should be sent
+
+  Scenario Outline: add role to volunteer
+    Given the volunteer is active
+    And the volunteer does not have the <role> role
+    When I visit the active volunteers page
+    And I add the <role> role
+    Then I should see "Volunteer was successfully updated"
+
+    Examples:
+      | role    |
+      | user    |
+      | trusted |
+      | admin   |
+
