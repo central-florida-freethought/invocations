@@ -22,7 +22,9 @@ class VolunteersController < ApplicationController
     @volunteer = User.find params[:id]
     if @volunteer.update_attributes(user_params)
       redirect_to :back,
-        notice: 'Volunteer was successfully updated'
+                  notice: 'Volunteer was successfully updated'
+    else
+      render :active
     end
   end
 

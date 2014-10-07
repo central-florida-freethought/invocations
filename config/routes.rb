@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     patch ':id/activate', to: 'registrations#activate', as: 'activate_user'
     patch ':id/deactivate', to: 'registrations#deactivate', as: 'deactivate_user'
   end
-  
+
   resources :volunteers
 
   resources :user_meetings do
