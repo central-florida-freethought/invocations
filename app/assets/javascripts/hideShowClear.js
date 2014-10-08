@@ -37,18 +37,4 @@ var praised = $('#user_meeting_speaker_praised');
 hideShowClear(praised, praised.next(),
   'Yes, Explain', praised.next());
 
-// submit validation
-$('#submit').click(function (e)
-{
-  if ($('#policy:checked').val() !== 'on')
-  {
-    alert('Please review and agree to the policy before submission.');
-    e.preventDefault();
-  }
-  else
-  {// todo remove alert and preventDefaul() when the form can actually post
-    alert("Submitted! Well, not really. This is just a placeholder. ")
-    e.preventDefault();
-  }
-});
 
