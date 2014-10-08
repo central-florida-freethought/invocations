@@ -39,6 +39,9 @@
               <%= button_to user_meeting_path(m), method: :get, id: "show_meeting_#{m.id}", class: 'btn btn-primary btn-xs hide hide-panel' do %>
                 <span class="glyphicon glyphicon-eye-open"></span> Preview
               <% end %>
+              <%= link_to(edit_user_meeting_path(m), class: 'label label-info', role: 'button') do %>
+                <span class="glyphicon glyphicon-pencil"></span> Edit
+              <% end %>
             </div>
           </td>
         </tr>

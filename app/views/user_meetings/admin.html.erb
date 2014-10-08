@@ -20,8 +20,7 @@
         <th><%= sortable 'meeting_time', 'Meeting Time' %></th>
         <th><%= sortable 'pledge_before', 'Before Pledge?' %></th>
         <th><%= sortable 'asked_to_stand', 'Asked to Stand?' %></th>
-        <th><%= sortable 'speaker_preached', 'Speaker Preach?' %></th>
-        <th><%= sortable 'speaker_praised', 'Speaker Praised?' %></th>
+
         <th class="text-center action-col">Action</th>
       </tr>
       </thead>
@@ -32,8 +31,6 @@
           <td><%= m.meeting_time %></td>
           <td><%= m.pledge_before %></td>
           <td><%= m.asked_to_stand %></td>
-          <td><%= m.speaker_preached %></td>
-          <td><%= m.speaker_praised %></td>
           <td>
             <div class="btn-group">
               <%= button_to user_meeting_path(m), method: :get, id: "show_meeting_#{m.id}", class: 'btn btn-primary btn-xs hide hide-panel' do %>
@@ -48,6 +45,9 @@
                 <% end %>
                 <%= button_to deny_user_meeting_path(m), method: :patch, id: "deny_meeting_#{m.id}", class: "btn btn-danger btn-xs" do %>
                   <span class="glyphicon glyphicon-remove"></span> Deny
+                <% end %>
+                <%= link_to(edit_user_meeting_path(m), class: 'label label-info', role: 'button') do %>
+                  <span class="glyphicon glyphicon-pencil"></span> Edit
                 <% end %>
               <% end %>
             </div>
