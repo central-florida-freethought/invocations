@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'speakers/:id', to: 'speakers#show', as: 'speaker'
   get 'org/:id', to: 'organizations#show', as: :org
   get 'user_meetings/pending', as: :pending_meetings
+  get 'user_meetings', to: 'user_meetings#index', as: :user_meetings
+  get 'user_meetings/admin', to: 'user_meetings#admin', as: :admin_user_meetings
 
   devise_for :users, controllers: { registrations: 'registrations' }
   devise_scope :user do
@@ -15,16 +17,6 @@ Rails.application.routes.draw do
 
   resources :volunteers
 
-  resources :user_meetings do
-    member do
-      patch 'approve'
-      patch 'deny'
-      patch 'review'
-    end
-    collection do
-      get 'admin'
-    end
-  end
   resources :user_meetings_steps
   resources :localities do
     member do
@@ -32,6 +24,16 @@ Rails.application.routes.draw do
     end
     collection do
       get 'report_all'
+    end
+    resources :user_meetings do
+      member do
+        patch 'approve'
+        patch 'deny'
+        patch 'review'
+      end
+      collection do
+        get 'admin'
+      end
     end
   end
 
