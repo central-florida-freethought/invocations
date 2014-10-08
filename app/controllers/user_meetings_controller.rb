@@ -2,6 +2,7 @@ class UserMeetingsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
   helper_method :sort_column, :sort_direction
+  respond_to :html
 
   def index
     @user_meetings = current_user
@@ -60,6 +61,14 @@ class UserMeetingsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def update
+    @user_meeting = UserMeeting.find params[:id]
+    if @user_meeting.update_attributes(user_meeting_params)
+      flash[:notice] = 'Meeting was successfully updated'
+    end
+    respond_with @user_meeting
   end
 
   private
