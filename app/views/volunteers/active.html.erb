@@ -30,11 +30,12 @@
             </td>
             <td id="volunteer_<%= vol.id %>_roles">
               <%= form_for vol, as: :volunteer, url: volunteer_path(vol) do |v| %>
-                <% for role in User.valid_roles %>
-                  <%= check_box_tag "user[roles][#{role}]", role, vol.has_role?(role), id: "user_#{vol.id}_role_#{role}" %>
+                <% for role in [:trusted, :admin] %>
+                  <%= check_box_tag "user[roles][]", role, vol.has_role?(role), id: "user_#{vol.id}_role_#{role}" %>
                   <%= role.to_s.humanize %>
                   &nbsp;
                 <% end %>
+                <%= hidden_field_tag "user[roles][]" %>
                 <%= v.button as: :submit, class: 'btn btn-primary btn-xs' do %>
                   <span class='glyphicon glyphicon-ok'></span> Update
                 <% end %>
