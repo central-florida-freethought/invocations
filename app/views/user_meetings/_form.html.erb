@@ -1,0 +1,93 @@
+<%= form_for @user_meeting, html: { class: 'form-vertical', :novalidate => true} do |f| %>
+  <h3>New User Meeting</h3>
+  <% if @user_meeting.errors.any? %>
+    <% @user_meeting.errors.full_messages.each do |msg| %>
+      <%= msg %>
+    <% end %>
+  <% end %>
+  <div class='form-group'>
+    <%= f.hidden_field :locality_id, :value => params[:locality_id] %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :meeting_type, '* Meeting type' %>
+    <%= f.select :meeting_type, options_for_select(meeting_types), { prompt: 'Choose' },
+                 html_options = {:class => 'form-control'}
+    %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :meeting_time, '* Meeting time' %>
+    <%= f.text_field :meeting_time, size: 30, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :invocation_conducted, '* Invocation conducted?' %>
+    <%= f.select :invocation_conducted, options_for_select(invocation_options), { prompt: 'Choose' },
+                 html_options = {:class => 'form-control'} %>
+  </div>
+  <div class='form-group hide invocation_only'>
+    <%= f.label :pledge_before, '* Was the invocation immediately before or immediately after the Pledge of Allegiance?' %>
+    <%= f.select :pledge_before, options_for_select(pledge_options), { prompt: 'Choose' },
+                 html_options = {:class => 'form-control'} %>
+  </div>
+  <div class='form-group hide invocation_only'>
+    <%= f.label :asked_to_stand, '* Were members of the public asked/invited to stand?' %>
+    <%= f.select :asked_to_stand, options_for_select(stand_options),
+                 { prompt: 'Choose' }, html_options = {:class => 'form-control'} %>
+  </div>
+  <div class='form-group hide invocation_only'>
+    <%= f.label :speaker_preached, '* Did the speaker denigrate anyone, threaten damnation, or preach conversion?' %>
+    <%= f.select :speaker_preached, options_for_select(speaker_options), { prompt: 'Choose' },
+                 html_options = {:class => 'explain form-control'} %>
+    <%= f.text_area :speaker_preached_explanation, rows: 4, class: 'text form-control hide' %>
+  </div>
+  <div class='form-group hide invocation_only'>
+    <%= f.label :speaker_praised, '* Was the speaker and/or organization promoted or praised in any way other than announcing the speaker’s name and affiliation?' %>
+    <%= f.select :speaker_praised,options_for_select(speaker_options), { prompt: 'Choose' },
+                 html_options = {:class => 'explain form-control'}  %>
+    <%= f.text_area :speaker_praised_explanation, rows: 4, class: 'text form-control hide' %>
+  </div>
+  <div class="hide invocation_only form-group">
+    <%= f.label :meeting_url, 'Meeting URL (if available)' %>
+    <%= f.text_field :meeting_url, size: 30, class: 'form-control', type: 'url' %>
+  </div>
+  <div class="hide invocation_only form-group">
+    <%= f.label :minutes_url, 'Minutes URL (if available)' %>
+    <%= f.text_field :minutes_url, size: 30, class: 'form-control', type: 'url' %>
+  </div>
+  <div class="hide invocation_only form-group">
+    <%= f.label :agenda_url, 'Agenda URL (if available)' %>
+    <%= f.text_field :agenda_url, size: 30, class: 'form-control', type: 'url' %>
+  </div>
+  <div class="hide invocation_only form-group">
+    <%= f.label :media_url, 'Media URL (if available)' %>
+    <%= f.text_field :media_url, size: 30, class: 'form-control', type: 'url' %>
+  </div>
+  <div class="hide invocation_only">
+    <%= f.fields_for :speaker do |speaker| %>
+      <h4>Speaker</h4>
+      <div class='form-group'>
+        <%= speaker.label :honorific %>
+        <%= speaker.text_field :honorific, size: 5, class: 'form-control' %>
+      </div>
+      <div class='form-group'>
+        <%= speaker.label :name, '* Name of Speaker' %>
+        <%= speaker.text_field :name, class: 'form-control', required: true,  data: {bind: 'value: name'}, autocomplete: 'off' %>
+        <div id="searchResults" class="hide"></div>
+      </div>
+      <%= speaker.fields_for :organization, speaker.object.build_organization do |org| %>
+        <div class='form-group'>
+          <%= org.label :name, 'Organization or House of Worship' %>
+          <%= org.text_field :name, class: 'form-control' %>
+        </div>
+      <% end %>
+      <div class='form-group'>
+        <%= speaker.label :religion_id, '* Religion' %>
+        <%= speaker.collection_select :religion_id, Religion.order(:name), :id, :name, { prompt: 'Please select a religion' }, { class: 'form-control', required: true } %>
+      </div>
+    <% end %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :concerns %>
+    <%= f.text_area :concerns, rows: 10, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Create meeting', class: 'btn btn-default btn-lg pull-right', id: 'create-meeting-btn' %>
+<% end %>
