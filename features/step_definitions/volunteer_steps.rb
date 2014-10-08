@@ -15,8 +15,9 @@ When(/^I (de)?activate the volunteer$/) do |prefix|
 end
 
 When(/^I add the (\w+) role$/) do |role|
-  within "#volunteer_#{@volunteer.id}_roles" do
-    check "user[roles][#{role}]"
+  vol_id = @volunteer.id
+  within "#volunteer_#{vol_id}_roles" do
+    find("#user_#{vol_id}_role_#{role}").set true
     click_on 'Update'
   end
 end

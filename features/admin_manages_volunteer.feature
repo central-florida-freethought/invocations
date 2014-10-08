@@ -29,7 +29,6 @@ Feature: Admin manages volunteer
 
     Examples:
       | role    |
-      | user    |
       | trusted |
       | admin   |
 
