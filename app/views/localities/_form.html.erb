@@ -1,9 +1,11 @@
 <%= form_for @locality, html: {class: 'form-vertical'} do |f| %>
   <h3><%= yield(:locality_heading) %></h3>
   <% if @locality.errors.any? %>
-    <% @locality.errors.full_messages.each do |msg| %>
-      <%= msg %>
-    <% end %>
+    <ul>
+      <% @user_meeting.errors.full_messages.each do |msg| %>
+        <li class="field_with_errors"><%= msg %></li>
+      <% end %>
+    </ul>
   <% end %>
   <div class='form-group'>
     <%= f.label :name %>
