@@ -31,7 +31,7 @@ class VolunteersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit!
+    params.require(:user).permit(roles: [])
   end
 end
 
