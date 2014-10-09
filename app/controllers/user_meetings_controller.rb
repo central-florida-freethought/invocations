@@ -60,7 +60,7 @@ class UserMeetingsController < ApplicationController
       find_or_create_speaker if user_meeting_params[:speaker_attributes]
 
     flash[:notice] = get_flash(@user_meeting) if @user_meeting.save
-    respond_with @locality, @user_meeting
+    respond_with @locality, @user_meeting, location: user_meetings_path
   end
 
   private
@@ -91,7 +91,7 @@ class UserMeetingsController < ApplicationController
                   :pledge_before, :asked_to_stand, :speaker_preached,
                   :speaker_preached_explanation, :speaker_praised,
                   :speaker_praised_explanation, :concerns, :attachment,
-                  :pending, :street_address, :meeting_url, :minutes_url,
+                  :street_address, :meeting_url, :minutes_url,
                   :agenda_url, :media_url, :user_id, :locality_id,
                   speaker_attributes: [:id, :name, :honorific, :religion_id,
                                        :denomination_id,
