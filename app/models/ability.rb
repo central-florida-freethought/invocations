@@ -12,10 +12,14 @@ class Ability
         can :create, UserMeeting
         can :update, UserMeeting, user_id: user.id
       end
-      can :read, UserMeeting, pending: false
+      can :read, UserMeeting do |meeting|
+        meeting.pending? == false
+      end
       can :read, Locality
     else
-      can :read, UserMeeting, pending: false
+      can :read, UserMeeting do |meeting|
+        meeting.pending? == false
+      end
       can :read, Locality
       can :report, Locality
     end
