@@ -78,9 +78,9 @@
                   <li>Submitted by: <%= m.user.full_name %></li>
                   <li>Locality: <%= link_to m.locality.name, locality_path(m.locality) %></li>
                   <li>Meeting Type: <%= m.meeting_type %></li>
-                  <li>Speaker: <%= link_to m.speaker.name, speaker_path(m.speaker) %></a></li>
-                  <li>Organization: <%= get_obj_name(m.speaker.organization) %> </li>
-                  <li>Religion: <%= get_obj_name(m.speaker.religion) %> </li>
+                  <li>Speaker: <%= get_speaker_link(m.speaker) %></a></li>
+                  <li>Organization: <%= get_org_name(m.speaker) %> </li>
+                  <li>Religion: <%= get_rel_name(m.speaker) %> </li>
                 </ul>
               </div>
             </div>

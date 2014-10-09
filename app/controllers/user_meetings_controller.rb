@@ -66,6 +66,9 @@ class UserMeetingsController < ApplicationController
   private
 
   def find_or_create_speaker
+    if user_meeting_params[:speaker_attributes][:name].nil? or user_meeting_params[:speaker_attributes][:name] == ''
+      return
+    end
     Speaker.find_by(name: user_meeting_params[:speaker_attributes][:name]) ||
       Speaker.new(user_meeting_params[:speaker_attributes])
   end

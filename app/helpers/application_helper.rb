@@ -20,16 +20,31 @@ module ApplicationHelper
     content + ' ' + content_tag(:span, '', class: css_class)
   end
 
-  # should probably be combined somehow with get_meeting_links
-  def get_obj_name(obj)
+  # should probably be combined somehow
+  def get_org_name(obj)
     if obj.nil?
       'Not provided'
     else
-      obj.name
+      obj.organization.name
     end
   end
 
-  # should probably be combined somehow with get_obj_name
+  def get_rel_name(obj)
+    if obj.nil?
+      'Not provided'
+    else
+      obj.religion.name
+    end
+  end
+
+  def get_speaker_link(obj)
+    if obj.nil?
+      'Not provided'
+    else
+      link_to(obj.name, speaker_path(obj))
+    end
+  end
+
   def get_meeting_links(link_text, obj)
     if obj.nil? || obj == ''
       link_text + ' not provided'
