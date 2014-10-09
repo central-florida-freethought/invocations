@@ -64,9 +64,9 @@
         </td>
       </tr>
       <tr>
-        <th>Is this record in pending status?</th>
+        <th>Meeting Status</th>
         <td>
-          <%= @user_meeting.pending %>
+          <%= @user_meeting.aasm_state %>
         </td>
       </tr>
       <!--todo pull in submitter name-->
