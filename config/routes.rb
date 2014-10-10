@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'user_meetings/pending', as: :pending_meetings
   get 'user_meetings', to: 'user_meetings#index', as: :user_meetings
   get 'user_meetings/admin', to: 'user_meetings#admin', as: :admin_user_meetings
+  get 'user_meetings/:id/edit', to: 'user_meetings#edit', as: :edit_user_meeting
 
   devise_for :users, controllers: { registrations: 'registrations' }
   devise_scope :user do
