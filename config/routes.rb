@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   get 'org/:id', to: 'organizations#show', as: :org
   get 'user_meetings/pending', as: :pending_meetings
   get 'user_meetings', to: 'user_meetings#index', as: :user_meetings
-  get 'user_meeting', to: 'user_meetings#index', as: :user_meeting
   get 'user_meetings/admin', to: 'user_meetings#admin', as: :admin_user_meetings
-  get 'user_meetings/:id/edit', to: 'user_meetings#edit', as: :edit_user_meeting
 
   devise_for :users, controllers: { registrations: 'registrations' }
   devise_scope :user do
@@ -27,14 +25,11 @@ Rails.application.routes.draw do
     collection do
       get 'report_all'
     end
-    resources :user_meetings do
+    resources :user_meetings, shallow: true do
       member do
         patch 'approve'
         patch 'deny'
         patch 'review'
-      end
-      collection do
-        get 'admin'
       end
     end
   end
