@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/MethodLength
 module NavigationHelpers
   def path_to(page_name)
     case page_name
@@ -5,6 +6,8 @@ module NavigationHelpers
     when /the home page/
       root_path
     # Add more page name => path mappings here
+    when /the admin user meetings page/
+      admin_user_meetings_path
     else
       path = match_rails_path_for(page_name)
       if path

@@ -266,6 +266,10 @@ form {
   width: 32%;
 }
 
+.field_with_errors {
+  color: red;
+}
+
 tr a.label.label-info {
   padding-top: .4em;
   padding-bottom: .5em;

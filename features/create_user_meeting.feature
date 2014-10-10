@@ -33,7 +33,8 @@ Feature: Create UserMeeting
     And a new speaker should not have been created
     
   Scenario: Cannot create a meeting without logging in
-    When I visit the new user meeting page
+    Given a locality
+    When I go to the new locality user meeting page
     Then I should be on the login page
     And I should see "You need to sign in or sign up before continuing."
     

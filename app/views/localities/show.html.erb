@@ -12,7 +12,7 @@
       <% if user_signed_in? && current_user.has_role?(:admin) %>
         <li><%= link_to "Edit this locality", edit_locality_path(@locality) %></li>
       <% end %>
-      <li><%= link_to "Submit a new meeting", controller: "user_meetings", action: "new", :locality_id => @locality.id %></li>
+      <li><%= link_to "Submit a new meeting", new_locality_user_meeting_path(@locality) %></li>
     </ul>
   </div>
 </div>

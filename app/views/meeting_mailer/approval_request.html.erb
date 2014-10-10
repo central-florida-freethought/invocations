@@ -6,7 +6,7 @@
   <body>
     <h1>Meeting <%= @state %></h1>
     <p>
-      Your meeting has been <%= @state %>. You can log in and view it <%= link_to 'here', user_meeting_url(@meeting.id) %>.
+      Your meeting has been <%= @state %>. You can log in and view it <%= link_to 'here', locality_user_meeting_url(@meeting.locality, @meeting.id) %>.
     </p>
   </body>
 </html>

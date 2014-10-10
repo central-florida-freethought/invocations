@@ -26,6 +26,10 @@ When(/^I (\w+) the meeting$/) do |action|
   end
 end
 
+When(/^I go to the new locality user meeting page$/) do
+  visit new_locality_user_meeting_path(@locality.id)
+end
+
 When(/^I click "(.*?)"$/) do |text|
   click_on text
 end

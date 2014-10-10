@@ -28,7 +28,7 @@
       <tbody>
       <% @user_meetings.each_with_index do |m, i| %>
         <tr class="<%= (i % 2 == 0) ? 'even' : 'odd' %>">
-          <td><%= current_user.has_role?(:admin) ? link_to( m.id, user_meeting_path(m)) : m.id %></td>
+          <td><%= current_user.has_role?(:admin) ? link_to( m.id, locality_user_meeting_path(m.locality, m)) : m.id %></td>
           <td><%= m.meeting_time %></td>
           <td><%= m.pledge_before %></td>
           <td><%= m.asked_to_stand %></td>
@@ -36,7 +36,7 @@
           <td><%= m.speaker_praised %></td>
           <td>
             <div class="btn-group">
-              <%= button_to user_meeting_path(m), method: :get, id: "show_meeting_#{m.id}", class: 'btn btn-primary btn-xs hide hide-panel' do %>
+              <%= button_to locality_user_meeting_path(m.locality, m), method: :get, id: "show_meeting_#{m.id}", class: 'btn btn-primary btn-xs hide hide-panel' do %>
                 <span class="glyphicon glyphicon-eye-open"></span> Preview
               <% end %>
               <%= link_to(edit_user_meeting_path(m), class: 'label label-info', role: 'button') do %>
@@ -51,7 +51,7 @@
               <div class="col-lg-3">
                 <h4>Meeting Links</h4>
                 <ul>
-                  <li><%= current_user.has_role?(:admin) ? link_to( 'Single record view', user_meeting_path(m)) : m.id %></li>
+                  <li><%= current_user.has_role?(:admin) ? link_to( 'Single record view', locality_user_meeting_path(m.locality, m)) : m.id %></li>
                   <li><%= get_meeting_links 'Meeting', m.meeting_url %></li>
                   <li><%= get_meeting_links 'Minutes', m.minutes_url %></li>
                   <li><%= get_meeting_links 'Agenda', m.agenda_url %></li>
