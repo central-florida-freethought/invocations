@@ -24,7 +24,9 @@ hideShowClear = function (changeNode, hideNode, checkVal, clearField)
 };
 
 // show/hide invocation-related fields
-hideShowClear($('#user_meeting_invocation_conducted'), $('.invocation_only'),
+var invocation = $('#user_meeting_invocation_conducted');
+var invoc_only = $('.invocation_only');
+hideShowClear(invocation, invoc_only,
   'Yes', false);
 
 // show/hide speaker preaching explanation
@@ -37,18 +39,12 @@ var praised = $('#user_meeting_speaker_praised');
 hideShowClear(praised, praised.next(),
   'Yes, Explain', praised.next());
 
-// submit validation
-$('#submit').click(function (e)
-{
-  if ($('#policy:checked').val() !== 'on')
-  {
-    alert('Please review and agree to the policy before submission.');
-    e.preventDefault();
-  }
-  else
-  {// todo remove alert and preventDefaul() when the form can actually post
-    alert("Submitted! Well, not really. This is just a placeholder. ")
-    e.preventDefault();
-  }
-});
+// Show hidden fields for edit page
+if (invocation.val() == 'Yes')
+  invoc_only.removeClass('hide');
 
+if (preached.val() == 'Yes, Explain')
+  preached.next().removeClass('hide');
+
+if (praised.val() == 'Yes, Explain')
+  praised.next().removeClass('hide');
