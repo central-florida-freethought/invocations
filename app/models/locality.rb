@@ -8,8 +8,7 @@ class Locality < ActiveRecord::Base
             :state_code,
             :country_code,
             :zip,
-            :volunteer_needed,
             :invocations_conducted,
             presence: true
+  validates_inclusion_of :volunteer_needed, in: [true, false]
 end
-
