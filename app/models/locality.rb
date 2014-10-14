@@ -10,5 +10,6 @@ class Locality < ActiveRecord::Base
             :zip,
             :invocations_conducted,
             presence: true
-  validates_inclusion_of :volunteer_needed, in: [true, false]
+  validates :volunteer_needed, inclusion: { in: [true, false] }
 end
+
