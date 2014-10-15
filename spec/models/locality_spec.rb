@@ -5,7 +5,6 @@ describe Locality do
   it { is_expected.to validate_presence_of :state_code }
   it { is_expected.to validate_presence_of :country_code }
   it { is_expected.to validate_presence_of :zip }
-  it { is_expected.to validate_presence_of :invocations_conducted }
 
   context 'successfully' do
     it 'creates a new Locality given valid attributes' do
