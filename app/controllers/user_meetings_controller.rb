@@ -63,7 +63,25 @@ class UserMeetingsController < ApplicationController
     respond_with @locality, @user_meeting, location: user_meetings_path
   end
 
+  def edit
+    @locality = Locality.find params[:locality_id]
+    @user_meeting = UserMeeting.find params[:id]
+  end
+
+  def update
+    @user_meeting = UserMeeting.find params[:id]
+    if @user_meeting.update_attributes(user_meeting_params)
+      flash[:notice] = 'Meeting was successfully updated'
+    end
+    respond_with @locality, @user_meeting, location: path_for_meetings
+  end
+
   private
+
+  def path_for_meetings
+    return user_meetings_path unless current_user.has_role?(:admin)
+    admin_user_meetings_path
+  end
 
   def find_or_create_speaker
     Speaker.find_by(name: user_meeting_params[:speaker_attributes][:name]) ||
