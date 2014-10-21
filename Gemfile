@@ -37,6 +37,7 @@ group :development do
   gem 'guard-rails'
   gem 'guard-rspec'
   gem 'guard-cucumber'
+  gem 'guard-rubocop'
   gem 'terminal-notifier-guard'
   gem 'quiet_assets'
   gem 'rails_layout'

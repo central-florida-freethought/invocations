@@ -45,13 +45,13 @@
     <%= f.label :volunteer_needed %>
     <div class='radio'>
       <label>
-        <%= f.radio_button :volunteer_needed, 'true' %>
+        <%= f.radio_button :volunteer_needed, true, value: true %>
         Yes
       </label>
     </div>
     <div class='radio'>
       <label>
-        <%= f.radio_button :volunteer_needed, 'false' %>
+        <%= f.radio_button :volunteer_needed, false, value: false %>
         No
       </label>
     </div>
