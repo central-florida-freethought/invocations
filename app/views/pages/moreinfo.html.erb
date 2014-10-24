@@ -9,18 +9,17 @@
 <div class="row">
   <div class="col-lg-10 col-lg-offset-1 col-md-12">
     <ul>
-      <li>Need to get in touch with the InvocationsOnline project team? <a href="">Contact us</a>!</li>
-      <li>Want instructions on how to reach out to your local government to conduct an invocation of your own? Here are
-        our recommendations:
-        <!--todo (LINK to unlined NEW PAGE) (DW NOTE: Not linked at the top menu. Also link to this from the
-        Locations page.) -->
+      <li>Need to get in touch with the <%= link_to 'InvocationOnline', root_path %> project
+        team? <%= link_to 'Contact Us', contact_path %>!
+      </li>
+      <li>Want instructions on how to reach out to your local government to conduct an invocation of your own? Find
+        instructions on the <%= link_to 'Help &amp; FAQ', page_path('help') %> page.
       </li>
       <li>Have a few minutes to help us collect more data? Meetings are often viewable online. Check out
         our <%= link_to 'Volunteer', page_path('volunteer') %> page.
       </li>
       <li>Need to report a state/church violation or contact one of our national allies?
-        <a href="">Find a list here</a>.
-        <!-- todo (LINK to unlinked NEW PAGE)-->
+        <% link_to 'Find a list of contacts here', page_path('violations') %>.
       </li>
       <li>Here are a few legal resources on the <em>Town of Greece v. Galloway</em> case.
         <ul>
