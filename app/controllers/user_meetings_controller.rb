@@ -8,6 +8,7 @@ class UserMeetingsController < ApplicationController
     @user_meetings = current_user
       .user_meetings
       .includes({ speaker: [:religion, :organization] }, :locality)
+      .order(sort_column + ' ' + sort_direction)
     respond_with @user_meetings
   end
 
