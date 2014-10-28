@@ -19,7 +19,7 @@ Documentation:
 TrailingBlankLines:
   EnforcedStyle: final_blank_line
 ClassLength:
-  Max: 120
+  Max: 130
 MethodLength:
   Max: 12
 LineLength:
