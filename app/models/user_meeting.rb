@@ -1,6 +1,8 @@
 class UserMeeting < ActiveRecord::Base
   include AASM
 
+  self.per_page = 10
+
   aasm do
     state :pending, initial: true
     state :approved
