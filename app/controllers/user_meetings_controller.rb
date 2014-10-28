@@ -8,7 +8,7 @@ class UserMeetingsController < ApplicationController
     @user_meetings = current_user
       .user_meetings
       .includes({ speaker: [:religion, :organization] }, :locality)
-      .paginate(:page => params[:page])
+      .paginate(page: params[:page])
       .order(sort_column + ' ' + sort_direction)
     respond_with @user_meetings
   end
@@ -17,7 +17,7 @@ class UserMeetingsController < ApplicationController
     return unless current_user.has_role?(:admin)
     @user_meetings = UserMeeting
       .includes({ speaker: [:religion, :organization] }, :locality)
-      .paginate(:page => params[:page])
+      .paginate(page: params[:page])
       .pending.order(sort_column + ' ' + sort_direction)
     respond_with @user_meetings
   end
@@ -132,10 +132,11 @@ class UserMeetingsController < ApplicationController
   end
 
   private
+
   def prev_count(records_per_page)
     if record_offset == 0
       record_offset
-    elsif record_offset > 0 and record_offset < 10
+    elsif record_offset > 0 && record_offset < 10
       0
     else
       record_offset - records_per_page
