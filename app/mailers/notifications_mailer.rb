@@ -1,6 +1,6 @@
 class NotificationsMailer < ActionMailer::Base
   default from: 'noreply@invocationsonline.com'
-  default to: 'you@invocationsonline.com'
+  default to: 'cflfreethought@gmail.com'
 
   def new_message(message)
     @message = message
