@@ -63,24 +63,17 @@ header {
 .navbar-fixed-top {
   border: 0;
 }
-
+.navbar {
+  border-bottom: 2px solid $sidebar_bg;
+}
 /*
  * Logo
  */
 #logo {
-  background-color: $sidebar_bg;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  img {
-    width: 100%;
-  }
-}
-
-//todo add another size for medium screens
-@media (min-width: 768px) {
-  #logo img {
-    width: 20%;
-  }
+  background-image: url(image_path('logo_transparent_sm.png'));
+  width: 195px;
+  height: 100px;
+  margin-top: -15px;
 }
 
 /*
