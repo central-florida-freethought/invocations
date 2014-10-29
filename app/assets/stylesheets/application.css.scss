@@ -58,14 +58,17 @@ header {
 
 /*
  * Top navigation
- * Hide default border to remove 1px line.
  */
 .navbar-fixed-top {
   border: 0;
 }
 .navbar {
   border-bottom: 2px solid $sidebar_bg;
+  ul.nav {
+    margin-top: 15px;
+  }
 }
+
 /*
  * Logo
  */
