@@ -28,6 +28,9 @@ $link_bg_hover_color: #eeeeee;
 $border_colors: #9a9a9a;
 $logo_bg_color: #4270d9;
 $table-bg-accent: #f9f9f9;
+$screen-sm-min: 796px;
+$screen-md-min: 992px;
+$screen-lg-min: 1200px;
 
 /*
  * Base structure
@@ -272,4 +275,10 @@ tr a.label.label-info {
 }
 .field_with_errors {
   color: red;
+}
+
+@media (min-width: $screen-md-min) {
+  .meeting_time {
+    width: 50%;
+  }
 }
