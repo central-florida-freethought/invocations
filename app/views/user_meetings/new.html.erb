@@ -16,15 +16,17 @@
       <div class='form-group'>
         <%= f.hidden_field :locality_id, :value => params[:locality_id] %>
       </div>
-      <div class='form-group'>
-        <%= f.label :meeting_type, '* Meeting type' %>
-        <%= f.select :meeting_type, options_for_select(meeting_types), {prompt: 'Choose'},
-                     html_options = {:class => 'form-control'}
-        %>
-      </div>
-      <div class='form-group'>
-        <%= f.label :meeting_time, '* Meeting time' %>
-        <%= f.text_field :meeting_time, size: 30, class: 'form-control' %>
+      <div class="row">
+        <div class='form-group col-lg-6 col-md-6'>
+          <%= f.label :meeting_type, '* Meeting type' %>
+          <%= f.select :meeting_type, options_for_select(meeting_types), {prompt: 'Choose'},
+                       html_options = {:class => 'form-control'}
+          %>
+        </div>
+        <div class="form_group col-lg-4 col-md-4 meeting_time">
+          <%= f.label :meeting_time, '* Meeting time' %>
+          <%= f.text_field :meeting_time, size: 30, class: 'form-control' %>
+        </div>
       </div>
       <div class='form-group'>
         <%= f.label :invocation_conducted, '* Invocation conducted?' %>
