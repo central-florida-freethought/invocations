@@ -19,7 +19,7 @@
       <div class='form-group'>
         <%= f.label :meeting_type, '* Meeting type' %>
         <%= f.select :meeting_type, meeting_types, { prompt: 'Choose' },
-                     html_options = {:class => 'form-control', :selected => @user_meeting.meeting_type }
+                     html_options = {:class => 'form-control'}
         %>
       </div>
       <div class='form-group'>
@@ -81,7 +81,7 @@
             <%= speaker.text_field :name, class: 'form-control', required: true,  data: {bind: 'value: name'}, autocomplete: 'off' %>
             <div id="searchResults" class="hide"></div>
           </div>
-          <%= speaker.fields_for :organization, speaker.object.build_organization do |org| %>
+          <%= speaker.fields_for :organization do |org| %>
             <div class='form-group'>
               <%= org.label :name, 'Organization or House of Worship' %>
               <%= org.text_field :name, class: 'form-control' %>
