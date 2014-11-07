@@ -18,8 +18,8 @@
       </div>
       <div class='form-group'>
         <%= f.label :meeting_type, '* Meeting type' %>
-        <%= f.select :meeting_type, options_for_select(meeting_types), { prompt: 'Choose' },
-                     html_options = {:class => 'form-control'}
+        <%= f.select :meeting_type, meeting_types, { prompt: 'Choose' },
+                     html_options = {:class => 'form-control', :selected => @user_meeting.meeting_type }
         %>
       </div>
       <div class='form-group'>
@@ -28,28 +28,28 @@
       </div>
       <div class='form-group'>
         <%= f.label :invocation_conducted, '* Invocation conducted?' %>
-        <%= f.select :invocation_conducted, options_for_select(invocation_options), { prompt: 'Choose' },
+        <%= f.select :invocation_conducted, invocation_options, { prompt: 'Choose' },
                      html_options = {:class => 'form-control'} %>
       </div>
       <div class='form-group hide invocation_only'>
         <%= f.label :pledge_before, '* Was the invocation immediately before or immediately after the Pledge of Allegiance?' %>
-        <%= f.select :pledge_before, options_for_select(pledge_options), { prompt: 'Choose' },
+        <%= f.select :pledge_before, pledge_options, { prompt: 'Choose' },
                      html_options = {:class => 'form-control'} %>
       </div>
       <div class='form-group hide invocation_only'>
         <%= f.label :asked_to_stand, '* Were members of the public asked/invited to stand?' %>
-        <%= f.select :asked_to_stand, options_for_select(stand_options),
-                     { prompt: 'Choose' }, html_options = {:class => 'form-control'} %>
+        <%= f.select :asked_to_stand, stand_options,
+                     { prompt: 'Choose'}, {:class => 'form-control'} %>
       </div>
       <div class='form-group hide invocation_only'>
         <%= f.label :speaker_preached, '* Did the speaker denigrate anyone, threaten damnation, or preach conversion?' %>
-        <%= f.select :speaker_preached, options_for_select(speaker_options), { prompt: 'Choose' },
+        <%= f.select :speaker_preached, speaker_options, { prompt: 'Choose' },
                      html_options = {:class => 'explain form-control'} %>
         <%= f.text_area :speaker_preached_explanation, rows: 4, class: 'text form-control hide' %>
       </div>
       <div class='form-group hide invocation_only'>
         <%= f.label :speaker_praised, '* Was the speaker and/or organization promoted or praised in any way other than announcing the speaker’s name and affiliation?' %>
-        <%= f.select :speaker_praised,options_for_select(speaker_options), { prompt: 'Choose' },
+        <%= f.select :speaker_praised,speaker_options, { prompt: 'Choose' },
                      html_options = {:class => 'explain form-control'}  %>
         <%= f.text_area :speaker_praised_explanation, rows: 4, class: 'text form-control hide' %>
       </div>
