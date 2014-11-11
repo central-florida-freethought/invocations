@@ -74,6 +74,10 @@ class UserMeetingsController < ApplicationController
   def update
     @user_meeting = UserMeeting.find params[:id]
     if @user_meeting.update_attributes(user_meeting_params)
+      unless current_user.has_role?(:trusted) || current_user.has_role?(:admin)
+        @user_meeting.aasm_state = 'pending'
+        @user_meeting.save
+      end
       flash[:notice] = 'Meeting was successfully updated'
     end
     respond_with @locality, @user_meeting, location: path_for_meetings
