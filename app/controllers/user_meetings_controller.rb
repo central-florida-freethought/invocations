@@ -39,21 +39,21 @@ class UserMeetingsController < ApplicationController
     @user_meeting = UserMeeting.find(params[:id])
     @user_meeting.approve!
     MeetingMailer.approval_request(@user_meeting).deliver_later
-    redirect_to user_meetings_path, notice: t('user_meeting.admin.approved')
+    redirect_to admin_user_meetings_path, notice: t('user_meeting.admin.approved')
   end
 
   def deny
     @user_meeting = UserMeeting.find params[:id]
     @user_meeting.deny!
     MeetingMailer.approval_request(@user_meeting).deliver_later
-    redirect_to user_meetings_path, notice: t('user_meeting.admin.denied')
+    redirect_to admin_user_meetings_path, notice: t('user_meeting.admin.denied')
   end
 
   def review
     @user_meeting = UserMeeting.find params[:id]
     @user_meeting.review!
     MeetingMailer.approval_request(@user_meeting).deliver_later
-    redirect_to user_meetings_path, notice: t('user_meeting.admin.reviewed')
+    redirect_to admin_user_meetings_path, notice: t('user_meeting.admin.reviewed')
   end
 
   def create
