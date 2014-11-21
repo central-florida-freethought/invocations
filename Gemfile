@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
+ruby '2.1.5'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'rails', github: 'rails/rails'
 gem 'sass-rails', '5.0.0.beta1'
@@ -33,6 +33,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1.0'
   gem 'capistrano-rails-console'
   gem 'capistrano-rvm', '~> 0.1.1'
+  gem 'capistrano3-puma', github: "seuros/capistrano-puma"
   gem 'foreman'
   gem 'guard-bundler'
   gem 'guard-rails'
