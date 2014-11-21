@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.5'
-gem 'dotenv-rails', groups: [:development, :test]
-gem 'rails', github: 'rails/rails'
+gem 'dotenv-rails'
+gem 'rails', '4.2.0.beta4'
 gem 'sass-rails', '5.0.0.beta1'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
