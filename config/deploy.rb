@@ -37,11 +37,11 @@ namespace :deploy do
 
   after :finishing, 'deploy:cleanup'
 
-  task :link_db do
-    run "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-  end
+  #task :link_db do
+  #  run "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  #end
 
-  before 'deploy:assets:precompile', 'deploy:link_db'
+  #before 'deploy:assets:precompile', 'deploy:link_db'
 
 end
 
