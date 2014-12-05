@@ -7,11 +7,6 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are
 # already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( jsapi.js )
-Rails.application.config.assets.precompile += %w( charts.js )
-Rails.application.config.assets.precompile += %w( jquery-ui-timepicker-addon.js )
-Rails.application.config.assets.precompile += %w( datetime.js )
-Rails.application.config.assets.precompile += %w( hideShowClear.js )
-Rails.application.config.assets.precompile += %w( speakerLiveSearch.js )
-Rails.application.config.assets.precompile += %w( meetingApproval.js )
+Rails.application.config.assets.precompile += %w( jsapi.js charts.js jquery-ui-timepicker-addon.js datetime.js
+  hideShowClear.js speakerLiveSearch.js meetingApproval.js )
 
