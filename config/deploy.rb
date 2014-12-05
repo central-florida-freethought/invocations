@@ -1,50 +1,87 @@
-set :application, 'invocations'
-set :repo_url, 'git@bitbucket.org:cffc/invocations_rails.git'
+require 'mina/bundler'
+require 'mina/rails'
+require 'mina/git'
+require 'mina/puma'
+# require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
+# require 'mina/rvm'    # for rvm support. (http://rvm.io)
 
-ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+# Basic settings:
+#   domain       - The hostname to SSH to.
+#   deploy_to    - Path to deploy into.
+#   repository   - Git repo to clone from. (needed by mina/git)
+#   branch       - Branch name to deploy. (needed by mina/git)
 
+set :user, 'deploy'
+set :domain, '104.131.180.69'
 set :deploy_to, '/home/deploy/rails_apps/invocations'
-# set :scm, :git
+set :repository, 'git@bitbucket.org:cffc/invocations_rails.git'
+set :branch, 'digitalocean'
 
-# set :format, :pretty
-# set :log_level, :debug
-# set :pty, true
+# For system-wide RVM install.
+#   set :rvm_path, '/usr/local/rvm/bin/rvm'
 
-set :linked_files, %w{config/database.yml .env}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+# Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
+# They will be linked in the 'deploy:link_shared_paths' step.
+set :shared_paths, ['config/database.yml', '.env', 'log', 'bin', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system']
 
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-# set :keep_releases, 5
+# Optional settings:
+#   set :user, 'foobar'    # Username in the server to SSH to.
+#   set :port, '30000'     # SSH port number.
+#   set :forward_agent, true     # SSH forward_agent.
 
-namespace :deploy do
+# This task is the environment that is loaded for most commands, such as
+# `mina deploy` or `mina rake`.
+task :environment do
+  # If you're using rbenv, use this to load the rbenv environment.
+  # Be sure to commit your .rbenv-version to your repository.
+  # invoke :'rbenv:load'
 
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
-    end
-  end
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
-  end
-
-  after :finishing, 'deploy:cleanup'
-
-  task :link_db do
-    on roles :all do
-      execute :ln, "-s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-      execute :ln, "-s #{shared_path}/.env #{release_path}/.env"
-    end
-  end
-
-  #before 'deploy:assets:precompile', 'link_db'
-
+  # For those using RVM, use this to load an RVM version@gemset.
+  # invoke :'rvm:use[ruby-1.9.3-p125@default]'
 end
+
+# Put any custom mkdir's in here for when `mina setup` is ran.
+# For Rails apps, we'll make some of the shared paths that are shared between
+# all releases.
+task :setup => :environment do
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/tmp/sockets"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/sockets"]
+
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/tmp/pids"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/pids"]
+
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/log"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log"]
+
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/config"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config"]
+
+  queue! %[touch "#{deploy_to}/#{shared_path}/config/database.yml"]
+  queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml'."]
+end
+
+desc "Deploys the current version to the server."
+task :deploy => :environment do
+  deploy do
+    # Put things that will set up an empty directory into a fully set-up
+    # instance of your project.
+    invoke :'git:clone'
+    invoke :'deploy:link_shared_paths'
+    invoke :'bundle:install'
+    invoke :'rails:db_migrate'
+    invoke :'rails:assets_precompile'
+    invoke :'deploy:cleanup'
+
+    to :launch do
+      invoke :'puma:phased_restart'
+    end
+  end
+end
+
+# For help in making your deploy script, see the Mina documentation:
+#
+#  - http://nadarei.co/mina
+#  - http://nadarei.co/mina/tasks
+#  - http://nadarei.co/mina/settings
+#  - http://nadarei.co/mina/helpers
 
