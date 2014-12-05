@@ -1,7 +1,7 @@
 require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
-require 'mina/puma'
+require 'mina/unicorn'
 
 set :user, 'deploy'
 set :domain, '104.131.180.69'
@@ -57,7 +57,8 @@ task deploy: :environment do
 
     to :launch do
       # Need to reconfigure puma.rb file if we want to do phased-restart here
-      invoke :'puma:restart'
+      #invoke :'puma:restart'
+      invoke :'unicorn:restart'
     end
   end
 end
