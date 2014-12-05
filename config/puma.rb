@@ -11,7 +11,6 @@ stdout_redirect '/home/deploy/rails_apps/invocations/shared/log/puma_access.log'
 threads 0,16
 
 bind 'unix:///home/deploy/rails_apps/invocations/shared/tmp/sockets/puma.sock'
-workers 0
 
 preload_app!
 

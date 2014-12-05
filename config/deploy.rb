@@ -10,8 +10,7 @@ set :repository, 'git@bitbucket.org:cffc/invocations_rails.git'
 set :branch, 'digitalocean'
 
 set :shared_paths, ['config/database.yml', '.env', 'log', 'bin', 'tmp/pids',
-                    'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system'
-                   ]
+                    'tmp/sockets', 'public/system']
 
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
