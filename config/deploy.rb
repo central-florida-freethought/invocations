@@ -57,7 +57,8 @@ task deploy: :environment do
     invoke :'deploy:cleanup'
 
     to :launch do
-      invoke :'puma:phased_restart'
+      # Need to reconfigure puma.rb file if we want to do phased-restart here
+      invoke :'puma:restart'
     end
   end
 end
