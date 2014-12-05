@@ -57,7 +57,7 @@ task deploy: :environment do
 
     to :launch do
       # Need to reconfigure puma.rb file if we want to do phased-restart here
-      #invoke :'puma:restart'
+      # invoke :'puma:restart'
       invoke :'unicorn:restart'
     end
   end
