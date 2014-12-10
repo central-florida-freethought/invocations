@@ -10,7 +10,7 @@ gem 'jbuilder'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'bootstrap-sass'
-gem 'devise', github: 'plataformatec/devise', branch: 'lm-rails-4-2'
+gem 'devise', '~> 3.4.0'
 gem 'mysql2'
 gem 'puma'
 gem 'unicorn'
@@ -26,6 +26,7 @@ gem 'squeel'
 gem 'newrelic_rpm'
 gem 'faker'
 gem 'will_paginate', '~> 3.0'
+gem 'therubyracer', group: :production
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', platforms: [:mri_21]
