@@ -7,7 +7,7 @@ set :user, 'deploy'
 set :domain, '104.131.180.69'
 set :deploy_to, '/home/deploy/rails_apps/invocations'
 set :repository, 'git@bitbucket.org:cffc/invocations_rails.git'
-set :branch, 'digitalocean'
+set :branch, 'master'
 
 set :shared_paths, ['config/database.yml', '.env', 'log', 'bin', 'tmp/pids',
                     'tmp/sockets', 'public/system']
