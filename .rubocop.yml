@@ -4,6 +4,8 @@ AllCops:
     - 'tmp/**/*'
     - 'cookbooks/**/*'
     - 'app/models/ability.rb'
+    - 'config/puma.rb'
+    - 'config/unicorn.rb'
     - 'config/initializers/devise.rb'
     - 'config/initializers/simple_form*.rb'
     - 'Cheffile*'
