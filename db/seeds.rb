@@ -15,6 +15,7 @@ Locality.delete_all
 
 Rails.logger.info 'Seeding Localities'
 Locality.create name: 'Orlando',
+                phone_number: Faker::PhoneNumber.phone_number,
                 street_address: '400 South Orange Avenue',
                 city: 'Orlando',
                 state_code: 'FL',
@@ -26,6 +27,7 @@ Locality.create name: 'Orlando',
                 contact_title: Faker::Name.title
 
 Locality.create name: 'Kissimmee',
+                phone_number: Faker::PhoneNumber.phone_number,
                 street_address: '101 Church Street ',
                 city: 'Kissimmee',
                 state_code: 'FL',
@@ -38,6 +40,7 @@ Locality.create name: 'Kissimmee',
                 contact_phone: Faker::PhoneNumber.phone_number
 
 Locality.create name: 'Sanford',
+                phone_number: Faker::PhoneNumber.phone_number,
                 street_address: '300 N Park Avenue',
                 city: 'Sanford',
                 state_code: 'FL',
@@ -48,6 +51,7 @@ Locality.create name: 'Sanford',
                 contact_phone: Faker::PhoneNumber.phone_number
 
 Locality.create name: 'Winter Park',
+                phone_number: Faker::PhoneNumber.phone_number,
                 street_address: '401 South Park Avenue',
                 city: 'Winter Park',
                 state_code: 'FL',
@@ -57,6 +61,7 @@ Locality.create name: 'Winter Park',
                 invocations_conducted: '1'
 
 Locality.create name: 'Oviedo',
+                phone_number: Faker::PhoneNumber.phone_number,
                 street_address: '400 Alexandria Blvd',
                 city: 'Oviedo',
                 state_code: 'FL',
@@ -66,6 +71,7 @@ Locality.create name: 'Oviedo',
                 invocations_conducted: '1'
 
 Locality.create name: 'Altamonte Springs',
+                phone_number: Faker::PhoneNumber.phone_number,
                 street_address: '225 Newburyport Ave.',
                 city: 'Altamonte Springs',
                 state_code: 'FL',
