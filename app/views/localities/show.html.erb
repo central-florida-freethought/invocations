@@ -47,8 +47,34 @@
       'Other Christian' and 'Other World Religion' have been combined into 'Other Religion'. Unaffiliated has been
       changed
       to 'None'. Responses in the category of 'Don’t Know/Refused' have been added to 'None'. The responses Mormon,
-      Buddhist, and Hindu which were originally <0.5 have been rounded up to 0.5 each.
+      Buddhist, and Hindu which were originally &lt;0.5 have been rounded up to 0.5 each.
     </small>
   </div>
 </div>
 
+<div class='row'>
+  <div class='col-lg-10 col-lg-offset-1 col-md-12'>
+    <h3><%= @locality.name %> Meeting Data</h3>
+    <% content_for :scripts do %>
+      <%= javascript_include_tag 'meetingApproval' %>
+    <% end %>
+    <div class="text-center"><%= will_paginate @user_meetings %></div>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th><%= sortable 'id', 'Meeting ID' %></th>
+        <th><%= sortable 'meeting_time', 'Meeting Time' %></th>
+        <th><%= sortable 'pledge_before', 'Before Pledge?' %></th>
+        <th><%= sortable 'asked_to_stand', 'Asked to Stand?' %></th>
+        <th><%= sortable 'speaker_preached', 'Speaker Preach?' %></th>
+        <th><%= sortable 'speaker_praised', 'Speaker Praised?' %></th>
+        <th class="text-center">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render partial: 'user_meetings/user_meeting', collection: @user_meetings %>
+      </tbody>
+    </table>
+    <div class="text-center"><%= will_paginate @user_meetings %></div>
+  </div>
+</div>
