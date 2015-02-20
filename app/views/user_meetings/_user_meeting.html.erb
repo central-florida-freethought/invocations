@@ -1,5 +1,5 @@
-<tr class="<%= (user_meeting_counter % 2 ==0) ? 'even' : 'odd' %>">
-  <td><%= current_user.has_role?(:admin) ? link_to(user_meeting.id, locality_user_meeting_path(user_meeting.locality, user_meeting)) : user_meeting.id %></td>
+<tr class="<%= (user_meeting_counter % 2 ==0) ? 'even' : 'odd' %>" id="table_data">
+  <td><%= get_meeting_id_link(user_meeting, user_meeting.id) %></td>
   <td><%= user_meeting.meeting_time %></td>
   <td><%= user_meeting.pledge_before %></td>
   <td><%= user_meeting.asked_to_stand %></td>
@@ -22,7 +22,7 @@
       <div class="col-lg-3">
         <h4>Meeting Links</h4>
         <ul>
-          <li><%= current_user.has_role?(:admin) ? link_to('Single record view', locality_user_meeting_path(user_meeting.locality, user_meeting)) : user_meeting.id %></li>
+          <li><%= get_meeting_id_link(user_meeting, 'Single Record View') %></li>
           <li><%= get_meeting_links 'Meeting', user_meeting.meeting_url %></li>
           <li><%= get_meeting_links 'Minutes', user_meeting.minutes_url %></li>
           <li><%= get_meeting_links 'Agenda', user_meeting.agenda_url %></li>
