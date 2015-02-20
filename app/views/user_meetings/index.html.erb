@@ -26,70 +26,7 @@
       </tr>
       </thead>
       <tbody>
-      <% @user_meetings.each_with_index do |m, i| %>
-        <tr class="<%= (i % 2 == 0) ? 'even' : 'odd' %>">
-          <td><%= current_user.has_role?(:admin) ? link_to(m.id, locality_user_meeting_path(m.locality, m)) : m.id %></td>
-          <td><%= m.meeting_time %></td>
-          <td><%= m.pledge_before %></td>
-          <td><%= m.asked_to_stand %></td>
-          <td><%= m.speaker_preached %></td>
-          <td><%= m.speaker_praised %></td>
-          <td>
-            <div class="btn-group">
-              <%= button_to locality_user_meeting_path(m.locality, m), method: :get, id: "show_meeting_#{m.id}", class: 'btn btn-primary btn-xs hide hide-panel' do %>
-                <span class="glyphicon glyphicon-eye-open"></span> Preview
-              <% end %>
-              <%= link_to(edit_locality_user_meeting_path(m.locality, m), class: 'label label-info', role: 'button') do %>
-                <span class="glyphicon glyphicon-pencil"></span> Edit
-              <% end %>
-            </div>
-          </td>
-        </tr>
-        <tr class="toggleable">
-          <td colspan="7">
-            <div class="slide-panel">
-              <div class="col-lg-3">
-                <h4>Meeting Links</h4>
-                <ul>
-                  <li><%= current_user.has_role?(:admin) ? link_to('Single record view', locality_user_meeting_path(m.locality, m)) : m.id %></li>
-                  <li><%= get_meeting_links 'Meeting', m.meeting_url %></li>
-                  <li><%= get_meeting_links 'Minutes', m.minutes_url %></li>
-                  <li><%= get_meeting_links 'Agenda', m.agenda_url %></li>
-                  <li><%= get_meeting_links 'Media', m.media_url %></li>
-                  <li><%= get_meeting_links 'Attachment', m.attachment %></li>
-                </ul>
-              </div>
-              <div class="col-lg-5">
-                <h4>Explanations</h4>
-                <ul>
-                  <li><strong>Preached:</strong>
-                    <p><%= m.speaker_preached_explanation %></p>
-                  </li>
-                  <li><strong>Praised:</strong>
-                    <p><%= m.speaker_praised_explanation %></p>
-                  </li>
-                  <li><strong>Concerns:</strong>
-                    <p><%= m.concerns %></p>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-lg-3">
-                <h4>Other</h4>
-                <ul>
-                  <li><strong>Invocation:</strong> <%= m.invocation_conducted %></li>
-                  <li><strong>Pending:</strong> <%= m.pending? %></li>
-                  <li><strong>Submitted by:</strong> <%= m.user.full_name %></li>
-                  <li><strong>Locality:</strong> <%= link_to m.locality.name, locality_path(m.locality) %></li>
-                  <li><strong>Meeting Type:</strong> <%= m.meeting_type %></li>
-                  <li><strong>Speaker:</strong> <%= link_to m.speaker.name, speaker_path(m.speaker) %></a></li>
-                  <li><strong>Organization:</strong> <%= get_obj_name(m.speaker.organization) %> </li>
-                  <li><strong>Religion:</strong> <%= get_obj_name(m.speaker.religion) %> </li>
-                </ul>
-              </div>
-            </div>
-          </td>
-        </tr>
-      <% end %>
+      <%= render @user_meetings %>
       </tbody>
     </table>
     <div class="text-center"><%= will_paginate @user_meetings %></div>

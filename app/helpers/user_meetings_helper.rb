@@ -40,5 +40,16 @@ module UserMeetingsHelper
       %w(Unknown Unknown)
     ]
   end
+
+  def get_meeting_id_link(user_meeting, link_name)
+    if current_user.nil?
+      user_meeting.id
+    elsif  current_user.has_role?(:admin)
+      link_to(
+        link_name, locality_user_meeting_path(user_meeting.locality, user_meeting))
+    else
+      user_meeting.id
+    end
+  end
 end
 
