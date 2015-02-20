@@ -2,6 +2,7 @@ class LocalitiesController < ApplicationController
   before_action :authenticate_user!,
                 except: [:index, :show, :report, :report_all]
   load_and_authorize_resource except: [:report, :report_all, :index]
+  helper_method :sort_column, :sort_direction
   respond_to :html
 
   def edit
@@ -28,6 +29,11 @@ class LocalitiesController < ApplicationController
 
   def show
     @locality = Locality.find params[:id]
+    @user_meetings = @locality
+      .user_meetings
+      .includes({ speaker: [:religion, :organization] }, :locality)
+      .paginate(page: params[:page])
+      .order(sort_column + ' ' + sort_direction)
     respond_with @locality
   end
 
@@ -78,6 +84,14 @@ class LocalitiesController < ApplicationController
               :contact_name, :contact_title, :contact_email, :contact_phone,
               :contact_street_address, :contact_city, :contact_country_code,
               :contact_state_code, :contact_zip, :contact_notes
+  end
+
+  def sort_column
+    UserMeeting.column_names.include?(params[:sort]) ? params[:sort] : 'id'
+  end
+
+  def sort_direction
+    %w(asc desc).include?(params[:direction]) ? params[:direction] : 'asc'
   end
 end
 
