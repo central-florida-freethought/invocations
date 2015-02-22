@@ -1,14 +1,13 @@
 <tr class="<%= (user_meeting_counter % 2 ==0) ? 'even' : 'odd' %>" id="table_data">
   <td><%= get_meeting_id_link(user_meeting, user_meeting.id) %></td>
   <td><%= user_meeting.meeting_time %></td>
-  <td><%= user_meeting.pledge_before %></td>
-  <td><%= user_meeting.asked_to_stand %></td>
-  <td><%= user_meeting.speaker_preached %></td>
-  <td><%= user_meeting.speaker_praised %></td>
+  <td><%= get_obj_name(user_meeting.speaker.religion) %></td>
+  <td><%= user_meeting.speaker.name %></td>
+  <td><%= get_obj_name(user_meeting.speaker.organization) %></td>
   <td>
     <div class="btn-group">
       <%= button_to locality_user_meeting_path(user_meeting.locality, user_meeting), method: :get, id: "show_meeting_#{user_meeting.id}", class: 'btn btn-primary btn-xs hide hide-panel' do %>
-        <span class="glyphicon glyphicon-eye-open"></span> Preview
+        <span class="glyphicon glyphicon-eye-open"></span> More Detail
       <% end %>
       <%= link_to(edit_locality_user_meeting_path(user_meeting.locality, user_meeting), class: 'label label-info', role: 'button') do %>
         <span class="glyphicon glyphicon-pencil"></span> Edit
