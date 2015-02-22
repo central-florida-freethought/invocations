@@ -33,7 +33,7 @@ class LocalitiesController < ApplicationController
       .user_meetings
       .includes({ speaker: [:religion, :organization] }, :locality)
       .paginate(page: params[:page])
-      .approved()
+      .approved
       .order(sort_column + ' ' + sort_direction)
     respond_with @locality
   end
