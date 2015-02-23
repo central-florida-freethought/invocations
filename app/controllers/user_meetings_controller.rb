@@ -80,7 +80,7 @@ class UserMeetingsController < ApplicationController
       end
       flash[:notice] = 'Meeting was successfully updated'
     end
-    respond_with @locality, @user_meeting, location: path_for_meetings
+    redirect_to :back
   end
 
   private

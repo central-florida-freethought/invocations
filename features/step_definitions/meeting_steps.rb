@@ -11,9 +11,13 @@ Given(/^a (\w+) speaker$/i) do |_religion_name|
   @speaker = Fabricate :speaker, religion: religion
 end
 
-Given(/^a pending user meeting$/) do
+Given(/^a (\w+) user meeting$/) do |meeting_state|
   user = Fabricate :user, email: Faker::Internet.email
-  @user_meeting = Fabricate :user_meeting, aasm_state: 'pending', user: user
+  @user_meeting = Fabricate :user_meeting, aasm_state: meeting_state, user: user
+end
+
+When(/^I go to the meeting page$/) do
+  visit locality_user_meeting_path(@user_meeting.locality, @user_meeting)
 end
 
 When(/^I (\w+) the meeting$/) do |action|
@@ -84,5 +88,15 @@ end
 
 Then(/^a meeting (\w+) email should be sent$/) do |mail_type|
   expect(ActionMailer::Base.deliveries.last.subject).to eq "Meeting #{mail_type}"
+end
+
+Then(/^I should be on the admin user meetings page$/) do
+  expect(current_path).to eq(admin_user_meetings_path)
+end
+
+Then(/^I should be back on the meeting page$/) do
+  expect(current_path).to(
+    eq(locality_user_meeting_path(@user_meeting.locality, @user_meeting))
+  )
 end
 
