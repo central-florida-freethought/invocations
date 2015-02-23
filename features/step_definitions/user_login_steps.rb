@@ -31,8 +31,10 @@ Given(/^a signed in admin$/) do
 end
 
 Given(/^a regular, confirmed volunteer$/) do
-  @volunteer = Fabricate :user, email: 'chunky@bacon.com', roles: [:user],
-    confirmed_at: Time.now
+  @volunteer = Fabricate :user,
+                         email: 'chunky@bacon.com',
+                         roles: [:user],
+                         confirmed_at: Time.now
 end
 
 Given(/^volunteer is confirmed and approved$/) do

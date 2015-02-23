@@ -1,5 +1,4 @@
 describe UserMeeting do
-
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:speaker) }
   it { is_expected.to belong_to(:locality) }

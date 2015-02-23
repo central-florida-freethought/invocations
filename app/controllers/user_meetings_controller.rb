@@ -112,15 +112,15 @@ class UserMeetingsController < ApplicationController
 
   def user_meeting_params
     params.require(:user_meeting)
-          .permit :id, :meeting_type, :meeting_time, :invocation_conducted,
-                  :pledge_before, :asked_to_stand, :speaker_preached,
-                  :speaker_preached_explanation, :speaker_praised,
-                  :speaker_praised_explanation, :concerns, :attachment,
-                  :street_address, :meeting_url, :minutes_url,
-                  :agenda_url, :media_url, :user_id, :locality_id,
-                  speaker_attributes: [:id, :name, :honorific, :religion_id,
-                                       :denomination_id,
-                                       organization_attributes: [:id, :name]]
+      .permit :id, :meeting_type, :meeting_time, :invocation_conducted,
+              :pledge_before, :asked_to_stand, :speaker_preached,
+              :speaker_preached_explanation, :speaker_praised,
+              :speaker_praised_explanation, :concerns, :attachment,
+              :street_address, :meeting_url, :minutes_url,
+              :agenda_url, :media_url, :user_id, :locality_id,
+              speaker_attributes: [:id, :name, :honorific, :religion_id,
+                                   :denomination_id,
+                                   organization_attributes: [:id, :name]]
   end
 
   private
