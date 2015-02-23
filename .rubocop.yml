@@ -26,4 +26,8 @@ MethodLength:
   Max: 12
 LineLength:
   Max: 85
+AbcSize:
+  Enabled: false
+MultilineOperationIndentation:
+  EnforcedStyle: indented
 

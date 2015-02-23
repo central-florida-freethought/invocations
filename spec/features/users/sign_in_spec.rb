@@ -6,7 +6,6 @@ feature 'Sign in', :devise do
   given(:user) { Fabricate :user }
 
   context 'user cannot sign in' do
-
     # Scenario: User cannot sign in if not registered
     #   Given I do not exist as a user
     #   When I sign in with valid credentials
@@ -57,7 +56,6 @@ feature 'Sign in', :devise do
     end
 
     context 'with approval' do
-
       before do
         user.approve!
       end
