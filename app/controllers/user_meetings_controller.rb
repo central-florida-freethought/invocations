@@ -63,7 +63,7 @@ class UserMeetingsController < ApplicationController
       find_or_create_speaker if user_meeting_params[:speaker_attributes]
 
     flash[:notice] = get_flash(@user_meeting) if @user_meeting.save
-    respond_with @locality, @user_meeting, location: user_meetings_path
+    respond_with @locality, @user_meeting, location: locality_path(@locality)
   end
 
   def edit
