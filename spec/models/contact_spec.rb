@@ -1,5 +1,4 @@
 describe Contact do
-
   it { is_expected.to have_many(:localities) }
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of :title }
@@ -10,6 +9,5 @@ describe Contact do
   it { is_expected.to validate_presence_of :state_code }
   it { is_expected.to validate_presence_of :country_code }
   it { is_expected.to validate_presence_of :zip }
-
 end
 
