@@ -7,11 +7,12 @@ Feature: Admin manages user meeting
     Given a signed in admin
     And a pending user meeting
     When I visit the admin user meetings page
-  
-  Scenario Outline: 
+
+  Scenario Outline:
     When I <action> the meeting
     Then I should see <message>
     And a meeting <email_type> email should be sent
+    And I should be on the admin user meetings page
 
   Examples:
     | action  | message                             | email_type |
