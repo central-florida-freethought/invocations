@@ -18,21 +18,23 @@ Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.
 To develop the application, you can either setup Rails according to the previous instructions, or just use Vagrant. Setup instructions for Windows have also been supplied.
 
 ### Development with Windows
+Currently, RailsInstaller is only supporting version 2.1.5. To develop directly
+on Windows, you will need up update (but don't check in!) `.ruby_version` and
+`Gemfile` listed version of ruby to match. 
+
 1. Download and install [RailsInstaller](http://railsinstaller.org/en)
 2. Install the missing SSL certificate via these [instructions](http://stackoverflow.com/a/27298128)
 3. From the Sites directory created with RailsInstaller, run `git clone https://jktravis@bitbucket.org/cffc/invocations_rails.git`
-3. Ensure `kgio` in the `Gemfile` is listed as `platform: :ruby`
+3. `cd` into the `invocations_rails` directory.
 4. Prepare Puma install by downloading OpenSSL. Extract to something like `C:\opt\openssl` for easy access. (see [Puma install on Windows](https://github.com/hicknhack-software/rails-disco/wiki/Installing-puma-on-windows))
 5. Run `gem install puma -- --with-opt-dir=C:\opt\openssl`. Replace directory with actual openssl directory. 
 6. Download and Install [MySQL](http://dev.mysql.com/downloads/mysql/). I prefer the zip archive, personally. Just extract to `C:\opt\mysql`. 
 7. Launch the server with `C:\opt\mysql\bin\mysqld -u root`
+1. Copy the `config/database.yml.example` to `config/database.yml`and update the necessary values (e.g. database user, password, etc.)
 8. Delete or comment out ('#') the following two lines from `config/database.yml`:
     - cucumber:
-    - &lt;&lt;: \*test
-9. Ensure `tzinfo-data` is added to the `Gemfile`. See [Resolving-TZInfo::DataSourceNotFound-Errors](https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors).
-    - `gem 'tzinfo-data', platforms: [:mingw, :mswin]`
+    -    <<: \*test
 10. It seems that Windows does not want to use the `.env` file, so you'll need to add these to the config manually instead. Run `bundle exec rake secret` and place the returne value in the `config/secrets.yml` for both the `secret_key_base` and `devise_secret`.
-11. Copy the `config/database.yml.example` to `config/database.yml`and update the necessary values (e.g. database user, password, etc.)
 12. Run `bundle exec rake db:setup`
 13. Run `bundle exec rails server`
 14. The application should now be running. Point your browser to [http://localhost:3000](http://localhost:3000) to see if it works. Loging with the username and password configured in `config/secrets.yml`.
