@@ -13,7 +13,8 @@ gem 'bootstrap-sass'
 gem 'devise', github: 'plataformatec/devise', branch: 'lm-rails-4-2'
 gem 'mysql2'
 gem 'puma'
-gem 'unicorn'
+gem 'unicorn', platform: :ruby
+gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'cancancan'
 gem 'role_model'
 gem 'carmen-rails'

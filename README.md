@@ -15,7 +15,28 @@ Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.
 
 ## Getting Started
 
-To develop the application, you can either setup Rails according to the previous instructions, or just use Vagrant.
+To develop the application, you can either setup Rails according to the previous instructions, or just use Vagrant. Setup instructions for Windows have also been supplied.
+
+### Development with Windows
+1. Download and install [RailsInstaller](http://railsinstaller.org/en)
+2. Install the missing SSL certificate via these [instructions](http://stackoverflow.com/a/27298128)
+3. From the Sites directory created with RailsInstaller, run `git clone https://jktravis@bitbucket.org/cffc/invocations_rails.git`
+3. Ensure `kgio` in the `Gemfile` is listed as `platform: :ruby`
+4. Prepare Puma install by downloading OpenSSL. Extract to something like `C:\opt\openssl` for easy access. (see [Puma install on Windows](https://github.com/hicknhack-software/rails-disco/wiki/Installing-puma-on-windows))
+5. Run `gem install puma -- --with-opt-dir=C:\opt\openssl`. Replace directory with actual openssl directory. 
+6. Download and Install [MySQL](http://dev.mysql.com/downloads/mysql/). I prefer the zip archive, personally. Just extract to `C:\opt\mysql`. 
+7. Launch the server with `C:\opt\mysql\bin\mysqld -u root`
+8. Delete or comment out ('#') the following two lines from `config/database.yml`:
+    - cucumber:
+    - &lt;&lt;: \*test
+9. Ensure `tzinfo-data` is added to the `Gemfile`. See [Resolving-TZInfo::DataSourceNotFound-Errors](https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors).
+    - `gem 'tzinfo-data', platforms: [:mingw, :mswin]`
+10. It seems that Windows does not want to use the `.env` file, so you'll need to add these to the config manually instead. Run `bundle exec rake secret` and place the returne value in the `config/secrets.yml` for both the `secret_key_base` and `devise_secret`.
+11. Copy the `config/database.yml.example` to `config/database.yml`and update the necessary values (e.g. database user, password, etc.)
+12. Run `bundle exec rake db:setup`
+13. Run `bundle exec rails server`
+14. The application should now be running. Point your browser to [http://localhost:3000](http://localhost:3000) to see if it works. Loging with the username and password configured in `config/secrets.yml`.
+
 
 ### Development with Vagrant
 
@@ -25,8 +46,11 @@ The `Vagrantfile` provides a way to quickly set up a [Vagrant](http://vagrantup.
 2. Install the `librarian-chef` plugin for Vagrant: `vagrant plugin install vagrant-librarian-chef`. 
 3. Pull down the Git submodules, by running `git submodule init` and `git submodule update`
 4. From the project directory run `vagrant up` to start provisioning the server.
-
-After the virtual Machine is running, you can login to it with `vagrant ssh`. From the `/vagrant` directory, run `bundle install` to pull down the application dependencies.
+5. After the virtual Machine is running, you can login to it with `vagrant ssh`. 
+6. `apt-get install libffi-dev` [ruby-build/issues/690#issuecomment-68113987](https://github.com/sstephenson/ruby-build/issues/690#issuecomment-68113987)
+7. `rbenv install 2.2.0`
+8. `rbenv global 2.2.0`
+9. From the `/vagrant` directory, run `bundle install` to pull down the application dependencies.
 
 ### Configure environment variables
 1. Rename the `.env.example` file to `.env` and populate it with your values.
@@ -38,7 +62,7 @@ Set up will seed the database and create a new admin user account with the email
 
 
 #### Launch the server
-After all of the above, restart the VM and with `vagrant reload`. To launch the server, log back in run `cd /vagrant && foreman run rails server` to start the app. Point your browser to [http://localhost:3000](http://localhost:3000).
+After all of the above, restart the VM and with `vagrant reload`. To launch the server, log back in run `cd /vagrant && bundle exec rails server -b 0.0.0.0` to start the app. Using `-b 0.0.0.0` tells Puma (the rails server) to respond to all IPs and is necessary to circumvent an issue where VirtualBox. Point your browser to [http://localhost:3000](http://localhost:3000).
 
 Profit!
 

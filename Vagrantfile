@@ -77,6 +77,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   puppet.manifests_path = "manifests"
   #   puppet.manifest_file  = "site.pp"
   # end
+  config.vm.provision :shell, inline: "apt-get install -y libffi-dev"
 
   # Enable provisioning with Chef Solo
   config.vm.provision :chef_solo do |chef|
@@ -91,16 +92,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe 'mysql::server'
     chef.add_recipe 'mysql::client'
 
-    # Install Ruby 2.1.2 and Bundler
+    # Install Ruby 2.2.0 and Bundler
     # Set an empty root password for MySQL to make things simple
     chef.json = {
       rbenv: {
         user_installs: [{
           user: 'vagrant',
-          rubies: ['2.1.2'],
-          global: '2.1.2',
+          rubies: ['2.2.0'],
+          global: '2.2.0',
           gems: {
-            '2.1.2' => [
+            '2.2.0' => [
               { name: 'bundler' }
             ]
           }
