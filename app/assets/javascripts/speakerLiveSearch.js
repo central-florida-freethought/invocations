@@ -39,7 +39,7 @@
         speakerNames.click(function ()
         {
           searchBox.val(this.innerHTML);
-          religion.get(0).selectedIndex = $(this).data('religion_id');
+          religion.val($(this).data('religion_id'));
           religion.prop('disabled', true);
 
           honorific.val($(this).data('honorific'));
