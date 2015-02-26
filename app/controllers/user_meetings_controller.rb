@@ -152,5 +152,12 @@ class UserMeetingsController < ApplicationController
   def record_offset
     params[:offset].nil? ? 0 : params[:offset].to_i
   end
+
+  private
+  def get_pending_meeting_count
+    UserMeeting
+    .includes({ speaker: [:religion, :organization] }, :locality)
+    .pending.count
+  end
 end
 
