@@ -75,15 +75,15 @@ function fetchData()
     invocData.addRows(fetchedData);
 
     // Set chart options
-    var popOptions = {'title': 'Religious Population',
-      'width': 500,
+    var popOptions = {
       'height': 350,
+      'chartArea': {'width': '80%', 'height': '80%'},
       'colors': getReligionColorArray(popData)
     };
 
-    var invocOptions = {'title': 'Invocations Conducted',
-      'width': 500,
+    var invocOptions = {
       'height': 350,
+      'chartArea': {'width': '80%', 'height': '80%'},
       'colors': getReligionColorArray(invocData)};
 
     try
