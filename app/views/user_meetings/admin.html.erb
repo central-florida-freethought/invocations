@@ -28,7 +28,7 @@
       <% @user_meetings.each_with_index do |m, i| %>
         <tr class="<%= (i % 2 == 0) ? 'even' : 'odd' %>">
           <td><%= current_user.has_role?(:admin) ? link_to(m.id, locality_user_meeting_path(m.locality, m)) : m.id %></td>
-          <td><%= m.meeting_time %></td>
+          <td><%= fulltime(m.meeting_time) %></td>
           <td><%= get_obj_name(m.speaker.religion) %></td>
           <td><%= m.speaker.name %></td>
           <td>

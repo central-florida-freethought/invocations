@@ -1,6 +1,6 @@
 <tr class="<%= (user_meeting_counter % 2 ==0) ? 'even' : 'odd' %>" id="table_data">
   <td><%= get_meeting_id_link(user_meeting, user_meeting.id) %></td>
-  <td><%= user_meeting.meeting_time %></td>
+  <td><%= fulltime(user_meeting.meeting_time) %></td>
   <td><%= get_obj_name(user_meeting.speaker.religion) %></td>
   <td><%= user_meeting.speaker.name %></td>
   <td><%= get_obj_name(user_meeting.speaker.organization) %></td>

@@ -18,7 +18,7 @@
       <tr>
         <th>Meeting Time</th>
         <td>
-          <%= @user_meeting.meeting_time %>
+          <%= fulltime(@user_meeting.meeting_time) %>
         </td>
       </tr>
       <tr>
@@ -79,13 +79,13 @@
       <tr>
         <th>Database create date</th>
         <td>
-          <%= @user_meeting.created_at %>
+          <%= fulltime(@user_meeting.created_at)%>
         </td>
       </tr>
       <tr>
         <th>Last updated</th>
         <td>
-          <%= @user_meeting.updated_at %>
+          <%= fulltime(@user_meeting.updated_at) %>
         </td>
       </tr>
       <!--todo pull in locality name-->
