@@ -34,7 +34,7 @@
           <td>
             <div class="btn-group">
               <%= button_to locality_user_meeting_path(m.locality, m), method: :get, id: "show_meeting_#{m.id}", class: 'btn btn-primary btn-xs hide hide-panel' do %>
-                <span class="glyphicon glyphicon-eye-open"></span> Preview
+                <span class="glyphicon glyphicon-eye-open"></span> More Info
               <% end %>
               <% if current_user.has_role?(:admin) %>
                 <%= button_to approve_locality_user_meeting_path(m.locality, m), method: :patch, id: "approve_meeting_#{m.id}", class: 'btn btn-success btn-xs' do %>
