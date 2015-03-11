@@ -1,12 +1,17 @@
-<h1><%= @speaker.name %></h1>
-<h2>Meetings spoken at:</h2>
+<% page_name @speaker.name %>
+
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1 col-md-12">
+<h1 class="page-header"><%= @speaker.name %></h1>
+<h4>Meetings at which spoken:</h4>
 <ul>
-  <% @speaker.user_meetings.each do |meeting| %>
+  <% @user_meetings.each do |meeting| %>
     <li>
-      <%= link_to user_meeting_path(meeting) do %>
-        <%= meeting.locality.name  %>
-        <%= meeting.meeting_time %>
-      <% end %>
+      <%= link_to("Meeting ID: #{meeting.id}", locality_user_meeting_path(meeting, meeting.id))%> -
+      <%= link_to meeting.locality.name, locality_path(meeting.locality)  %> -
+      <%= fulltime(meeting.meeting_time) %>
     </li>
   <% end %>
 </ul>
+  </div>
+</div>

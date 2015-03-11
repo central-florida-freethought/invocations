@@ -12,6 +12,10 @@ class SpeakersController < ApplicationController
 
   def show
     @speaker = Speaker.find params[:id]
+    @user_meetings = @speaker
+      .user_meetings
+      .includes({ speaker: [:religion, :organization] }, :locality)
+      .where(speaker_id: @speaker.id)
   end
 end
 
