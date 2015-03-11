@@ -5,5 +5,6 @@ require File.expand_path('../application', __FILE__)
 Rails.application.initialize!
 
 # Time format used by Calendar Widget
-Time::DATE_FORMATS[:event_date_time] = '%m/%d/%Y %H:%M %z'
+Time::DATE_FORMATS[:date] = '%F'
+Time::DATE_FORMATS[:time] = '%I:%M %p'
 
