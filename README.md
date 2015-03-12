@@ -17,6 +17,16 @@ Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.
 
 To develop the application, you can either setup Rails according to the previous instructions, or just use Vagrant.
 
+### Development with Docker
+
+#### Installation
+
+The way to install Docker depends on the platform. If you're on Mac OSX or Windows, you'll want to install Boot2Docker which will run it on a lightweight VM. There are instructions on the Docker site at [https://docs.docker.com/installation/](https://docs.docker.com/installation/)
+
+#### Docker Compose
+
+The easiest way to run this on Docker is to use [Docker Compose](https://docs.docker.com/compose/). The `docker-compose.yml` file is set up to run a web and a db container that are both linked. To build the containers, you can run `docker-compose build` from the current directory and then you can run `docker-compose up` to start the containers. On first boot, you will need to run `docker-compose run web rake db:setup` in another Terminal window. If everything goes well, the app will be accessible at the Docker IP on port 3000, usually http://192.168.59.103:3000
+
 ### Development with Vagrant
 
 The `Vagrantfile` provides a way to quickly set up a [Vagrant](http://vagrantup.com) development box with everything needed for the application. To use it, 

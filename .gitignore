@@ -78,5 +78,9 @@ pickle-email-*.html
 .env
 .env.prod
 .powenv
+fig.yml
 
 .vagrant
+docker-compose.yml
+docker-compose.production.yml
+
