@@ -203,37 +203,6 @@ form {
   }
 }
 
-#searchResults {
-  background-color: $sidebar_bg;
-  border: 1px solid $border_colors;
-  border-radius: 4px;
-  position: absolute;
-  width: 94%;
-  height: 200px;
-  overflow-x: scroll;
-  -webkit-box-shadow: 2px 2px 2px $border_colors;
-  -moz-box-shadow: 2px 2px 2px $border_colors;
-  box-shadow: 2px 2px 2px $border_colors;
-  padding: 0;
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    li {
-      color: $link_color;
-      line-height: 2em;
-      padding: 0.5em 1em;
-      display: block;
-      cursor: pointer;
-    }
-    li:hover, li:focus {
-      background-color: $link_bg_hover_color;
-      color: $link_hover_color;
-    }
-  }
-}
-
 .btn-group > form.button_to {
   display: inline;
   div {
