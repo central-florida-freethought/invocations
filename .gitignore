@@ -81,3 +81,6 @@ pickle-email-*.html
 fig.yml
 
 .vagrant
+docker-compose.yml
+docker-compose.production.yml
+
