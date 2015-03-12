@@ -2,12 +2,9 @@ class SpeakersController < ApplicationController
   before_action :authenticate_user!
   def search
     @speakers = Speaker
-      .where('name like :name ', name: "#{params[:name]}%")
+      .where('name like :name ', name: "#{params[:term]}%")
       .order(:name)
       .limit(10)
-    respond_to do |format|
-      format.json { render json: @speakers }
-    end
   end
 
   def show
