@@ -10,7 +10,7 @@ set :repository, 'git@bitbucket.org:cffc/invocations_rails.git'
 set :branch, 'master'
 set :bundle_gemfile, "#{deploy_to}/#{current_path}/Gemfile"
 
-set :shared_paths, ['config/database.yml', '.env', 'log', 'bin', 'tmp/pids',
+set :shared_paths, ['config/database.yml', '.env', 'log', 'tmp/pids',
                     'tmp/sockets', 'public/system']
 
 # This task is the environment that is loaded for most commands, such as
@@ -53,7 +53,7 @@ task deploy: :environment do
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
-    # invoke :'rails:assets_precompile'
+    invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
     to :launch do
