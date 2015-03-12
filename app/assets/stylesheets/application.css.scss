@@ -77,7 +77,7 @@ header {
  * Logo
  */
 #logo {
-  background-image: url(image_path('logo_transparent_sm.png'));
+  background-image: image-url('logo_transparent_sm.png');
   width: 195px;
   height: 100px;
   margin-top: -15px;
