@@ -17,23 +17,38 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class='container-fluid'>
-  <div class="row">
-    <div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
-      <header>
-        <%= render 'layouts/navigation' %>
-      </header>
+  <div class='container-fluid'>
+    <div class="row">
+      <div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
+        <header>
+          <%= render 'layouts/navigation' %>
+        </header>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="main col-md-12">
-      <%= render 'layouts/messages' %>
-      <%= yield %>
+    <div class="row">
+      <div class="main col-md-12">
+        <%= render 'layouts/messages' %>
+        <%= yield %>
+      </div>
     </div>
-  </div>
 
-</div>
-<%= javascript_include_tag 'application' %>
-<%= yield(:scripts) %>
+  </div>
+  <%= javascript_include_tag 'application' %>
+  <%= yield(:scripts) %>
+  <script type="text/javascript" src="http://assets.freshdesk.com/widget/freshwidget.js"></script>
+  <script type="text/javascript">
+    FreshWidget.init("", {
+        "queryString": "&widgetType=popup",
+        "widgetType": "popup",
+        "buttonType": "text",
+        "buttonText": "Support",
+        "buttonColor": "white",
+        "buttonBg": "#006063",
+        "alignment": "4",
+        "offset": "235px",
+        "formHeight": "500px",
+        "url": "https://invocationsonline.freshdesk.com"
+    } );
+  </script>
 </body>
 </html>
