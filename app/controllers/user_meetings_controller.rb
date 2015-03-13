@@ -1,5 +1,6 @@
 class UserMeetingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_locality, only: [:new, :create, :edit, :update]
   load_and_authorize_resource
   helper_method :sort_column, :sort_direction
   respond_to :html
@@ -23,7 +24,6 @@ class UserMeetingsController < ApplicationController
   end
 
   def new
-    @locality = Locality.find params[:locality_id]
     @user_meeting = current_user.user_meetings.build params[:user_meeting]
     @user_meeting.build_speaker
     respond_with @user_meeting
@@ -57,8 +57,7 @@ class UserMeetingsController < ApplicationController
   end
 
   def create
-    @locality = Locality.find params[:locality_id]
-    @user_meeting = current_user.user_meetings.build user_meeting_params
+    @user_meeting = current_user.user_meetings.build params_with_locality
     @user_meeting.speaker =
       find_or_create_speaker if user_meeting_params[:speaker_attributes]
 
@@ -67,23 +66,26 @@ class UserMeetingsController < ApplicationController
   end
 
   def edit
-    @locality = Locality.find params[:locality_id]
     @user_meeting = UserMeeting.find params[:id]
   end
 
   def update
     @user_meeting = UserMeeting.find params[:id]
-    if @user_meeting.update_attributes(user_meeting_params)
+    if @user_meeting.update_attributes(params_with_locality)
       unless current_user.has_role?(:trusted) || current_user.has_role?(:admin)
         @user_meeting.aasm_state = 'pending'
         @user_meeting.save
       end
       flash[:notice] = 'Meeting was successfully updated'
     end
-    redirect_to :back
+    redirect_to @locality
   end
 
   private
+
+  def find_locality
+    @locality = Locality.friendly.find params[:locality_id]
+  end
 
   def path_for_meetings
     return user_meetings_path unless current_user.has_role?(:admin)
@@ -123,19 +125,17 @@ class UserMeetingsController < ApplicationController
                                    organization_attributes: [:id, :name]]
   end
 
-  private
+  def params_with_locality
+    user_meeting_params.merge locality_id: @locality.id
+  end
 
   def sort_column
     UserMeeting.column_names.include?(params[:sort]) ? params[:sort] : 'id'
   end
 
-  private
-
   def sort_direction
     %w(asc desc).include?(params[:direction]) ? params[:direction] : 'asc'
   end
-
-  private
 
   def prev_count(records_per_page)
     if record_offset == 0
@@ -146,8 +146,6 @@ class UserMeetingsController < ApplicationController
       record_offset - records_per_page
     end
   end
-
-  private
 
   def record_offset
     params[:offset].nil? ? 0 : params[:offset].to_i

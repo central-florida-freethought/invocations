@@ -21,7 +21,7 @@ Documentation:
 TrailingBlankLines:
   EnforcedStyle: final_blank_line
 ClassLength:
-  Max: 130
+  Max: 150
 MethodLength:
   Max: 12
 LineLength:
@@ -30,4 +30,3 @@ AbcSize:
   Enabled: false
 MultilineOperationIndentation:
   EnforcedStyle: indented
-

@@ -6,7 +6,7 @@ class LocalitiesController < ApplicationController
   respond_to :html
 
   def edit
-    @locality = Locality.find params[:id]
+    @locality = Locality.friendly.find params[:id]
     respond_with @locality
   end
 
@@ -28,7 +28,7 @@ class LocalitiesController < ApplicationController
   end
 
   def show
-    @locality = Locality.find params[:id]
+    @locality = Locality.friendly.find params[:id]
     @user_meetings = @locality
       .user_meetings
       .includes({ speaker: [:religion, :organization] }, :locality)
@@ -39,7 +39,7 @@ class LocalitiesController < ApplicationController
   end
 
   def update
-    @locality = Locality.find params[:id]
+    @locality = Locality.friendly.find params[:id]
     if @locality.update_attributes(locality_params)
       flash[:notice] = 'Locality was successfully updated'
     end
