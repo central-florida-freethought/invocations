@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917180928) do
+ActiveRecord::Schema.define(version: 20150313030731) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name",           limit: 255,   null: false
@@ -33,6 +33,19 @@ ActiveRecord::Schema.define(version: 20140917180928) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",           limit: 255, null: false
+    t.integer  "sluggable_id",   limit: 4,   null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope",          limit: 255
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "localities", force: :cascade do |t|
     t.string   "name",                   limit: 255,   null: false
@@ -61,6 +74,7 @@ ActiveRecord::Schema.define(version: 20140917180928) do
     t.string   "contact_state_code",     limit: 255
     t.string   "contact_zip",            limit: 255
     t.text     "contact_notes",          limit: 65535
+    t.string   "slug",                   limit: 255,   null: false
   end
 
   create_table "organizations", force: :cascade do |t|
