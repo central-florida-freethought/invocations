@@ -1,4 +1,6 @@
 class Locality < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history, :finders]
   has_many :user_meetings
 
   validates :name,
@@ -8,6 +10,7 @@ class Locality < ActiveRecord::Base
             :state_code,
             :country_code,
             :zip,
+            :slug,
             presence: true
   validates :volunteer_needed,
             :invocations_conducted,

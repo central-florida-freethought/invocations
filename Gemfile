@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.2.0'
 gem 'dotenv-rails'
+gem 'friendly_id', '~> 5.1.0'
 gem 'rails', '4.2.0'
 gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
@@ -28,6 +29,7 @@ gem 'newrelic_rpm'
 gem 'faker'
 gem 'will_paginate', '~> 3.0'
 gem 'therubyracer', group: :production
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', platforms: [:mri_21]
@@ -48,6 +50,7 @@ group :development do
   gem 'rb-inotify', require: false
   gem 'launchy'
 end
+
 group :development, :test do
   gem 'fabrication'
   gem 'pry-rails'
@@ -60,6 +63,7 @@ group :development, :test do
   gem 'nyan-cat-formatter'
   gem 'rubocop'
 end
+
 group :test do
   gem 'capybara'
   gem 'cucumber-rails', require: false
