@@ -3,6 +3,7 @@
   <%= javascript_include_tag 'jsapi','charts' %>
 <% end %>
 
+<% render 'layouts/pew_footnote' %>
 
 <div class="row">
   <div class="col-lg-10 col-lg-offset-1 col-md-12">
@@ -40,21 +41,9 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-lg-10 col-lg-offset-1 col-md-12">
-    <small>* The data from Pew has been simplified for graphical representation as follows: Responses in the categories
-      of
-      'Other Christian' and 'Other World Religion' have been combined into 'Other Religion'. Unaffiliated has been
-      changed
-      to 'None'. Responses in the category of 'Don’t Know/Refused' have been added to 'None'. The responses Mormon,
-      Buddhist, and Hindu which were originally &lt;0.5 have been rounded up to 0.5 each.
-    </small>
-  </div>
-</div>
-
 <div class='row'>
   <div class='col-lg-10 col-lg-offset-1 col-md-12'>
-    <h3><%= @locality.name %> Meeting Data</h3>
+    <h3>Meeting Data</h3>
     <% content_for :scripts do %>
       <%= javascript_include_tag 'meetingApproval' %>
     <% end %>
