@@ -28,6 +28,7 @@ $link_color: #428bca;
 $link_bg_hover_color: #eeeeee;
 $border_colors: #9a9a9a;
 $logo_bg_color: #4270d9;
+$logo_fg_color: #8caaee;
 $table-bg-accent: #f9f9f9;
 $screen-sm-min: 796px;
 $screen-md-min: 992px;
@@ -279,3 +280,62 @@ tr a.label.label-info {
     width: 50%;
   }
 }
+
+div.footer-nav-wrapper {
+  background: #efefef;
+  border-radius: 2px;
+  border-top: 1px solid $border_colors;
+  border-bottom: 1px solid $border_colors;
+  margin-bottom: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  box-sizing: border-box;
+}
+
+div.footer-nav {
+  ul {
+    font-size: 1em;
+    padding: 0;
+    list-style: none;
+    li {
+      a {
+        color: #8e8e8e;
+        :hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+div.copyright {
+  color: #8e8e8e;
+}
+
+@media (min-width: 768px) {
+  div.footer-nav {
+    ul {
+      li {
+        display: inline;
+        padding: .5em;
+      }
+    }
+  }
+  div.copyright {
+    text-align: right;
+  }
+  div.footer-nav, div.copyright {
+    margin-top: -8px;
+    font-size: 75%;
+  }
+}
+
+.footnote {
+  padding-bottom: 1em;
+}
+@media (min-width: 1200px) {
+  .footnote {
+    margin-left: 1.4em;
+  }
+}
+
