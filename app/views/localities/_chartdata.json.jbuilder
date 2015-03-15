@@ -8,6 +8,6 @@ end
 if @meeting_date.first.nil?
   json.date ''
 else
-  json.date @meeting_date.first.meeting_time.strftime('%Y')
+  json.date @meeting_date.first.meeting_time.strftime('%b, %Y')
 end
 
