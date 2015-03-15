@@ -42,10 +42,10 @@ module ApplicationHelper
     created_at.to_s(:date) + ' ' + created_at.to_s(:time).gsub(/^0/, '').downcase
   end
 
-  def get_pending_meeting_count
+  def pending_meeting_count
     UserMeeting
-    .includes({ speaker: [:religion, :organization] }, :locality)
-    .pending.count
+      .includes({ speaker: [:religion, :organization] }, :locality)
+      .pending.count
   end
 end
 
