@@ -48,16 +48,12 @@ class LocalitiesController < ApplicationController
 
   def report
     @user_meetings = locality_report(params[:id])
-    respond_to do |format|
-      format.json { render json: @user_meetings }
-    end
+    @meeting_date = oldest_record(params[:id])
   end
 
   def report_all
     @user_meetings = locality_report(nil)
-    respond_to do |format|
-      format.json { render json: @user_meetings }
-    end
+    @meeting_date = oldest_record(nil)
   end
 
   private
@@ -73,6 +69,20 @@ class LocalitiesController < ApplicationController
 
     return meetings unless id
     meetings.where { locality_id.eq id }
+  end
+
+  def oldest_record(id)
+    meeting_date = UserMeeting
+    .joins { [locality.outer, speaker.outer.religion.outer, user.outer] }
+    .select('meeting_time')
+    .where(invocation_conducted: 'Yes')
+    .approved
+    .order('meeting_time ASC')
+    .limit(1)
+
+    return meeting_date unless id
+    meeting_date.where { locality_id.eq id }
+
   end
 
   private

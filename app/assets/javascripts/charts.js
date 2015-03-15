@@ -1,3 +1,5 @@
+(function($)
+{
 // Load the Visualization API and the piechart package.
 google.load('visualization', '1.0', {'packages': ['corechart']});
 google.setOnLoadCallback(fetchData);
@@ -42,10 +44,9 @@ function fetchData()
     return colorArr;
   };
 
-  //todo populate population data separate from invocation data
   $.getJSON(url, function (resp)
   {
-    $.each(resp, function (index, value)
+    $.each(resp.report, function (index, value)
     {
       fetchedData.push([value.religion, value.count]);
     });
@@ -98,5 +99,15 @@ function fetchData()
     {
       //ignore "container not found" error for google apis on pages where the charts won't be loaded.
     }
+
+    // Show oldest date value
+    if (resp.date.length == 4)
+    {
+      var subtext = $('#invocations_chart').prev();
+      var currentHtml = subtext.html();
+      subtext.html(currentHtml.replace(')', ' since: ' + resp.date + ')'));
+    }
+
+
   });
-}
+}})(jQuery);
