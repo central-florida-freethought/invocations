@@ -73,16 +73,15 @@ class LocalitiesController < ApplicationController
 
   def oldest_record(id)
     meeting_date = UserMeeting
-    .joins { [locality.outer, speaker.outer.religion.outer, user.outer] }
-    .select('meeting_time')
-    .where(invocation_conducted: 'Yes')
-    .approved
-    .order('meeting_time ASC')
-    .limit(1)
+      .joins { [locality.outer, speaker.outer.religion.outer, user.outer] }
+      .select('meeting_time')
+      .where(invocation_conducted: 'Yes')
+      .approved
+      .order('meeting_time ASC')
+      .limit(1)
 
     return meeting_date unless id
     meeting_date.where { locality_id.eq id }
-
   end
 
   private
