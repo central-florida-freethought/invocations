@@ -101,11 +101,11 @@ function fetchData()
     }
 
     // Show oldest date value
-    if (resp.date.length == 4)
+    if (resp.date.length >= 4)
     {
       var subtext = $('#invocations_chart').prev();
       var currentHtml = subtext.html();
-      subtext.html(currentHtml.replace(')', ' since: ' + resp.date + ')'));
+      subtext.html(currentHtml.replace(')', ' &mdash; Since: ' + resp.date + ')'));
     }
 
 
