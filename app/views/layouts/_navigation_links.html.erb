@@ -8,9 +8,23 @@
 <% if user_signed_in? %>
   <% if current_user.has_role?(:admin) %>
     <li class="dropdown" id="adminMenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Adminstration <span class="caret"></span></a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <% pending_count =  pending_meeting_count %>
+        <% if pending_count > 0 %>
+          <span class="glyphicon glyphicon-flag" aria-hidden="true" style="color: #DA3B21;"></span>
+        <% end %>
+        Adminstration
+        <span class="caret"></span>
+      </a>
       <ul class="dropdown-menu" role="menu" aria-labelledby="adminMenu">
-        <li class="<%= 'active' if current_page? admin_user_meetings_path %>"><%= link_to 'Admin Submissions', admin_user_meetings_path %></li>
+        <li class="<%= 'active' if current_page? admin_user_meetings_path %>">
+          <%= link_to admin_user_meetings_path do %>
+            Administer Submissions
+            <% if pending_count > 0 %>
+              <%= content_tag(:span, pending_count, :class => "badge") %>
+            <% end %>
+          <% end %>
+        </li>
         <li role="presentation" class="divider"></li>
         <li class="<%= 'active' if current_page? active_volunteers_path %>"><%= link_to 'Active Volunteers', active_volunteers_path %></li>
         <li class="<%= 'active' if current_page? inactive_volunteers_path %>"><%= link_to 'Inactive Volunteers', inactive_volunteers_path %></li>
