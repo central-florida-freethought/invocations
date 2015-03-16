@@ -41,5 +41,11 @@ module ApplicationHelper
   def fulltime(created_at)
     created_at.to_s(:date) + ' ' + created_at.to_s(:time).gsub(/^0/, '').downcase
   end
+
+  def pending_meeting_count
+    UserMeeting
+      .includes({ speaker: [:religion, :organization] }, :locality)
+      .pending.count
+  end
 end
 
