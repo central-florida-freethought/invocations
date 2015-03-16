@@ -9,8 +9,12 @@
       <%= button_to locality_user_meeting_path(user_meeting.locality, user_meeting), method: :get, id: "show_meeting_#{user_meeting.id}", class: 'btn btn-primary btn-xs hide hide-panel' do %>
         <span class="glyphicon glyphicon-eye-open"></span> More Detail
       <% end %>
-      <%= link_to(edit_locality_user_meeting_path(user_meeting.locality, user_meeting), class: 'label label-info', role: 'button') do %>
-        <span class="glyphicon glyphicon-pencil"></span> Edit
+      <% if user_signed_in? %>
+        <% if (current_user.id == user_meeting.user_id) || current_user.has_role?(:admin) %>
+          <%= link_to(edit_locality_user_meeting_path(user_meeting.locality, user_meeting), class: 'label label-info', role: 'button') do %>
+            <span class="glyphicon glyphicon-pencil"></span> Edit
+          <% end %>
+        <% end %>
       <% end %>
     </div>
   </td>
