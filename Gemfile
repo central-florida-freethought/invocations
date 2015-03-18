@@ -28,7 +28,11 @@ gem 'squeel'
 gem 'newrelic_rpm'
 gem 'faker'
 gem 'will_paginate', '~> 3.0'
-gem 'therubyracer', group: :production
+
+group :production do
+  gem 'therubyracer'
+  gem 'dalli'
+end
 
 group :development do
   gem 'better_errors'

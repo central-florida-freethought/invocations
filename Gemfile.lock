@@ -96,6 +96,7 @@ GEM
       nokogiri (~> 1.5)
       rails (>= 3, < 5)
     currencies (0.4.2)
+    dalli (2.7.4)
     database_cleaner (1.4.0)
     debug_inspector (0.0.2)
     devise (3.4.1)
@@ -384,6 +385,7 @@ DEPENDENCIES
   coffee-rails
   country_select
   cucumber-rails
+  dalli
   database_cleaner
   devise (~> 3.4.0)
   dotenv-rails
