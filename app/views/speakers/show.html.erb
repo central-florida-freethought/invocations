@@ -6,11 +6,13 @@
 <h4>Meetings at which spoken:</h4>
 <ul>
   <% @user_meetings.each do |meeting| %>
-    <li>
-      <%= link_to("Meeting ID: #{meeting.id}", locality_user_meeting_path(meeting, meeting.id))%> -
-      <%= link_to meeting.locality.name, locality_path(meeting.locality)  %> -
-      <%= fulltime(meeting.meeting_time) %>
-    </li>
+    <% cache meeting do %>
+      <li>
+        <%= link_to("Meeting ID: #{meeting.id}", locality_user_meeting_path(meeting, meeting.id))%> -
+        <%= link_to meeting.locality.name, locality_path(meeting.locality)  %> -
+        <%= fulltime(meeting.meeting_time) %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
   </div>
