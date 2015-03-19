@@ -13,6 +13,8 @@ set :bundle_gemfile, "#{deploy_to}/#{current_path}/Gemfile"
 set :shared_paths, ['config/database.yml', '.env', 'log', 'tmp/pids',
                     'tmp/sockets', 'public/system']
 
+set :puma_state, '/home/deploy/rails_apps/invocations/shared/tmp/pids/puma.state'
+
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
