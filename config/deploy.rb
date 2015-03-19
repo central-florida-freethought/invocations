@@ -1,13 +1,13 @@
 require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
-require 'mina/unicorn'
+require 'mina/puma'
 
 set :user, 'deploy'
 set :domain, '104.131.180.69'
 set :deploy_to, '/home/deploy/rails_apps/invocations'
 set :repository, 'git@bitbucket.org:cffc/invocations_rails.git'
-set :branch, 'master'
+set :branch, 'puma'
 set :bundle_gemfile, "#{deploy_to}/#{current_path}/Gemfile"
 
 set :shared_paths, ['config/database.yml', '.env', 'log', 'tmp/pids',
@@ -58,8 +58,7 @@ task deploy: :environment do
 
     to :launch do
       # Need to reconfigure puma.rb file if we want to do phased-restart here
-      # invoke :'puma:restart'
-      invoke :'unicorn:restart'
+      invoke :'puma:phased_restart'
     end
   end
 end

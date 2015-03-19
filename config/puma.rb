@@ -1,12 +1,19 @@
 #!/usr/bin/env puma
 
-directory '/usr/src/app'
-rackup "/usr/src/app/config.ru"
-environment 'production'
+APP_NAME = 'invocations'
+WORKING_DIRECTORY = "/home/deploy/rails_apps/#{APP_NAME}"
 
-pidfile "/usr/src/app/tmp/pids/puma.pid"
-state_path "/usr/src/app/tmp/pids/puma.state"
-stdout_redirect '/usr/src/app/log/puma_access.log', '/usr/src/app/log/puma_error.log', true
+directory "#{WORKING_DIRECTORY}/current"
+rackup "#{WORKING_DIRECTORY}/current/config.ru"
+environment ENV['RAILS_ENV]' || 'production'
+
+pidfile "#{WORKING_DIRECTORY}/shared/tmp/pids/puma.pid"
+state_path "#{WORKING_DIRECTORY}/shared/tmp/pids/puma.state"
+stdout_redirect "#{WORKING_DIRECTORY}/shared/log/puma_access.log",
+                "#{WORKING_DIRECTORY}/shared/log/puma_error.log",
+                true
 
 threads 0,16
+
+bind "unix://#{WORKING_DIRECTORY}/shared/tmp/sockets/puma.sock"
 

@@ -193,7 +193,6 @@ GEM
       rake
     mina-puma (0.2.0)
       mina
-    mina-unicorn (0.0.4)
     mini_portile (0.6.2)
     minitest (5.5.1)
     multi_json (1.10.1)
@@ -406,7 +405,6 @@ DEPENDENCIES
   launchy
   mina
   mina-puma
-  mina-unicorn
   mysql2
   newrelic_rpm
   nyan-cat-formatter
