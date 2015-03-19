@@ -39,7 +39,6 @@ group :development do
   gem 'binding_of_caller', platforms: [:mri_21]
   gem 'mina'
   gem 'mina-puma', require: false
-  gem 'mina-unicorn', require: false
   gem 'foreman'
   gem 'guard-bundler'
   gem 'guard-rails'
