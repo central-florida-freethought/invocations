@@ -13,6 +13,6 @@ stdout_redirect "#{WORKING_DIRECTORY}/shared/log/puma_access.log",
                 "#{WORKING_DIRECTORY}/shared/log/puma_error.log",
                 true
 
-threads 0,16
+threads 8,16
 workers 1
 
