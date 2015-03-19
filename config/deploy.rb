@@ -7,7 +7,7 @@ set :user, 'deploy'
 set :domain, '104.131.180.69'
 set :deploy_to, '/home/deploy/rails_apps/invocations'
 set :repository, 'git@bitbucket.org:cffc/invocations_rails.git'
-set :branch, 'puma'
+set :branch, 'master'
 set :bundle_gemfile, "#{deploy_to}/#{current_path}/Gemfile"
 
 set :shared_paths, ['config/database.yml', '.env', 'log', 'tmp/pids',
