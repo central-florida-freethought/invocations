@@ -77,4 +77,3 @@ Before committing, or at least pushing, be sure your tests pass by running `fore
 | `public` | Static assets and error files |
 | `spec` | RSpec files for testing |
 | `Gemfile` | Spec for application dependencies |
-
