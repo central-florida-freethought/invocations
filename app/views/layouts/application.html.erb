@@ -41,7 +41,11 @@
               <li><%= link_to 'Terms and Conditions', page_path('volunteer') %></li>
               <li><%= link_to 'Privacy Policy', page_path('volunteer') %></li>
               <li><%= link_to 'Contact Us', contact_path %></li>
-              <li><%= link_to 'Support', 'https://invocationsonline.freshdesk.com' %></li>
+                <% if user_signed_in? %>
+                  <% if current_user.has_role?(:admin) %>
+                    <li><%= link_to 'Support', 'https://invocationsonline.freshdesk.com' %></li>
+                  <% end %>
+                <% end %>
             </ul>
           </div>
           <div class="col-lg-2 col-lg-offset-5 col-sm-3 col-sm-offset-2 col-md-3 col-md-offset-4 copyright">&copy; <%= Time.now.strftime('%Y') %> InvocationsOnline</div>
@@ -53,20 +57,24 @@
   </div>
   <%= javascript_include_tag 'application' %>
   <%= yield(:scripts) %>
-  <script type="text/javascript" src="http://assets.freshdesk.com/widget/freshwidget.js"></script>
-  <script type="text/javascript">
-    FreshWidget.init("", {
-      "queryString": "&widgetType=popup",
-      "widgetType": "popup",
-      "buttonType": "text",
-      "buttonText": "Support",
-      "buttonColor": "white",
-      "buttonBg": "#006063",
-      "alignment": "4",
-      "offset": "235px",
-      "formHeight": "500px",
-      "url": "https://invocationsonline.freshdesk.com"
-    } );
-  </script>
+  <% if user_signed_in? %>
+    <% if current_user.has_role?(:admin) %>
+      <script type="text/javascript" src="http://assets.freshdesk.com/widget/freshwidget.js"></script>
+      <script type="text/javascript">
+        FreshWidget.init("", {
+            "queryString": "&widgetType=popup",
+            "widgetType": "popup",
+            "buttonType": "text",
+            "buttonText": "Support",
+            "buttonColor": "white",
+            "buttonBg": "#006063",
+            "alignment": "4",
+            "offset": "235px",
+            "formHeight": "500px",
+            "url": "https://invocationsonline.freshdesk.com"
+        } );
+      </script>
+    <% end %>
+  <% end %>
 </body>
 </html>
