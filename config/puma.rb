@@ -5,7 +5,7 @@ WORKING_DIRECTORY = "/home/deploy/rails_apps/#{APP_NAME}"
 
 directory "#{WORKING_DIRECTORY}/current"
 rackup "#{WORKING_DIRECTORY}/current/config.ru"
-environment ENV['RAILS_ENV]' || 'production'
+environment ENV['RAILS_ENV'] || 'production'
 
 pidfile "#{WORKING_DIRECTORY}/shared/tmp/pids/puma.pid"
 state_path "#{WORKING_DIRECTORY}/shared/tmp/pids/puma.state"
