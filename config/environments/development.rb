@@ -7,7 +7,7 @@ Rails.application.configure do
   config.cache_classes = false
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  # config.assets.compile = false
+  #config.assets.compile = false
 
   # Do not eager load code on boot.
   config.eager_load = false
