@@ -12,6 +12,7 @@ state_path "#{WORKING_DIRECTORY}/shared/tmp/pids/puma.state"
 stdout_redirect "#{WORKING_DIRECTORY}/shared/log/puma_access.log",
                 "#{WORKING_DIRECTORY}/shared/log/puma_error.log",
                 true
+bind "unix://#{WORKING_DIRECTORY}/shared/tmp/sockets/puma.sock"
 
 threads 8,16
 workers 1
