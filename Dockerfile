@@ -2,6 +2,8 @@ FROM ruby:2.2.2
 RUN apt-get update -qq && apt-get install -y build-essential nodejs npm nodejs-legacy libpq-dev
 
 RUN mkdir -p /usr/src/app
+RUN mkdir /usr/src/app/log
+RUN mkdir /usr/src/app/tmp
 
 WORKDIR /usr/src/app
 COPY Gemfile /usr/src/app/
