@@ -6,7 +6,7 @@ RUN mkdir /usr/src/app
 WORKDIR /tmp
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
-RUN bundle install --production --deployment
+RUN bundle install --deployment
 
 ADD . /usr/src/app
 WORKDIR /usr/src/app
