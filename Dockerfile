@@ -12,5 +12,5 @@ COPY . /usr/src/app
 ENV RAILS_ENV production
 ENV RAILS_SERVE_STATIC_FILES true
 EXPOSE 9292
-RUN bundle exec rake assets:precompile
+# RUN bundle exec rake assets:precompile
 CMD ["bundle", "exec", "puma", "-C", "config/docker-puma.rb"]
