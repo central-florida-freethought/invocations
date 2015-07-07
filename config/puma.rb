@@ -14,6 +14,5 @@ stdout_redirect "#{WORKING_DIRECTORY}/shared/log/puma_access.log",
                 true
 bind "unix://#{WORKING_DIRECTORY}/shared/tmp/sockets/puma.sock"
 
-threads 8,16
-workers 1
-
+threads ENV['PUMA_THREADS']
+workers ENV['PUMA_WORKERS']

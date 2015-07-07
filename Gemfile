@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
 gem 'dotenv-rails'
 gem 'friendly_id', '~> 5.1.0'
 gem 'rails', '4.2.1'
@@ -14,6 +13,7 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'devise', '~> 3.4.0'
 gem 'mysql2'
+gem 'pg'
 gem 'puma'
 gem 'unicorn'
 gem 'cancancan'
@@ -74,4 +74,3 @@ group :test do
   gem 'poltergeist'
   gem 'spring-commands-cucumber'
 end
-
