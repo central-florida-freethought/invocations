@@ -59,7 +59,7 @@
   <%= yield(:scripts) %>
   <% if user_signed_in? %>
     <% if current_user.has_role?(:admin) %>
-      <script type="text/javascript" src="http://assets.freshdesk.com/widget/freshwidget.js"></script>
+      <script type="text/javascript" src="https://s3.amazonaws.com/assets.freshdesk.com/widget/freshwidget.js"></script>
       <script type="text/javascript">
         FreshWidget.init("", {
             "queryString": "&widgetType=popup",
