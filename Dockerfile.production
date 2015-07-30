@@ -12,4 +12,4 @@ RUN bundle install
 
 COPY . /usr/src/app
 EXPOSE 9292
-CMD ["bundle", "exec", "puma", "-C", "config/docker-puma.rb"]
+CMD ["bundle", "exec", "puma"]

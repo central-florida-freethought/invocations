@@ -1,18 +1,17 @@
 #!/usr/bin/env puma
 
-APP_NAME = 'invocations'
-WORKING_DIRECTORY = "/home/deploy/rails_apps/#{APP_NAME}"
+WORKING_DIRECTORY = "/usr/src/app"
 
-directory "#{WORKING_DIRECTORY}/current"
-rackup "#{WORKING_DIRECTORY}/current/config.ru"
+directory "#{WORKING_DIRECTORY}"
+rackup "#{WORKING_DIRECTORY}/config.ru"
 environment ENV['RAILS_ENV'] || 'production'
 
-pidfile "#{WORKING_DIRECTORY}/shared/tmp/pids/puma.pid"
-state_path "#{WORKING_DIRECTORY}/shared/tmp/pids/puma.state"
-stdout_redirect "#{WORKING_DIRECTORY}/shared/log/puma_access.log",
-                "#{WORKING_DIRECTORY}/shared/log/puma_error.log",
+pidfile "#{WORKING_DIRECTORY}/tmp/pids/puma.pid"
+state_path "#{WORKING_DIRECTORY}/tmp/pids/puma.state"
+stdout_redirect "#{WORKING_DIRECTORY}/log/puma_access.log",
+                "#{WORKING_DIRECTORY}/log/puma_error.log",
                 true
-bind "unix://#{WORKING_DIRECTORY}/shared/tmp/sockets/puma.sock"
+bind "tcp://0.0.0.0:#{ENV['PUMA_PORT']}"
 
 threads 8,16
 workers ENV['PUMA_WORKERS']
