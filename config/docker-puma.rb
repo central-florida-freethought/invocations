@@ -11,7 +11,7 @@ state_path "#{WORKING_DIRECTORY}/tmp/pids/puma.state"
 stdout_redirect "#{WORKING_DIRECTORY}/log/puma_access.log",
                 "#{WORKING_DIRECTORY}/log/puma_error.log",
                 true
-# bind "unix://#{WORKING_DIRECTORY}/tmp/sockets/puma.sock"
+bind "tcp://0.0.0.0:#{ENV['PUMA_PORT']}"
 
 threads 8,16
 workers ENV['PUMA_WORKERS']
