@@ -1,6 +1,5 @@
 # Invocations
 
-[ ![Codeship Status for cffc/invocations_rails](https://codeship.io/projects/3d507700-fa9a-0131-1e8f-52190bbde1aa/status)](https://codeship.io/projects/29068)
 
 This is the "Invocations" application for the [Central Florida Freethought Community](http://cflfreethought.org/)
 
