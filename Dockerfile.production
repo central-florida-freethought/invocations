@@ -11,5 +11,6 @@ COPY Gemfile.lock /usr/src/app/
 RUN bundle install
 
 COPY . /usr/src/app
+RUN bundle exec rake assets:precompile
 EXPOSE 9292
 CMD ["bundle", "exec", "puma"]
