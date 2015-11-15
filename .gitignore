@@ -82,4 +82,5 @@ fig.yml
 .vagrant
 docker-compose.yml
 docker-compose.production.yml
+ENV
 
