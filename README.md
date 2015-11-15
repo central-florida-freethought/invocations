@@ -8,7 +8,7 @@ This is the "Invocations" application for the [Central Florida Freethought Commu
 
 This application requires:
 
-- Ruby 2.2.0
+- Ruby 2.2.2
 - Rails 4.2.1
 
 Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
