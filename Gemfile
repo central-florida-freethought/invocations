@@ -13,7 +13,6 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'devise', '~> 3.4.0'
 gem 'mysql2'
-gem 'pg'
 gem 'puma'
 gem 'unicorn'
 gem 'cancancan'
